@@ -3,9 +3,11 @@
  *
  * @author David A. Velasco
  * @author Chris Narkiewicz
+ * @author TSI-mc
  *
  * Copyright (C) 2015 ownCloud Inc.
  * Copyright (C) 2019 Chris Narkiewicz <hello@ezaquarii.com>
+ * Copyright (C) 2022 TSI-mc
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2,
@@ -25,6 +27,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -32,6 +36,8 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PictureDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Process;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -69,6 +75,8 @@ import com.owncloud.android.utils.MimeType;
 import com.owncloud.android.utils.MimeTypeUtil;
 import com.owncloud.android.utils.theme.ViewThemeUtils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -76,6 +84,9 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -85,6 +96,7 @@ import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentManager;
+import androidx.core.os.HandlerCompat;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import pl.droidsonroids.gif.GifDrawable;
@@ -109,6 +121,7 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
     private static final String ARG_FILE = "FILE";
     private static final String ARG_IGNORE_FIRST = "IGNORE_FIRST";
     private static final String ARG_SHOW_RESIZED_IMAGE = "SHOW_RESIZED_IMAGE";
+    private static final String ARG_CURRENT_INDEX = "CURRENT_INDEX";
     private static final String MIME_TYPE_PNG = "image/png";
     private static final String MIME_TYPE_GIF = "image/gif";
     private static final String MIME_TYPE_SVG = "image/svg+xml";
@@ -130,6 +143,14 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
 
     private PreviewImageFragmentBinding binding;
 
+    private static final int rotationDegrees = 90;
+    private long lastRotationEventTs = 0L;
+    private int currentIndex;
+    private boolean isRotationInProgress;
+    private boolean isImageLoadingFailed;//flag to check if image loading is failed or not
+    private final ExecutorService rotationExecutorService = Executors.newSingleThreadExecutor();
+    private final Handler rotationHandler = HandlerCompat.createAsync(Looper.getMainLooper());
+
     /**
      * Public factory method to create a new fragment that previews an image.
      *
@@ -146,13 +167,15 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
      */
     public static PreviewImageFragment newInstance(@NonNull OCFile imageFile,
                                                    boolean ignoreFirstSavedState,
-                                                   boolean showResizedImage) {
+                                                   boolean showResizedImage,
+                                                   int currentIndex) {
         PreviewImageFragment frag = new PreviewImageFragment();
         frag.showResizedImage = showResizedImage;
         Bundle args = new Bundle();
         args.putParcelable(ARG_FILE, imageFile);
         args.putBoolean(ARG_IGNORE_FIRST, ignoreFirstSavedState);
         args.putBoolean(ARG_SHOW_RESIZED_IMAGE, showResizedImage);
+        args.putInt(ARG_CURRENT_INDEX, currentIndex);
         frag.setArguments(args);
         return frag;
     }
@@ -185,6 +208,7 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
 
         ignoreFirstSavedState = args.getBoolean(ARG_IGNORE_FIRST);
         showResizedImage = args.getBoolean(ARG_SHOW_RESIZED_IMAGE);
+        currentIndex = args.getInt(ARG_CURRENT_INDEX);
         setHasOptionsMenu(true);
     }
 
@@ -234,7 +258,26 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
     @Override
     public void onStart() {
         super.onStart();
-        if (getFile() != null) {
+
+        //get the rotated bitmap from hashmap
+        Bitmap rotatedBitmap = null;
+        if (requireActivity() instanceof PreviewImageActivity) {
+            rotatedBitmap = ((PreviewImageActivity) requireActivity()).getCurrentBitmap(currentIndex);
+        }
+
+        //set the rotated bitmap to image view if user swipes back to already rotated image
+        if (rotatedBitmap != null) {
+            isImageLoadingFailed = false;
+            binding.image.setImageBitmap(rotatedBitmap);
+            binding.image.setVisibility(View.VISIBLE);
+            binding.emptyListView.setVisibility(View.GONE);
+            binding.emptyListProgress.setVisibility(View.GONE);
+            binding.image.setBackgroundColor(getResources().getColor(R.color.background_color_inverse));
+
+            //make copy of rotated bitmap to avoid issue during recycle
+            bitmap = rotatedBitmap.copy(rotatedBitmap.getConfig(), true);
+        } else if (getFile() != null) {
+            isImageLoadingFailed = false;
             binding.image.setTag(getFile().getFileId());
 
             Point screenSize = DisplayUtils.getScreenSize(getActivity());
@@ -388,12 +431,36 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
         FileActionsBottomSheet.newInstance(file, false, additionalFilter)
             .setResultListener(fragmentManager, this, this::onFileActionChosen)
             .show(fragmentManager, "actions");
+
+        //this condition will only run when image is rotated
+        //get the rotated bitmap from hashmap
+        if (requireActivity() instanceof PreviewImageActivity) {
+            Bitmap rotatedBitmap = ((PreviewImageActivity) requireActivity()).getCurrentBitmap(currentIndex);
+            //check if it should not be null
+            if (rotatedBitmap != null) {
+                FileMenuFilter.showMenuItem(menu.findItem(R.id.action_send_share_file));
+            }
+        }
+
+
+        //enable rotate image if image is png or jpg
+        //we are not rotating svg, gif or any other format of images
+        //image loading should not be failed to show rotate images
+        if (MimeTypeUtil.isJpgOrPngFile(getFile().getFileName())
+            && !isImageLoadingFailed
+            && binding.emptyListProgress.getVisibility() == View.GONE) {
+            menu.findItem(R.id.action_rotate_image).setVisible(true);
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     public void onFileActionChosen(final int itemId) {
+        if (isRotationInProgress) {
+            return true;
+        }
+        
         if (itemId == R.id.action_send_share_file) {
             if (getFile().isSharedWithMe() && !getFile().canReshare()) {
                 Snackbar.make(requireView(),
@@ -422,7 +489,70 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
                                                                     getContext(),
                                                                     getView(),
                                                                     backgroundJobManager);
+            return true;
+
+        } else if (itemId == R.id.action_rotate_image) {
+            rotateImage();
+            return true;
         }
+    }
+
+    private void rotateImage() {
+        if (System.currentTimeMillis() - lastRotationEventTs < 350) {
+            return;
+        }
+
+        showHideViewDuringRotation(true);
+
+        //execute the rotation task in background
+        rotationExecutorService.execute(() -> {
+            //rotate the image using matrix
+            Matrix matrix = new Matrix();
+            matrix.postRotate(rotationDegrees);
+            //get the bitmap of rotated image
+            Bitmap rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+            //make copy of rotated bitmap to avoid issue during recycle
+            bitmap = rotatedBitmap.copy(rotatedBitmap.getConfig(), true);
+
+            //rotate the cached thumbnail for this image
+
+            //1. Get the thumbnail
+            Bitmap thumbnailBitmap = getThumbnailBitmap(getFile());
+            if (thumbnailBitmap != null) {
+                //2. Rotate the thumbnail
+                Bitmap rotatedThumbBitmap = Bitmap.createBitmap(thumbnailBitmap, 0, 0, thumbnailBitmap.getWidth(), thumbnailBitmap.getHeight(),
+                                                                matrix, true);
+
+                //3. Add the rotated thumbnail back to cache
+                ThumbnailsCacheManager.addBitmapToCache(ThumbnailsCacheManager.PREFIX_THUMBNAIL + getFile().getRemoteId(), rotatedThumbBitmap);
+            }
+
+            //if image resized is enabled then add the current rotated bitmap image to cache
+            if (showResizedImage) {
+                ThumbnailsCacheManager.addBitmapToCache(ThumbnailsCacheManager.PREFIX_RESIZED_IMAGE + getFile().getRemoteId(), rotatedBitmap);
+            }
+
+            rotationHandler.post(() -> {
+                //set the rotated bitmap to image view
+                binding.image.setImageBitmap(bitmap);
+
+                //add the rotated bitmap to hashmap
+                if (requireActivity() instanceof PreviewImageActivity) {
+                    LoadImage loadImage = new LoadImage(rotatedBitmap, null, getFile());
+                    ((PreviewImageActivity) requireActivity()).addBitmap(loadImage);
+                }
+
+                lastRotationEventTs = System.currentTimeMillis();
+
+                showHideViewDuringRotation(false);
+            });
+        });
+    }
+
+    private void showHideViewDuringRotation(boolean isRotationInProgress) {
+        this.isRotationInProgress = isRotationInProgress;
+        binding.progressBar.setVisibility(isRotationInProgress ? View.VISIBLE : View.GONE);
+        binding.image.setVisibility(isRotationInProgress ? View.INVISIBLE : View.VISIBLE);
     }
 
     private void seeDetails() {
@@ -447,6 +577,10 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
     private void openFile() {
         containerActivity.getFileOperationsHelper().openFile(getFile());
         finish();
+    }
+
+    public void setImageBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     private class LoadBitmapTask extends AsyncTask<OCFile, Void, LoadImage> {
@@ -582,6 +716,7 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
         @Override
         protected void onPostExecute(LoadImage result) {
             if (result.bitmap != null || result.drawable != null) {
+                isImageLoadingFailed = false;
                 showLoadedImage(result);
             } else {
                 showErrorMessage(mErrorMessageId);
@@ -697,6 +832,8 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
         binding.image.setVisibility(View.GONE);
         binding.emptyListView.setVisibility(View.VISIBLE);
         binding.emptyListProgress.setVisibility(View.GONE);
+        isImageLoadingFailed = true;
+        requireActivity().invalidateOptionsMenu();
     }
 
     public void setErrorPreviewMessage() {
@@ -794,10 +931,10 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
         return binding.image;
     }
 
-    private class LoadImage {
-        private final Bitmap bitmap;
+    public static class LoadImage {
+        public final Bitmap bitmap;
         private final Drawable drawable;
-        private final OCFile ocFile;
+        public final OCFile ocFile;
 
         LoadImage(Bitmap bitmap, Drawable drawable, OCFile ocFile) {
             this.bitmap = bitmap;

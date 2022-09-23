@@ -3,9 +3,11 @@
  *
  * @author David A. Velasco
  * @author Andy Scherzinger
+ * @author TSI-mc
  * @author Álvaro Brey
  * Copyright (C) 2015 ownCloud Inc.
  * Copyright (C) 2018 Andy Scherzinger
+ * Copyright (C) 2022 TSI-mc
  * Copyright (C) 2022 Álvaro Brey Vilas
  * Copyright (C) 2022 Nextcloud GmbH
  *
@@ -134,13 +136,25 @@ public class FileMenuFilter {
      * List of actions to remove given the parameters supplied in the constructor
      */
     @IdRes
-    public List<Integer> getToHide(final boolean inSingleFileFragment){
-        if(files != null && ! files.isEmpty()){
+    public List<Integer> getToHide(final boolean inSingleFileFragment) {
+        if (files != null && !files.isEmpty()) {
             return filter(inSingleFileFragment);
+            return null;
         }
-        return null;
+    }
+    
+    public static void hideMenuItem(MenuItem item) {
+        if (item != null) {
+            item.setVisible(false);
+            item.setEnabled(false);
+        }
     }
 
+    public static void showMenuItem(MenuItem item) {
+        if (item != null) {
+            item.setVisible(true);
+            item.setEnabled(true);
+        }
 
     /**
      * Decides what actions must be shown and hidden implementing the different rule sets.

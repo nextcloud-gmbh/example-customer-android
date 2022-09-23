@@ -2,7 +2,9 @@
  * Nextcloud Android client application
  *
  * @author Chris Narkiewicz
+ * @author TSI-mc
  * Copyright (C) 2020 Chris Narkiewicz <hello@ezaquarii.com>
+ * Copyright (C) 2022 TSI-mc
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -140,6 +142,8 @@ interface BackgroundJobManager {
     fun startAccountRemovalJob(accountName: String, remoteWipe: Boolean)
     fun startFilesUploadJob(user: User)
     fun getFileUploads(user: User): LiveData<List<JobInfo>>
+
+    fun scheduleImmediateUploadImagesJob(): LiveData<JobInfo?>
 
     fun scheduleTestJob()
     fun startImmediateTestJob()
