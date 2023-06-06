@@ -43,6 +43,11 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/nav_photos"
             android:title="@string/drawer_item_gallery" />
+         <item
+            android:id="@+id/nav_groupfolders"
+            android:orderInCategory="0"
+            android:icon="@drawable/ic_group"
+            android:title="@string/drawer_item_groupfolders" />
         <item
             android:id="@+id/nav_shared"
             android:orderInCategory="0"
