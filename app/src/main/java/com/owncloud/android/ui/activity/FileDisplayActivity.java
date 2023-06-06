@@ -1184,13 +1184,8 @@ public class FileDisplayActivity extends FileActivity
     }
 
     private void setDrawerAllFiles() {
-        if (MainApp.isOnlyOnDevice()) {
-            setDrawerMenuItemChecked(R.id.nav_on_device);
-            setupToolbar();
-        } else {
             setDrawerMenuItemChecked(R.id.nav_all_files);
             setupHomeSearchToolbarWithSortAndListButtons();
-        }
     }
 
     public void initSyncBroadcastReceiver() {
