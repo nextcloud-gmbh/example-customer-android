@@ -32,7 +32,6 @@ import com.nextcloud.client.account.User
 import com.nextcloud.client.account.UserAccountManager
 import com.nextcloud.client.core.Clock
 import com.nextcloud.client.preferences.AppPreferences
-import com.nextcloud.client.preferences.AppPreferencesImpl
 import com.nextcloud.common.NextcloudClient
 import com.nextcloud.java.util.Optional
 import com.owncloud.android.MainApp
@@ -69,7 +68,8 @@ class AccountRemovalWork(
     private val backgroundJobManager: BackgroundJobManager,
     private val clock: Clock,
     private val eventBus: EventBus,
-    private val preferences: AppPreferences
+    private val preferences: AppPreferences,
+    private val syncedFolderProvider: SyncedFolderProvider
 ) : Worker(context, params) {
 
     companion object {
@@ -81,11 +81,13 @@ class AccountRemovalWork(
     @Suppress("ReturnCount") // legacy code
     override fun doWork(): Result {
         val accountName = inputData.getString(ACCOUNT) ?: ""
-        if (TextUtils.isEmpty(accountName)) { // didn't receive account to delete
+        if (TextUtils.isEmpty(accountName)) {
+            // didn't receive account to delete
             return Result.failure()
         }
         val optionalUser = userAccountManager.getUser(accountName)
-        if (!optionalUser.isPresent) { // trying to delete non-existing user
+        if (!optionalUser.isPresent) {
+            // trying to delete non-existing user
             return Result.failure()
         }
         val remoteWipe = inputData.getBoolean(REMOTE_WIPE, false)
@@ -180,11 +182,6 @@ class AccountRemovalWork(
     }
 
     private fun removeSyncedFolders(context: Context, user: User, clock: Clock) {
-        val syncedFolderProvider = SyncedFolderProvider(
-            context.contentResolver,
-            AppPreferencesImpl.fromContext(context),
-            clock
-        )
         val syncedFolders = syncedFolderProvider.syncedFolders
         val syncedFolderIds: MutableList<Long> = ArrayList()
         for (syncedFolder in syncedFolders) {

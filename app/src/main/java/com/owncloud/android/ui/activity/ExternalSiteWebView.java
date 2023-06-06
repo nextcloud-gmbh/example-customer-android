@@ -154,6 +154,12 @@ public class ExternalSiteWebView extends FileActivity {
         getWebView().loadUrl(url);
     }
 
+    @Override
+    protected void onDestroy() {
+        getWebView().destroy();
+        super.onDestroy();
+    }
+
     protected void bindView() {
         binding = ExternalsiteWebviewBinding.inflate(getLayoutInflater());
     }
@@ -193,9 +199,8 @@ public class ExternalSiteWebView extends FileActivity {
         webSettings.setDomStorageEnabled(true);
 
         // caching disabled in debug mode
-        if ((getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) == 0) {
-            webSettings.setAppCacheEnabled(true);
-            webSettings.setAppCachePath(getCacheDir().getPath());
+        if ((getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+            getWebView().getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         }
     }
 

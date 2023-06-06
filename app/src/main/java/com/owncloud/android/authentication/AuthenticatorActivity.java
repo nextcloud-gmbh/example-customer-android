@@ -5,9 +5,11 @@
  * @author David A. Velasco
  * @author masensio
  * @author Mario Danic
+ * @author TSI-mc
  * Copyright (C) 2012  Bartek Przybylski
  * Copyright (C) 2015 ownCloud Inc.
  * Copyright (C) 2017 Mario Danic
+ * Copyright (C) 2023 TSI-mc
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2,
@@ -49,7 +51,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -76,6 +77,7 @@ import android.widget.Toast;
 import com.blikoon.qrcodescanner.QrCodeActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.nextcloud.android.common.ui.color.ColorUtil;
+import com.nextcloud.android.common.ui.theme.utils.ColorRole;
 import com.nextcloud.client.account.User;
 import com.nextcloud.client.account.UserAccountManager;
 import com.nextcloud.client.device.DeviceInfo;
@@ -239,13 +241,15 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     @Inject OnboardingService onboarding;
     @Inject DeviceInfo deviceInfo;
     @Inject PassCodeManager passCodeManager;
-    @Inject ViewThemeUtils viewThemeUtils;
+    @Inject ViewThemeUtils.Factory viewThemeUtilsFactory;
     @Inject ColorUtil colorUtil;
 
     private boolean onlyAdd = false;
     @SuppressLint("ResourceAsColor") @ColorInt
     private int primaryColor = R.color.primary;
     private boolean strictMode = false;
+
+    private ViewThemeUtils viewThemeUtils;
 
     @VisibleForTesting
     public AccountSetupBinding getAccountSetupBinding() {
@@ -260,6 +264,9 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewThemeUtils = viewThemeUtilsFactory.withPrimaryAsBackground();
+        viewThemeUtils.platform.themeStatusBar(this, ColorRole.PRIMARY);
+
 
         Uri data = getIntent().getData();
         boolean directLogin = data != null && data.toString().startsWith(getString(R.string.login_data_own_scheme));
@@ -312,7 +319,6 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         /// load user interface
         if (webViewLoginMethod) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             accountSetupWebviewBinding = AccountSetupWebviewBinding.inflate(getLayoutInflater());
             setContentView(accountSetupWebviewBinding.getRoot());
             initWebViewLogin(webloginUrl, false);
@@ -349,6 +355,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     @SuppressFBWarnings("ANDROID_WEB_VIEW_JAVASCRIPT")
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebViewLogin(String baseURL, boolean useGenericUserAgent) {
+        viewThemeUtils.platform.colorCircularProgressBar(accountSetupWebviewBinding.loginWebviewProgressBar, ColorRole.ON_PRIMARY_CONTAINER);
         accountSetupWebviewBinding.loginWebview.setVisibility(View.GONE);
 
         accountSetupWebviewBinding.loginWebview.getSettings().setAllowFileAccess(false);
@@ -538,10 +545,15 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         accountSetupBinding.hostUrlInputHelperText.setText(
             String.format(getString(R.string.login_url_helper_text), getString(R.string.app_name)));
 
+        viewThemeUtils.platform.colorTextView(accountSetupBinding.hostUrlInputHelperText, ColorRole.ON_PRIMARY);
+        viewThemeUtils.platform.colorTextView(accountSetupBinding.serverStatusText, ColorRole.ON_PRIMARY);
+        viewThemeUtils.platform.colorTextView(accountSetupBinding.authStatusText, ColorRole.ON_PRIMARY);
+        viewThemeUtils.material.colorTextInputLayout(accountSetupBinding.hostUrlContainer, ColorRole.ON_PRIMARY);
+        viewThemeUtils.platform.colorEditTextOnPrimary(accountSetupBinding.hostUrlInput);
+
         if (deviceInfo.hasCamera(this)) {
             accountSetupBinding.scanQr.setOnClickListener(v -> onScan());
-            viewThemeUtils.platform.colorDrawable(accountSetupBinding.scanQr.getDrawable(),
-                                                  getResources().getColor(R.color.login_text_color));
+            viewThemeUtils.platform.tintDrawable(this, accountSetupBinding.scanQr.getDrawable(), ColorRole.ON_PRIMARY);
         } else {
             accountSetupBinding.scanQr.setVisibility(View.GONE);
         }
@@ -739,8 +751,6 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             unbindService(mOperationsServiceConnection);
             mOperationsServiceBinder = null;
         }
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
 
         super.onDestroy();
     }
@@ -1367,6 +1377,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
      * server.
      */
     private void showServerStatus() {
+        if (accountSetupBinding == null) return;
+
         if (mServerStatusIcon == NO_ICON && EMPTY_STRING.equals(mServerStatusText)) {
             accountSetupBinding.serverStatusText.setVisibility(View.INVISIBLE);
         } else {

@@ -145,8 +145,8 @@
     <string name="community_testing_bug_text">Našli ste chybu? Niečo nefunguje?</string>
     <string name="community_testing_headline">Pomôžte s testovaním</string>
     <string name="community_testing_report_text">Nahlásiť chybu na Githube</string>
-    <string name="community_testing_version_text">Máte záujem pomôcť nám s testovaním ďalšej Verzie?</string>
     <string name="configure_new_media_folder_detection_notifications">Nastaviť</string>
+    <string name="confirm_removal">Odstrániť lokálne šifrovanie</string>
     <string name="confirmation_remove_file_alert">Naozaj chcete odstrániť %1$s?</string>
     <string name="confirmation_remove_files_alert">Naozaj chcete odstrániť vybraté položky?</string>
     <string name="confirmation_remove_folder_alert">Naozaj chcete odstrániť %1$s a jeho obsah?</string>
@@ -188,7 +188,6 @@
     <string name="credentials_disabled">Prihlasovacie údaje zakázané</string>
     <string name="daily_backup">Denná záloha</string>
     <string name="data_to_back_up">Dáta pre zálohovanie</string>
-    <string name="date_unknown">Neznámy</string>
     <string name="default_credentials_wrong">Nesprávne prihlasovacie údaje</string>
     <string name="delete_account">Odstrániť účet</string>
     <string name="delete_account_warning">Zmazať účet %s a zmazať všetky lokálne súbory?\n\nZmazanie nebude možné vrátiť späť.</string>
@@ -206,8 +205,11 @@
     <string name="disable_new_media_folder_detection_notifications">Zakázať</string>
     <string name="dismiss">Odmietnuť</string>
     <string name="dismiss_notification_description">Odmietnuť upozornenie</string>
+    <string name="displays_mnemonic">Zobrazí vaše prístupové heslo o 12-tich slovách</string>
     <string name="dnd">Nerušiť</string>
+    <string name="done">Hotové</string>
     <string name="dontClear">Nemazať</string>
+    <string name="download_cannot_create_file">Nieje možné vytvoriť lokálny súbor</string>
     <string name="download_latest_dev_version">Stiahnuť poslednú vývojársku verziu</string>
     <string name="downloader_download_failed_content">Nepodarilo sa stiahnuť %1$s</string>
     <string name="downloader_download_failed_credentials_error">Sťahovanie neúspešné, je potrebné sa znovu prihlásiť</string>
@@ -269,7 +271,6 @@
     <string name="error_retrieving_file">Chyba pri získavaní súboru</string>
     <string name="error_retrieving_templates">Chyba pri načítaní šablón</string>
     <string name="error_starting_direct_camera_upload">Chyba pri otváraní fotoaparátu</string>
-    <string name="error_starting_scan_doc">Chyba pri skenovaní dokumentov</string>
     <string name="etm_accounts">Účty</string>
     <string name="etm_background_job_name">Názov úlohy</string>
     <string name="etm_background_job_progress">Pokrok</string>
@@ -517,6 +518,8 @@
     <string name="permission_deny">Odmietnuť</string>
     <string name="permission_storage_access">Na nahrávanie a sťahovanie súborov sú potrebné dodatočné oprávnenia.</string>
     <string name="picture_set_as_no_app">Aplikácia na nastavenie obrázku sa nenašla</string>
+    <string name="pin_home">Pripnúť na domovskú obrazovku</string>
+    <string name="pin_shortcut_label">Otvoriť %1$s</string>
     <string name="placeholder_fileSize">389 KB</string>
     <string name="placeholder_filename">placeholder.txt</string>
     <string name="placeholder_media_time">12:23:45</string>
@@ -536,7 +539,6 @@
     <string name="pref_instant_name_collision_policy_title">Čo urobiť, ak súbor už existuje?</string>
     <string name="prefs_add_account">Pridať účet</string>
     <string name="prefs_calendar_contacts">Synchronizovať kalendár &amp; kontakty</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Nepodarilo sa zistiť adresu účtu pre DAVx5 (predtým známy ako DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">F-Droid ani Google Play nie sú nainštalované</string>
     <string name="prefs_calendar_contacts_summary">Nastaviť DAVx5 (predtým známy ako DAVdroid) (v1.3.0+) pre tento účet</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Synchronizácia kalendára &amp; kontaktov úspešne dokončená</string>
@@ -546,6 +548,8 @@
     <string name="prefs_category_general">Všeobecné</string>
     <string name="prefs_category_more">Viac</string>
     <string name="prefs_daily_backup_summary">Denná záloha vašeho kalendára &amp; kontaktov</string>
+    <string name="prefs_daily_contact_backup_summary">Denná záloha vašich kontaktov</string>
+    <string name="prefs_e2e_active">End-to-end šifrovanie je nastavené!</string>
     <string name="prefs_e2e_mnemonic">E2E mnemotechnické</string>
     <string name="prefs_e2e_no_device_credentials">Pre zobrazenie mnemotechnické, zapnite prihlasovacie údaje zariadenia.</string>
     <string name="prefs_enable_media_scan_notifications">Zobrazovať notifikácie vyhľadávania médií</string>
@@ -557,6 +561,7 @@
     <string name="prefs_instant_behaviour_title">Pôvodný súbor bude…</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">Ulož v podpriečinkoch podľa roku a mesiaca</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Použi podpriečinky</string>
+    <string name="prefs_keys_exist">Pridať end-to-end šifrovanie do tohto klienta</string>
     <string name="prefs_license">Licencia</string>
     <string name="prefs_lock">Prístupový kód apky</string>
     <string name="prefs_lock_device_credentials_enabled">Prihlasovacie údaje zariadenia povolené</string>
@@ -567,6 +572,8 @@
     <string name="prefs_lock_using_passcode">Heslo</string>
     <string name="prefs_manage_accounts">Spravovať účty</string>
     <string name="prefs_recommend">Odporučiť priateľom</string>
+    <string name="prefs_remove_e2e">Lokálne odstrániť šifrovanie</string>
+    <string name="prefs_setup_e2e">Nastaviť šifrovanie end-to-end</string>
     <string name="prefs_show_hidden_files">Zobraziť skryté súbory</string>
     <string name="prefs_sourcecode">Získajte zdrojový kód</string>
     <string name="prefs_storage_path">Adresár dátového úložiska</string>
@@ -775,7 +782,6 @@
     <string name="thumbnail">Náhľad</string>
     <string name="thumbnail_for_existing_file_description">Náhľad existujúceho súboru</string>
     <string name="thumbnail_for_new_file_desc">Náhľad nového súboru</string>
-    <string name="timeout_richDocuments">Načítanie trvá veľmi dlho…</string>
     <string name="today">Dnes</string>
     <string name="trashbin_activity_title">Zmazané súbory</string>
     <string name="trashbin_empty_headline">Žiadne zmazané súbory</string>

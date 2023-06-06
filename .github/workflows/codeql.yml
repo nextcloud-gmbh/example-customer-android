@@ -1,3 +1,4 @@
+# synced from @nextcloud/android-config
 name: "CodeQL"
 
 on:
@@ -22,23 +23,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-          language: [ 'java' ]
+        language: [ 'java' ]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: ${{ matrix.language }}
-    - name: Set up JDK 
-      uses: actions/setup-java@v3
-      with:
-        distribution: "temurin"
-        java-version: 11
-    - name: Assemble
-      run: |
-        mkdir -p "$HOME/.gradle"
-        echo "org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError" > "$HOME/.gradle/gradle.properties"
-        ./gradlew assembleDebug
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      - name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@49819abfb41bd9b44fb781159c033dba90353a7c # v1.0
+        with:
+          swap-size-gb: 10
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@83f0fe6c4988d98a455712a27f0255212bba9bd4 # v2.3.6
+        with:
+          languages: ${{ matrix.language }}
+      - name: Set up JDK
+        uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
+        with:
+          distribution: "temurin"
+          java-version: 17
+      - name: Assemble
+        run: |
+          mkdir -p "$HOME/.gradle"
+          echo "org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError" > "$HOME/.gradle/gradle.properties"
+          ./gradlew assembleDebug
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@83f0fe6c4988d98a455712a27f0255212bba9bd4 # v2.3.6

@@ -32,6 +32,7 @@
     <string name="activity_icon">Активност</string>
     <string name="add_another_public_share_link">Добави още една връзка</string>
     <string name="add_new_public_share">Добавете нова връзка за публично споделяне</string>
+    <string name="add_new_secure_file_drop">Добавяне на ново, защитено пускане на файлове</string>
     <string name="add_to_cloud">Добави към %1$s</string>
     <string name="advanced_settings">Допълнителни настройки</string>
     <string name="allow_resharing">Може да споделя повторно</string>
@@ -145,7 +146,6 @@
     <string name="community_testing_bug_text">Открили сте грешка? Нещо странно?</string>
     <string name="community_testing_headline">Помогни с тестването</string>
     <string name="community_testing_report_text">Докладвайте за проблем чрез Github</string>
-    <string name="community_testing_version_text">Желаете ли се да помогнете с тестването на следващата версия?</string>
     <string name="configure_new_media_folder_detection_notifications">Настройки</string>
     <string name="confirm_removal">Премахване на локалното криптиране</string>
     <string name="confirmation_remove_file_alert">Наистина ли желаете %1$s да бъде изтрит?</string>
@@ -190,7 +190,6 @@
     <string name="credentials_disabled">Потребителските данни са спрени</string>
     <string name="daily_backup">Ежедневно архивиране</string>
     <string name="data_to_back_up">Данни за архивиране</string>
-    <string name="date_unknown">Неизвестен</string>
     <string name="default_credentials_wrong">Грешни данни за вход</string>
     <string name="delete_account">Изтриване</string>
     <string name="delete_account_warning">Изтриване на профила %s и всички локални файлове?\n\nИзтриването е необратима операция.</string>
@@ -210,7 +209,15 @@
     <string name="dismiss_notification_description">Спри известията</string>
     <string name="displays_mnemonic">Показва вашата парола, която се състои от 12 думи</string>
     <string name="dnd">Не безпокой</string>
+    <string name="document_scan_export_dialog_images">Множество снимки</string>
+    <string name="document_scan_export_dialog_pdf">PDF файл</string>
+    <string name="document_scan_export_dialog_title">Избор на тип експортиране</string>
+    <string name="document_scan_pdf_generation_failed">PDF генерирането е неуспешно</string>
+    <string name="document_scan_pdf_generation_in_progress">Генериране на PDF...</string>
+    <string name="done">Завършено</string>
     <string name="dontClear">Не изчиствай</string>
+    <string name="download_cannot_create_file">Не е възможно създаването на локален файл</string>
+    <string name="download_download_invalid_local_file_name">Невалидно име на локален файл</string>
     <string name="download_latest_dev_version">Сваляне на най-новата dev версия</string>
     <string name="downloader_download_failed_content">%1$sне може да бъде изтеглен</string>
     <string name="downloader_download_failed_credentials_error">Неуспешно качване, нужно е да се впишете отново</string>
@@ -249,6 +256,7 @@
     <string name="end_to_end_encryption_folder_not_empty">Папката не е празна.</string>
     <string name="end_to_end_encryption_generating_keys">Генериране на нови ключове...</string>
     <string name="end_to_end_encryption_keywords_description">Всички 12 думи заедно правят много силна парола, позволявайки само Вие да преглеждате и използвате вашите криптирани файлове. Моля запишете я и я пазете на сигурно място.</string>
+    <string name="end_to_end_encryption_not_enabled">Криптиране End-to-end е забранено на сървъра.</string>
     <string name="end_to_end_encryption_passphrase_title">Запишете паролата си за криптиране от 12 думи</string>
     <string name="end_to_end_encryption_password">Парола…</string>
     <string name="end_to_end_encryption_retrieving_keys">Извличане на ключове...</string>
@@ -272,7 +280,7 @@
     <string name="error_retrieving_templates">Грешка при извличане на шаблони</string>
     <string name="error_showing_encryption_dialog">Грешка при показване на диалогов прозорец за настройка на криптирането!</string>
     <string name="error_starting_direct_camera_upload">Грешка при стартирането на камерата</string>
-    <string name="error_starting_scan_doc">Грешка при използване на сканирането на документи</string>
+    <string name="error_starting_doc_scan">Грешка при стартирането на сканиране на документ</string>
     <string name="etm_accounts">Профили</string>
     <string name="etm_background_job_name">Име на процеса</string>
     <string name="etm_background_job_progress">Прогрес</string>
@@ -541,7 +549,6 @@
     <string name="pref_instant_name_collision_policy_title">Какво да направите, ако файлът вече съществува?</string>
     <string name="prefs_add_account">Добавяне на профил</string>
     <string name="prefs_calendar_contacts">Синхронизиране на календар и контакти</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Адресът на сървъра за профил не може да бъде разрешен за DAVx5 (преди известен, като DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">Нито F-Droid, нито Google play са инсталирани</string>
     <string name="prefs_calendar_contacts_summary">Настройка на DAVx5 (преди известен като DAVdroid) (v1.3.0+) за текущ профил</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Календар &amp; синхронизацията на контакти е настроена</string>
@@ -551,6 +558,9 @@
     <string name="prefs_category_general">Общи</string>
     <string name="prefs_category_more">Още</string>
     <string name="prefs_daily_backup_summary">Ежедневно архивиране на вашия календар &amp; контакти</string>
+    <string name="prefs_daily_contact_backup_summary">Дневно копие на вашите контакти</string>
+    <string name="prefs_davx5_setup_error">Възникна неочаквана грешка при настройката на DAVx5 (известен преди, като DAVdroid)</string>
+    <string name="prefs_e2e_active">Настроено е цялостно криптиране!</string>
     <string name="prefs_e2e_mnemonic">E2E мнемоника </string>
     <string name="prefs_e2e_no_device_credentials">Моля, да активирате идентификационните данни на устройството, за да се покаже мнемоника.</string>
     <string name="prefs_enable_media_scan_notifications">Показване на известия за сканиране на мултимедия</string>
@@ -562,6 +572,7 @@
     <string name="prefs_instant_behaviour_title">Оригиналният файл ще бъде…</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">Съхраняване в подпапки, разделени по година и месец</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Ползване на подпапки</string>
+    <string name="prefs_keys_exist">Добавяне на цялостно криптиране към този клиент</string>
     <string name="prefs_license">Лиценз</string>
     <string name="prefs_lock">Код за достъп за приложение </string>
     <string name="prefs_lock_device_credentials_enabled">Удостоверяването от устройството е включено</string>
@@ -573,6 +584,7 @@
     <string name="prefs_manage_accounts">Управление на профилите</string>
     <string name="prefs_recommend">Препоръчайте на приятел</string>
     <string name="prefs_remove_e2e">Премахване на локално криптиране</string>
+    <string name="prefs_setup_e2e">Настройка на цялостно криптиране</string>
     <string name="prefs_show_hidden_files">Показване и на скрити файлове</string>
     <string name="prefs_sourcecode">Получаване на изходния код</string>
     <string name="prefs_storage_path">Папка за съхранение на данни</string>
@@ -600,6 +612,8 @@
     <string name="reload">Презареди</string>
     <string name="remote">(отдалечен)</string>
     <string name="remote_file_fetch_failed">Неуспешно намиране на файл!</string>
+    <string name="remove_e2e">Можете да премахнете локално цялостното криптиране към този клиент</string>
+    <string name="remove_e2e_message">Можете да премахнете локално цялостното криптиране към този клиент. Криптираните файлове ще останат на сървъра, но вече няма да се синхронизират с този компютър.</string>
     <string name="remove_fail_msg">Изтриването неуспешно</string>
     <string name="remove_notification_failed">Неуспешно премахване на известие.</string>
     <string name="remove_push_notification">Премахване</string>
@@ -617,6 +631,7 @@
     <string name="retrieving_file">Извличане на файл...</string>
     <string name="richdocuments_failed_to_load_document">Неуспешно зареждане на документ</string>
     <string name="scanQR_description">Логване с QR код</string>
+    <string name="scan_page">Сканиране на страница</string>
     <string name="screenshot_01_gridView_heading">Защита на вашите данни</string>
     <string name="screenshot_01_gridView_subline">Продуктивност на самостоятелно хостване</string>
     <string name="screenshot_02_listView_heading">Преглеждане и споделяне</string>
@@ -643,6 +658,7 @@
     <string name="set_picture_as">Задай като</string>
     <string name="set_status">Задайте състояние</string>
     <string name="set_status_message">Задайте съобщение за състояние</string>
+    <string name="setup_e2e">По време на настройката на цялостното криптиране ще получите мнемоника от 12 произволни думи , която ще ви е необходима, за да отваряте файловете си на други устройства. Тя ще бъде съхранена само на това устройство и може да бъде показана отново на този екран. Моля, запишете я на сигурно място!</string>
     <string name="share">Сподели</string>
     <string name="share_copy_link">Споделяне &amp; Копиране на връзка</string>
     <string name="share_dialog_title">Споделяне</string>
@@ -666,7 +682,8 @@
     <string name="share_no_password_title">Задайте парола</string>
     <string name="share_password_title">Защитена с парола</string>
     <string name="share_permission_can_edit">Може да редактира</string>
-    <string name="share_permission_file_drop">Изпускане/Преместване/ на файл</string>
+    <string name="share_permission_file_drop">Пускане/Преместване/ на файл</string>
+    <string name="share_permission_secure_file_drop">Защитено пускане на файлове</string>
     <string name="share_permission_view_only">Само изглед</string>
     <string name="share_permissions">Права за споделяне</string>
     <string name="share_remote_clarification">%1$s (отдалечен)</string>
@@ -781,7 +798,6 @@
     <string name="thumbnail">Миниатюра</string>
     <string name="thumbnail_for_existing_file_description">Миниатюра за съществуващ файл</string>
     <string name="thumbnail_for_new_file_desc">Миниатюра за нов файл</string>
-    <string name="timeout_richDocuments">Зареждането отнема много време ...</string>
     <string name="today">Днес</string>
     <string name="trashbin_activity_title">Изтрити файлове</string>
     <string name="trashbin_empty_headline">Няма изтрити файлове</string>

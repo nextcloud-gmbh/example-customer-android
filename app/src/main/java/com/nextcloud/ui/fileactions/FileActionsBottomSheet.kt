@@ -35,6 +35,7 @@ import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.os.bundleOf
+import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResult
@@ -50,6 +51,7 @@ import com.owncloud.android.databinding.FileActionsBottomSheetBinding
 import com.owncloud.android.databinding.FileActionsBottomSheetItemBinding
 import com.owncloud.android.datamodel.FileDataStorageManager
 import com.owncloud.android.datamodel.OCFile
+import com.owncloud.android.datamodel.SyncedFolderProvider
 import com.owncloud.android.datamodel.ThumbnailsCacheManager
 import com.owncloud.android.lib.resources.files.model.FileLockType
 import com.owncloud.android.ui.activity.ComponentsGetter
@@ -58,7 +60,7 @@ import com.owncloud.android.utils.DisplayUtils.AvatarGenerationListener
 import com.owncloud.android.utils.theme.ViewThemeUtils
 import javax.inject.Inject
 
-class FileActionsBottomSheet private constructor() : BottomSheetDialogFragment(), Injectable {
+class FileActionsBottomSheet : BottomSheetDialogFragment(), Injectable {
 
     @Inject
     lateinit var viewThemeUtils: ViewThemeUtils
@@ -71,6 +73,9 @@ class FileActionsBottomSheet private constructor() : BottomSheetDialogFragment()
 
     @Inject
     lateinit var storageManager: FileDataStorageManager
+
+    @Inject
+    lateinit var syncedFolderProvider: SyncedFolderProvider
 
     lateinit var viewModel: FileActionsViewModel
 
@@ -141,7 +146,8 @@ class FileActionsBottomSheet private constructor() : BottomSheetDialogFragment()
                 context,
                 binding.thumbnailLayout.thumbnailShimmer,
                 null,
-                viewThemeUtils
+                viewThemeUtils,
+                syncedFolderProvider
             )
         }
     }
@@ -184,7 +190,7 @@ class FileActionsBottomSheet private constructor() : BottomSheetDialogFragment()
         if (state is FileActionsViewModel.UiState.Loading) {
             binding.bottomSheetLoading.isVisible = true
             binding.bottomSheetContent.isVisible = false
-            viewThemeUtils.platform.colorCircularProgressBar(binding.bottomSheetLoading)
+            viewThemeUtils.platform.colorCircularProgressBar(binding.bottomSheetLoading, ColorRole.PRIMARY)
         } else {
             binding.bottomSheetLoading.isVisible = false
             binding.bottomSheetContent.isVisible = true
@@ -194,9 +200,11 @@ class FileActionsBottomSheet private constructor() : BottomSheetDialogFragment()
     private fun displayActions(
         actions: List<FileAction>
     ) {
-        actions.forEach { action ->
-            val view = inflateActionView(action)
-            binding.fileActionsList.addView(view)
+        if (binding.fileActionsList.isEmpty()) {
+            actions.forEach { action ->
+                val view = inflateActionView(action)
+                binding.fileActionsList.addView(view)
+            }
         }
     }
 

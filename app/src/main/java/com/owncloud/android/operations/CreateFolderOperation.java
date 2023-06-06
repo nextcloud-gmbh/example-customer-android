@@ -126,7 +126,9 @@ public class CreateFolderOperation extends SyncOperation implements OnRemoteOper
             Pair<Boolean, DecryptedFolderMetadata> metadataPair = EncryptionUtils.retrieveMetadata(parent,
                                                                                                    client,
                                                                                                    privateKey,
-                                                                                                   publicKey);
+                                                                                                   publicKey,
+                                                                                                   arbitraryDataProvider,
+                                                                                                   user);
 
             metadataExists = metadataPair.first;
             metadata = metadataPair.second;
@@ -150,7 +152,10 @@ public class CreateFolderOperation extends SyncOperation implements OnRemoteOper
                 metadata.getFiles().put(encryptedFileName, createDecryptedFile(filename));
 
                 EncryptedFolderMetadata encryptedFolderMetadata = EncryptionUtils.encryptFolderMetadata(metadata,
-                                                                                                        privateKey);
+                                                                                                        publicKey,
+                                                                                                        arbitraryDataProvider,
+                                                                                                        user,
+                                                                                                        parent.getLocalId());
                 String serializedFolderMetadata = EncryptionUtils.serializeJSON(encryptedFolderMetadata);
 
                 // upload metadata
@@ -331,7 +336,8 @@ public class CreateFolderOperation extends SyncOperation implements OnRemoteOper
                     saveFolderInDB();
                 }
             }
-        } else { // Create directory on DB
+        } else {
+            // Create directory on DB
             OCFile newDir = new OCFile(remotePath);
             newDir.setMimeType(MimeType.DIRECTORY);
             long parentId = getStorageManager().getFileByPath(FileStorageUtils.getParentPath(remotePath)).getFileId();

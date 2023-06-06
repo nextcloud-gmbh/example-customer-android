@@ -46,10 +46,11 @@
     <string name="prefs_enable_media_scan_notifications_summary">Notify about newly found media folders</string>
     <string name="prefs_calendar_contacts">Sync calendar &amp; contacts</string>
     <string name="prefs_calendar_contacts_summary">Set up DAVx5 (formerly known as DAVdroid) (v1.3.0+) for current account</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Server address for the account could not be resolved for DAVx5 (formerly known as DAVdroid)</string>
+    <string name="prefs_davx5_setup_error">Unexpected error while setting up DAVx5 (formerly known as DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">Neither F-Droid nor Google Play is installed</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Calendar &amp; contacts sync set up</string>
     <string name="prefs_daily_backup_summary">Daily backup of your calendar &amp; contacts</string>
+    <string name="prefs_daily_contact_backup_summary">Daily backup of your contacts</string>
     <string name="prefs_sycned_folders_summary">Manage folders for auto upload</string>
     <string name="prefs_help">Help</string>
     <string name="prefs_recommend">Recommend to a friend</string>
@@ -523,7 +524,6 @@
     <string name="community_testing_headline">Help by testing</string>
     <string name="community_testing_bug_text">Found a bug? Oddments?</string>
     <string name="community_testing_report_text">Report an issue on GitHub</string>
-    <string name="community_testing_version_text">Interested in helping out by testing what will be the next version?</string>
     <string name="community_beta_headline">Test the dev version</string>
     <string name="community_beta_text">This includes all upcoming features and it is on the very bleeding edge. Bugs/errors can occur, if and when they do, please report of your findings.</string>
     <string name="community_release_candidate_headline">Release candidate</string>
@@ -606,7 +606,7 @@
     <string name="contacts_preferences_backup_scheduled">Backup scheduled and will start shortly</string>
     <string name="contacts_preferences_import_scheduled">Import scheduled and will start shortly</string>
     <string name="backup_title">Contacts &amp; calendar backup</string>
-
+    <string name="contact_backup_title">Contacts backup</string>
     <string name="drawer_logout">Log out</string>
     <string name="picture_set_as_no_app">No app found to set a picture with</string>
     <string name="privacy">Privacy</string>
@@ -820,7 +820,6 @@
     <string name="battery_optimization_close">Close</string>
     <string name="file_details_no_content">Failed to load details</string>
     <string name="error_starting_direct_camera_upload">Error starting camera</string>
-    <string name="error_starting_scan_doc">Error using document scanning</string>
     <string name="uploader_upload_files_behaviour_not_writable">source folder is read-only; file will only be uploaded</string>
     <string name="auto_upload_file_behaviour_kept_in_folder">kept in original folder, as it is readonly</string>
     <string name="scanQR_description">Login via QR code</string>
@@ -835,7 +834,7 @@
     <string name="delete_entries">Delete entries</string>
     <string name="dismiss_notification_description">Dismiss notification</string>
     <string name="action_empty_notifications">Clear all notifications</string>
-    <string name="timeout_richDocuments">Loading takes very long…</string>
+    <string name="timeout_richDocuments">Loading is taking longer than expected</string>
     <string name="clear_notifications_failed">Failed to clear notifications.</string>
     <string name="remove_notification_failed">Failed to remove notification.</string>
     <string name="notification_action_failed">Failed to execute action.</string>
@@ -980,6 +979,7 @@
     <string name="share_permission_view_only">View only</string>
     <string name="share_permission_can_edit">Can edit</string>
     <string name="share_permission_file_drop">File drop</string>
+    <string name="share_permission_secure_file_drop">Secure file drop</string>
     <string name="share_permissions">Share Permissions</string>
     <string name="advanced_settings">Advanced Settings</string>
     <string name="common_next">Next</string>
@@ -1065,6 +1065,20 @@
     <string name="confirm_removal">Remove local encryption</string>
     <string name="remove_e2e_message">You can remove end-to-end encryption locally on this client. The encrypted files will remain on server, but will not be synced to this computer any longer.</string>
     <string name="setup_e2e">During setup of end-to-end encryption, you will receive a random 12 word mnemonic, which you will need to open your files on other devices. This will only be stored on this device, and can be shown again in this screen. Please note it down in a secure place!</string>
-    <string name="error_showing_encryption_dialog">Error showing setup encryption dialog!</string>
+    <string name="error_showing_encryption_dialog">Error showing encryption setup dialog!</string>
     <string name="prefs_keys_exist">Add end-to-end encryption to this client</string>
+    <string name="add_new_secure_file_drop">Add new secure file drop</string>
+    <string name="scan_page">Scan page</string>
+    <string name="done">Done</string>
+    <string name="document_scan_pdf_generation_in_progress">Generating PDF…</string>
+    <string name="error_starting_doc_scan">Error starting document scan</string>
+    <string name="document_scan_pdf_generation_failed">PDF generation failed</string>
+    <string name="document_scan_export_dialog_title">Choose export type</string>
+    <string name="document_scan_export_dialog_pdf">PDF file</string>
+    <string name="document_scan_export_dialog_images">Multiple images</string>
+    <string name="download_cannot_create_file">Cannot create local file</string>
+    <string name="download_download_invalid_local_file_name">Invalid filename for local file</string>
+    <string name="drawer_item_groupfolders">Groupfolders</string>
+    <string name="tags_more" translatable="false">+%1$d</string>
+    <string name="pdf_password_protected">Unable to open password-protected PDF. Please use an external PDF viewer.</string>
 </resources>

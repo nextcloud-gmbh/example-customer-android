@@ -39,12 +39,14 @@ import com.owncloud.android.lib.resources.shares.ShareeUser;
 import com.owncloud.android.utils.MimeType;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.content.FileProvider;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import third_parties.daveKoeller.AlphanumComparator;
 
 public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterface {
@@ -83,6 +85,7 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
     private String etagOnServer;
     private boolean sharedViaLink;
     private String permissions;
+    private long localId; // unique fileId for the file within the instance
     private String remoteId; // The fileid namespaced by the instance fileId, globally unique
     private boolean updateThumbnailNeeded;
     private boolean downloading;
@@ -112,6 +115,7 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
     private String lockToken;
     @Nullable
     private ImageDimension imageDimension;
+    private List<String> tags = new ArrayList<>();
 
     /**
      * URI to the local path of the file contents, if stored in the device; cached after first call to {@link
@@ -166,6 +170,7 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
         etagOnServer = source.readString();
         sharedViaLink = source.readInt() == 1;
         permissions = source.readString();
+        localId = source.readLong();
         remoteId = source.readString();
         updateThumbnailNeeded = source.readInt() == 1;
         downloading = source.readInt() == 1;
@@ -208,6 +213,7 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
         dest.writeString(etagOnServer);
         dest.writeInt(sharedViaLink ? 1 : 0);
         dest.writeString(permissions);
+        dest.writeLong(localId);
         dest.writeString(remoteId);
         dest.writeInt(updateThumbnailNeeded ? 1 : 0);
         dest.writeInt(downloading ? 1 : 0);
@@ -284,8 +290,7 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
     }
 
     /**
-     * Can be used to check, whether or not this file exists in the database
-     * already
+     * Can be used to check, whether or not this file exists in the database already
      *
      * @return true, if the file exists in the database
      */
@@ -486,6 +491,7 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
         etagOnServer = null;
         sharedViaLink = false;
         permissions = null;
+        localId = -1;
         remoteId = null;
         updateThumbnailNeeded = false;
         downloading = false;
@@ -595,16 +601,16 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
     }
 
     /**
-     * The unique fileId for the file within the instance
-     *
-     * @return file fileId, unique within the instance
+     * unique fileId for the file within the instance
      */
-    @Nullable
-    public String getLocalId() {
-        if (getRemoteId() != null) {
-            return getRemoteId().substring(0, 8).replaceAll("^0*", "");
+    @SuppressFBWarnings("STT")
+    public long getLocalId() {
+        if (localId > 0) {
+            return localId;
+        } else if (remoteId != null && remoteId.length() > 8) {
+            return Long.parseLong(remoteId.substring(0, 8).replaceAll("^0*", ""));
         } else {
-            return null;
+            return -1;
         }
     }
 
@@ -645,6 +651,9 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
         }
     };
 
+    /**
+     * Android's internal ID of the file
+     */
     public long getFileId() {
         return this.fileId;
     }
@@ -770,6 +779,10 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
 
     public void setFileId(long fileId) {
         this.fileId = fileId;
+    }
+
+    public void setLocalId(long localId) {
+        this.localId = localId;
     }
 
     public void setParentId(long parentId) {
@@ -960,5 +973,13 @@ public class OCFile implements Parcelable, Comparable<OCFile>, ServerFileInterfa
     @Nullable
     public ImageDimension getImageDimension() {
         return imageDimension;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }

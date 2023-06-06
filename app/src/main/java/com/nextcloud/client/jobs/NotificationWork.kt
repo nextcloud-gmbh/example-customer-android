@@ -198,7 +198,8 @@ class NotificationWork constructor(
                     disableIntent
                 )
             )
-        } else { // Actions
+        } else {
+            // Actions
             for (action in notification.getActions()) {
                 val actionIntent = Intent(context, NotificationReceiver::class.java)
                 actionIntent.putExtra(NUMERIC_NOTIFICATION_ID, notification.getNotificationId())
@@ -255,7 +256,7 @@ class NotificationWork constructor(
             val result = GetNotificationRemoteOperation(decryptedPushMessage.nid)
                 .execute(client)
             if (result.isSuccess) {
-                val notification = result.notificationData[0]
+                val notification = result.resultData
                 sendNotification(notification, account)
             }
         } catch (e: Exception) {

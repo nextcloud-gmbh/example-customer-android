@@ -23,6 +23,7 @@
 package com.owncloud.android.ui.activity;
 
 import android.app.DownloadManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,6 +32,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -40,16 +43,23 @@ import com.nextcloud.java.util.Optional;
 import com.owncloud.android.R;
 import com.owncloud.android.databinding.RichdocumentsWebviewBinding;
 import com.owncloud.android.datamodel.OCFile;
+import com.owncloud.android.datamodel.SyncedFolderProvider;
 import com.owncloud.android.datamodel.ThumbnailsCacheManager;
 import com.owncloud.android.utils.DisplayUtils;
 import com.owncloud.android.utils.MimeTypeUtil;
 
+import javax.inject.Inject;
+
 public abstract class EditorWebView extends ExternalSiteWebView {
+    public static final int REQUEST_LOCAL_FILE = 101;
+    public ValueCallback<Uri[]> uploadMessage;
     protected Snackbar loadingSnackbar;
 
     protected String fileName;
 
     RichdocumentsWebviewBinding binding;
+
+    @Inject SyncedFolderProvider syncedFolderProvider;
 
     protected void loadUrl(String url) {
         onUrlLoaded(url);
@@ -104,6 +114,34 @@ public abstract class EditorWebView extends ExternalSiteWebView {
     protected void postOnCreate() {
         super.postOnCreate();
 
+        getWebView().setWebChromeClient(new WebChromeClient() {
+            EditorWebView activity = EditorWebView.this;
+
+            @Override
+            public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback,
+                                             FileChooserParams fileChooserParams) {
+                if (uploadMessage != null) {
+                    uploadMessage.onReceiveValue(null);
+                    uploadMessage = null;
+                }
+
+                activity.uploadMessage = filePathCallback;
+
+                Intent intent = fileChooserParams.createIntent();
+                intent.setType("image/*");
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                try {
+                    activity.startActivityForResult(intent, REQUEST_LOCAL_FILE);
+                } catch (ActivityNotFoundException e) {
+                    uploadMessage = null;
+                    Toast.makeText(getBaseContext(), "Cannot open file chooser", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
+                return true;
+            }
+        });
+
         setFile(getIntent().getParcelableExtra(ExternalSiteWebView.EXTRA_FILE));
 
         if (getFile() == null) {
@@ -122,6 +160,42 @@ public abstract class EditorWebView extends ExternalSiteWebView {
             return;
         }
         initLoadingScreen(user.get());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (RESULT_OK != resultCode) {
+            if (requestCode == REQUEST_LOCAL_FILE) {
+                this.uploadMessage.onReceiveValue(null);
+                this.uploadMessage = null;
+            }
+            return;
+        }
+
+        handleActivityResult(requestCode, resultCode, data);
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    protected void handleActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_LOCAL_FILE:
+                handleLocalFile(data, resultCode);
+                break;
+
+            default:
+                // unexpected, do nothing
+                break;
+        }
+    }
+
+    protected void handleLocalFile(Intent data, int resultCode) {
+        if (uploadMessage == null) {
+            return;
+        }
+
+        uploadMessage.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
+        uploadMessage = null;
     }
 
     protected WebView getWebView() {
@@ -156,6 +230,7 @@ public abstract class EditorWebView extends ExternalSiteWebView {
                                                                                   file.isSharedWithSharee(),
                                                                               file.isSharedViaLink(),
                                                                               file.isEncrypted(),
+                                                                              syncedFolderProvider.findByRemotePathAndAccount(file.getRemotePath(), user),
                                                                               file.isGroupFolder(),
                                                                               file.getMountType(),
                                                                               this,

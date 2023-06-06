@@ -10,7 +10,7 @@
     <string name="action_clear_failed_uploads">Fjern fejlede uploads</string>
     <string name="action_edit">Redigér</string>
     <string name="action_empty_notifications">Ryd alle notifikationer</string>
-    <string name="action_empty_trashbin">Tom papirkurv</string>
+    <string name="action_empty_trashbin">Tøm papirkurv</string>
     <string name="action_send_share">Send/Del</string>
     <string name="action_switch_grid_view">Grid visning</string>
     <string name="action_switch_list_view">List visning</string>
@@ -87,7 +87,7 @@
     <string name="calendars">Kalendere</string>
     <string name="certificate_load_problem">Der er et problem med lagring af certificering.</string>
     <string name="changelog_dev_version">Changelog udviklingsversion</string>
-    <string name="checkbox">Afkrydsningsfeldt</string>
+    <string name="checkbox">Afkrydsningsfelt</string>
     <string name="choose_local_folder">Vælg lokal mappe...</string>
     <string name="choose_location">Vælg placering</string>
     <string name="choose_remote_folder">Vælg ekstern mappe...</string>
@@ -138,11 +138,10 @@
     <string name="community_rc_fdroid">Hent kanditat til frigivelse fra F-Droid app</string>
     <string name="community_rc_play_store">Hent kanditat til frigivelse fra Google Play store</string>
     <string name="community_release_candidate_headline">Release candidate</string>
-    <string name="community_release_candidate_text">Denne kandidat til frigivelse (RC) er et snapshot af den kommende version og forventes at være stabil. Testing af dit individuelle miljø kunne hjælpe med at sikre dette.  Indkriv dig til testing på Play store eller led manuelt in \"Version\"s afdelingen af F-Droid.</string>
-    <string name="community_testing_bug_text">Fundet en bug? Mærkværdighed?</string>
+    <string name="community_release_candidate_text">Denne kandidat til frigivelse (RC) er et snapshot af den kommende version og forventes at være stabil. Testing af dit individuelle miljø kan hjælpe med at sikre dette.  Indskriv dig til testing i Play Store eller led manuelt i \"Version\"s afdelingen af F-Droid.</string>
+    <string name="community_testing_bug_text">Fundet en fejl? Mærkværdighed?</string>
     <string name="community_testing_headline">Hjælp med at test</string>
     <string name="community_testing_report_text">Rapporter et problem på Github</string>
-    <string name="community_testing_version_text">Interesseret i at hjælpe med at teste det der bliver den næste version?</string>
     <string name="configure_new_media_folder_detection_notifications">Konfigurer</string>
     <string name="confirmation_remove_file_alert">Er du sikker på at du vil slette %1$s ?</string>
     <string name="confirmation_remove_files_alert">Er du sikker på at du vil slette de valgte artikler?</string>
@@ -185,12 +184,11 @@
     <string name="credentials_disabled">Brugeroplysninger deaktiverede</string>
     <string name="daily_backup">Daglig backup</string>
     <string name="data_to_back_up">Data at sikkerhedskopiere</string>
-    <string name="date_unknown">Ukendt</string>
     <string name="default_credentials_wrong">Ukorrekte brugeroplysninger</string>
     <string name="delete_account">Fjern konto</string>
     <string name="delete_account_warning">Slet konto %s og slet alle filer lokalt?\n\nDu kan ikke fortryde en sletning.</string>
     <string name="delete_entries">Slet poster</string>
-    <string name="delete_link">Slet Link</string>
+    <string name="delete_link">Slet link</string>
     <string name="deselect_all">Fravælg alle</string>
     <string name="destination_filename">Destinations filnavn</string>
     <string name="dev_version_new_version_available">Ny version tilgængelig.</string>
@@ -204,7 +202,11 @@
     <string name="dismiss">Afvis</string>
     <string name="dismiss_notification_description">Fjern notifikation</string>
     <string name="dnd">Forstyr ikke</string>
+    <string name="document_scan_export_dialog_pdf">PDF fil</string>
+    <string name="document_scan_pdf_generation_in_progress">Genererer PDF…</string>
+    <string name="done">Færdig</string>
     <string name="dontClear">Ryd ikke</string>
+    <string name="download_cannot_create_file">Kan ikke oprette filen lokalt</string>
     <string name="download_latest_dev_version">Hent seneste udiklingsversion</string>
     <string name="downloader_download_failed_content">Kunne ikke hente %1$s</string>
     <string name="downloader_download_failed_credentials_error">Overførelse fejlede, log ind igen</string>
@@ -242,6 +244,7 @@
     <string name="end_to_end_encryption_folder_not_empty">Denne folder er ikke tom.</string>
     <string name="end_to_end_encryption_generating_keys">Opretter nye nøgler...</string>
     <string name="end_to_end_encryption_keywords_description">Alle 12 ord udgør tilsammen et meget stærkt kodeord, så kun du kan læse og bruge dine krypterede filer. Venligst skriv det ned og gem det et sikkert sted.</string>
+    <string name="end_to_end_encryption_not_enabled">Ende til ende kryptering slået fra på server.</string>
     <string name="end_to_end_encryption_passphrase_title">Noter dit 12 ords krypterings kodeord</string>
     <string name="end_to_end_encryption_password">Adgangskode...</string>
     <string name="end_to_end_encryption_retrieving_keys">Henter nøgler...</string>
@@ -263,7 +266,6 @@
     <string name="error_retrieving_file">Fejl ved modtagelse af fil</string>
     <string name="error_retrieving_templates">Fejl ved indlæsning af modeller</string>
     <string name="error_starting_direct_camera_upload">Fejl ved start af kamera</string>
-    <string name="error_starting_scan_doc">Fejl ved brug af dokumentscanning</string>
     <string name="etm_accounts">Konti</string>
     <string name="etm_background_job_name">Job navn</string>
     <string name="etm_background_job_progress">Progress</string>
@@ -358,7 +360,7 @@
     <string name="filename_forbidden_charaters_from_server">Filnavnet indeholder mindst ét ugyldigt tegn</string>
     <string name="filename_hint">Filnavn</string>
     <string name="first_run_1_text">Bevar dine data i sikkerhed og under din kontrol</string>
-    <string name="first_run_2_text">Sikker kollaboration&amp; fil udveksling</string>
+    <string name="first_run_2_text">Sikker kollaboration &amp; fil udveksling</string>
     <string name="first_run_3_text">Nemt at bruge web mail, kalender &amp; kontakter</string>
     <string name="first_run_4_text">Skærmdeling, onlinemøder &amp; web konferencer</string>
     <string name="folder_already_exists">Mappe findes allerede</string>
@@ -499,7 +501,7 @@
     <string name="pass_code_mismatch">Passcode\'erne er ikke ens</string>
     <string name="pass_code_reenter_your_pass_code">Indtast venligst dit kodeord igen</string>
     <string name="pass_code_remove_your_pass_code">Slet din adgangskode</string>
-    <string name="pass_code_removed">Passcode slettet</string>
+    <string name="pass_code_removed">Adgangskode slettet</string>
     <string name="pass_code_stored">Passcode blev gendannet</string>
     <string name="pass_code_wrong">Ukorrekt passcode</string>
     <string name="pdf_zoom_tip">Tryk på en side for at zoome ind</string>
@@ -507,6 +509,8 @@
     <string name="permission_deny">Afvis</string>
     <string name="permission_storage_access">Yderligere tilladelser nødvendige for at hente og sende filer.</string>
     <string name="picture_set_as_no_app">Ingen apps fundet til at vælge et billede med</string>
+    <string name="pin_home">Fastgør til hjemmeskærm</string>
+    <string name="pin_shortcut_label">Åbn %1$s</string>
     <string name="placeholder_fileSize">389 KB</string>
     <string name="placeholder_filename">pladsholder.txt</string>
     <string name="placeholder_media_time">12:23:45</string>
@@ -516,17 +520,16 @@
     <string name="player_toggle">skift</string>
     <string name="power_save_check_dialog_message">Deaktiver strømsparecheck kan føre til forsendelse af filer mens der ikke resterer meget strøm på batteriet</string>
     <string name="pref_behaviour_entries_delete_file">Slettet</string>
-    <string name="pref_behaviour_entries_keep_file">forblive i oprindelig mappe</string>
+    <string name="pref_behaviour_entries_keep_file">I oprindelig mappe</string>
     <string name="pref_behaviour_entries_move">Overført til app mappe</string>
     <string name="pref_instant_name_collision_policy_dialogTitle">Hvad skal ske, hvis filen allerede findes?</string>
     <string name="pref_instant_name_collision_policy_entries_always_ask">Spørg mig altid</string>
-    <string name="pref_instant_name_collision_policy_entries_cancel">spring upload over</string>
+    <string name="pref_instant_name_collision_policy_entries_cancel">Spring upload over</string>
     <string name="pref_instant_name_collision_policy_entries_overwrite">Overskriv fjerntliggende version</string>
     <string name="pref_instant_name_collision_policy_entries_rename">Omdøb ny version</string>
     <string name="pref_instant_name_collision_policy_title">Hvad skal ske, hvis filen allerede findes?</string>
     <string name="prefs_add_account">Tilføj konto</string>
     <string name="prefs_calendar_contacts">Synkroniser kalender &amp; kontakter</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Server adressen for kontoen kunne ikke findes for DAVx5 (før kendt som DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">Hverken F-droid eller Google Play er installeret</string>
     <string name="prefs_calendar_contacts_summary">Indstil DAVx5 (før kendt som DAVdroid) (v1.3.0+) for aktiv konto</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Synkroniser kalender &amp;\'s kontakter</string>
@@ -535,7 +538,8 @@
     <string name="prefs_category_dev">Udvikling</string>
     <string name="prefs_category_general">Generel</string>
     <string name="prefs_category_more">Mere</string>
-    <string name="prefs_daily_backup_summary">Daglig backup af din kalender &amp;kontakter</string>
+    <string name="prefs_daily_backup_summary">Daglig backup af din kalender &amp; kontakter</string>
+    <string name="prefs_daily_contact_backup_summary">Daglig backup af dine kontakter</string>
     <string name="prefs_e2e_mnemonic">E2E mnemonic</string>
     <string name="prefs_e2e_no_device_credentials">For at vise mnemonic venligst aktiver enhedens brugeroplysninger</string>
     <string name="prefs_enable_media_scan_notifications">Vis media scan notifikationer</string>
@@ -545,7 +549,7 @@
     <string name="prefs_imprint">Aftryk</string>
     <string name="prefs_instant_behaviour_dialogTitle">Oprindelig fil vil blive...</string>
     <string name="prefs_instant_behaviour_title">Oprindelig fil vil blive...</string>
-    <string name="prefs_instant_upload_path_use_subfolders_summary">Lagre i undermapper baseret på år og måned</string>
+    <string name="prefs_instant_upload_path_use_subfolders_summary">Gem i undermapper baseret på år og måned</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Benyt undermapper</string>
     <string name="prefs_license">Licens</string>
     <string name="prefs_lock">App adgangskode</string>
@@ -582,6 +586,7 @@ Enheds legitimationsoplysninger er sat op
     <string name="recommend_subject">Prøv %1$s på din enhed!</string>
     <string name="recommend_text">Jeg ønsker at invitere dig til at bruge %1$s på din smartphone!\nHent den her: %2$s</string>
     <string name="recommend_urls">%1$s eller %2$s</string>
+    <string name="refresh_content">Genopfrisk indhold</string>
     <string name="reload">Genindlæs</string>
     <string name="remote">(fjernt)</string>
     <string name="remote_file_fetch_failed">Kunne ikke finde fil!</string>
@@ -674,7 +679,7 @@ Enheds legitimationsoplysninger er sat op
     <string name="show_images">Vis fotos</string>
     <string name="show_video">Vis videoer</string>
     <string name="signup_with_provider">Indskrivning hos udbyder</string>
-    <string name="single_sign_on_request_token" formatted="true">Tillad %1$s adgang til din Nextcloud account %2$s?</string>
+    <string name="single_sign_on_request_token" formatted="true">Tillad %1$s adgang til din Nextcloud konto %2$s?</string>
     <string name="sort_by">Sortér efter</string>
     <string name="sort_by_modification_date_ascending">Nyeste først</string>
     <string name="sort_by_modification_date_descending">Ældste først</string>
@@ -730,7 +735,7 @@ Enheds legitimationsoplysninger er sat op
     <string name="subject_shared_with_you">\"%1$s\" er blevet delt med dig</string>
     <string name="subject_user_shared_with_you">%1$s delte \"%2$s\" med dig</string>
     <string name="subtitle_photos_only">Kun billeder</string>
-    <string name="subtitle_photos_videos">Fotos &amp;videoer</string>
+    <string name="subtitle_photos_videos">Fotos &amp; videoer</string>
     <string name="subtitle_videos_only">Kun videoer</string>
     <string name="suggest">Foreslå</string>
     <string name="sync_conflicts_in_favourites_ticker">Konflikter fundet</string>
@@ -755,7 +760,7 @@ Enheds legitimationsoplysninger er sat op
     <string name="synced_folders_configure_folders">Konfigurer mapper</string>
     <string name="synced_folders_new_info">Øjeblikkelig send er blevet fundamentalt nylanceret. Omkonfigurer din autoupload fra hovedmenuen.\n\nNyd den nye og udvidede auto upload.</string>
     <string name="synced_folders_no_results">Ingen medie mapper fundet</string>
-    <string name="synced_folders_preferences">indstillinger til auto send</string>
+    <string name="synced_folders_preferences">Indstillinger til auto send</string>
     <string name="synced_folders_preferences_folder_path">For %1$s</string>
     <string name="synced_folders_type">Type</string>
     <string name="synced_icon">Synkroniseret</string>
@@ -766,7 +771,6 @@ Enheds legitimationsoplysninger er sat op
     <string name="thumbnail">Miniature</string>
     <string name="thumbnail_for_existing_file_description">Minitiature til eksistrende fil</string>
     <string name="thumbnail_for_new_file_desc">Minitiature til ny fil</string>
-    <string name="timeout_richDocuments">Indlæsning tager lang tid…</string>
     <string name="today">I dag</string>
     <string name="trashbin_activity_title">Slettede filer</string>
     <string name="trashbin_empty_headline">Ingen slettede filer</string>
@@ -830,8 +834,8 @@ Enheds legitimationsoplysninger er sat op
     <string name="uploader_upload_files_behaviour">Upload muligheder</string>
     <string name="uploader_upload_files_behaviour_move_to_nextcloud_folder">Flyt file til %1$s mappe</string>
     <string name="uploader_upload_files_behaviour_not_writable">Oprindelsesfolder er skrivebeskyttet; fil bliver kun sendt</string>
-    <string name="uploader_upload_files_behaviour_only_upload">Behold filen i source-mappen</string>
-    <string name="uploader_upload_files_behaviour_upload_and_delete_from_source">Slet filen fra source-mappen</string>
+    <string name="uploader_upload_files_behaviour_only_upload">Behold filen i kilde-mappen</string>
+    <string name="uploader_upload_files_behaviour_upload_and_delete_from_source">Slet filen fra kilde-mappen</string>
     <string name="uploader_upload_forbidden_permissions">til at overføre til denne mappe</string>
     <string name="uploader_upload_in_progress_content">%1$d%% Uploader %2$s</string>
     <string name="uploader_upload_in_progress_ticker">Sender...</string>
@@ -907,6 +911,10 @@ Enheds legitimationsoplysninger er sat op
     <plurals name="found_n_duplicates">
         <item quantity="one">Fundet %d dubletpost.</item>
         <item quantity="other">Fundet %d duplikerede poster.</item>
+    </plurals>
+    <plurals name="export_successful">
+        <item quantity="one">Eksporteret %d fil  </item>
+        <item quantity="other">Eksporteret %d filer</item>
     </plurals>
     <plurals name="file_list__footer__folder">
         <item quantity="one">%1$d mappe</item>

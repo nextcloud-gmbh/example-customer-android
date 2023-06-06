@@ -25,6 +25,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.nextcloud.appReview.AppReviewShownModel;
 import com.nextcloud.client.account.User;
 import com.nextcloud.client.account.UserAccountManager;
 import com.nextcloud.client.account.UserAccountManagerImpl;
@@ -39,6 +41,7 @@ import com.owncloud.android.utils.FileSortOrder;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
@@ -98,6 +101,7 @@ public final class AppPreferencesImpl implements AppPreferences {
     private static final String PREF__PDF_ZOOM_TIP_SHOWN = "pdf_zoom_tip_shown";
 
     private static final String PREF__STORAGE_PERMISSION_REQUESTED = "storage_permission_requested";
+    private static final String PREF__IN_APP_REVIEW_DATA = "in_app_review_data";
 
     private final Context context;
     private final SharedPreferences preferences;
@@ -710,5 +714,19 @@ public final class AppPreferencesImpl implements AppPreferences {
     @VisibleForTesting
     public int computeBruteForceDelay(int count) {
         return (int) Math.min(count / 3d, 10);
+    }
+    @Override
+    public void setInAppReviewData(@NonNull AppReviewShownModel appReviewShownModel) {
+        Gson gson = new Gson();
+        String json = gson.toJson(appReviewShownModel);
+        preferences.edit().putString(PREF__IN_APP_REVIEW_DATA, json).apply();
+    }
+
+    @Nullable
+    @Override
+    public AppReviewShownModel getInAppReviewData() {
+        Gson gson = new Gson();
+        String json = preferences.getString(PREF__IN_APP_REVIEW_DATA, "");
+        return gson.fromJson(json, AppReviewShownModel.class);
     }
 }

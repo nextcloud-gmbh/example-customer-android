@@ -1,3 +1,37 @@
+## 3.24.1 (February 21, 2022)
+
+- Fix crash in previous version when connecting to old server versions
+
+Minimum: NC 16 Server, Android 6.0 Marshmallow
+
+## 3.24.0 (February 13, 2023)
+
+- Several performance optimizations by @starypatyk
+- Support multi-page document scanning and exporting to PDF
+- Many small bugfixes and improvements
+
+Minimum: NC 16 Server, Android 6.0 Marshmallow
+
+For a full list, please see https://github.com/nextcloud/android/milestone/78
+
+## 3.23.1 (December 21, 2022)
+
+- Bug fixes
+
+Minimum: NC 16 Server, Android 6.0 Marshmallow
+
+For a full list, please see https://github.com/nextcloud/android/milestone/79
+
+## 3.23.0 (December 1, 2022)
+
+- File actions menu redesign
+- Allow adding shortcuts to Home screen (@newhinton)
+- Many bugfixes and performance optimizations
+
+Minimum: NC 16 Server, Android 6.0 Marshmallow
+
+For a full list, please see https://github.com/nextcloud/android/milestone/74
+
 ## 3.22.3 (November 3, 2022)
 
 - Bug fixes

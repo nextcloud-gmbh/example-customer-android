@@ -95,9 +95,15 @@ public class CreateFolderDialogFragment
     public void onStart() {
         super.onStart();
 
-        AlertDialog alertDialog = (AlertDialog) getDialog();
+        bindButton();
+    }
 
-        if (alertDialog != null) {
+    private void bindButton() {
+        Dialog dialog = getDialog();
+
+        if (dialog instanceof AlertDialog) {
+            AlertDialog alertDialog = (AlertDialog) dialog;
+
             positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
 
             viewThemeUtils.platform.colorTextButtons(positiveButton,
@@ -108,6 +114,8 @@ public class CreateFolderDialogFragment
     @Override
     public void onResume() {
         super.onResume();
+
+        bindButton();
         keyboardUtils.showKeyboardForEditText(binding.userInput);
     }
 
@@ -158,6 +166,9 @@ public class CreateFolderDialogFragment
                     binding.userInputContainer.setError(getText(R.string.hidden_file_name_warning));
                 } else if (TextUtils.isEmpty(newFileName)) {
                     binding.userInputContainer.setError(getString(R.string.filename_empty));
+                    if (positiveButton == null) {
+                        bindButton();
+                    }
                     positiveButton.setEnabled(false);
                 } else if (!FileUtils.isValidName(newFileName)) {
                     binding.userInputContainer.setError(getString(R.string.filename_forbidden_charaters_from_server));
@@ -194,19 +205,19 @@ public class CreateFolderDialogFragment
                     .getText().toString().trim();
 
             if (TextUtils.isEmpty(newFolderName)) {
-                DisplayUtils.showSnackMessage(getActivity(), R.string.filename_empty);
+                DisplayUtils.showSnackMessage(requireActivity(), R.string.filename_empty);
                 return;
             }
 
             if (!FileUtils.isValidName(newFolderName)) {
-                DisplayUtils.showSnackMessage(getActivity(), R.string.filename_forbidden_charaters_from_server);
+                DisplayUtils.showSnackMessage(requireActivity(), R.string.filename_forbidden_charaters_from_server);
 
                 return;
             }
 
             String path = mParentFolder.getDecryptedRemotePath() + newFolderName + OCFile.PATH_SEPARATOR;
 
-            ((ComponentsGetter) getActivity()).getFileOperationsHelper().createFolder(path);
+            ((ComponentsGetter) requireActivity()).getFileOperationsHelper().createFolder(path);
         }
     }
 }

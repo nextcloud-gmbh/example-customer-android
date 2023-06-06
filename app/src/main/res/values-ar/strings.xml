@@ -32,6 +32,7 @@
     <string name="activity_icon">النشاط</string>
     <string name="add_another_public_share_link">إضافة رابط مشاركة آخر</string>
     <string name="add_new_public_share">إضافة رابط مشاركة عام جديد</string>
+    <string name="add_new_secure_file_drop">أضف ملف ألاصل </string>
     <string name="add_to_cloud">أضفه إلى %1$s</string>
     <string name="advanced_settings">الإعدادات المتقدمة</string>
     <string name="allow_resharing">السماح بإعادة المشاركة </string>
@@ -93,6 +94,7 @@
     <string name="choose_remote_folder">اختر مجلد عن بُعد…</string>
     <string name="choose_template_helper_text">اختر قالب وادخل اسم الملف</string>
     <string name="choose_which_file">اختر أي من أياً من الملفات التالية التي تريد الإحتفاظ بها!</string>
+    <string name="choose_widget">أختر عنصر الواجهه</string>
     <string name="clear_notifications_failed">فشلت عملية إزالة التنبيهات.</string>
     <string name="clear_status_message">مسح رسالة الحالة</string>
     <string name="clear_status_message_after">مسح رسالة الحالة بعد</string>
@@ -142,7 +144,6 @@
     <string name="community_testing_bug_text">هل وجدت خطأ برمجي أو شيء ناقص؟</string>
     <string name="community_testing_headline">ساعدنا بالتجريب</string>
     <string name="community_testing_report_text">إرسل تقرير أخطاء على GitHub</string>
-    <string name="community_testing_version_text">هل ترغب في المساعدة بتجريب النسخة القادمة؟</string>
     <string name="configure_new_media_folder_detection_notifications">إعداد</string>
     <string name="confirmation_remove_file_alert">هل توَدُّ حقاً حذف %1$s؟</string>
     <string name="confirmation_remove_files_alert">هل توَدُّ حقاً حذف العناصر المختارة؟</string>
@@ -185,7 +186,6 @@
     <string name="credentials_disabled">التصريح غير مفعل</string>
     <string name="daily_backup">النسخ الاحتياطي اليومي</string>
     <string name="data_to_back_up">البيانات التي سيتم نسخها احتياطيا</string>
-    <string name="date_unknown">غير معروف</string>
     <string name="default_credentials_wrong">التصريح خاطئ</string>
     <string name="delete_account">حذف الحساب</string>
     <string name="delete_account_warning">حذف الحساب %s وحذف جميع الملفات المحلية؟\n\nعملية الحذف لا يمكن التراجع عنها.</string>
@@ -204,7 +204,9 @@
     <string name="dismiss">تراجع</string>
     <string name="dismiss_notification_description">تجاهل الإشعار</string>
     <string name="dnd">عدم الإزعاج</string>
+    <string name="done">أُنجز</string>
     <string name="dontClear">غير واضح</string>
+    <string name="download_cannot_create_file">لا يمكن إنشاء ملف محلي</string>
     <string name="download_latest_dev_version">حمّل آخر إصدار الخاص بالمطورين</string>
     <string name="downloader_download_failed_content">تعذر تنزيل %1$s</string>
     <string name="downloader_download_failed_credentials_error">فشل التنزيل، قم بتسجيل الدخول مرة أخرى</string>
@@ -242,6 +244,7 @@
     <string name="end_to_end_encryption_folder_not_empty">هذا المجلد غير فارغ.</string>
     <string name="end_to_end_encryption_generating_keys">جار توليد مفاتيح جديدة…</string>
     <string name="end_to_end_encryption_keywords_description">12 كلمة سويةً تكون رقم سري قوّي جداً، تجعلك أنت فقط ترى وتستخدم ملفاتك المشفرة. أرجو كتابتها والإحتفاظ بها في مكانٍّ آمن.</string>
+    <string name="end_to_end_encryption_not_enabled">التشفير من طرف إلى طرف آخر معطل من الخادم.</string>
     <string name="end_to_end_encryption_passphrase_title">إحفظ الـ12 كلمة السرية للتشفير</string>
     <string name="end_to_end_encryption_password">كلمة السر…</string>
     <string name="end_to_end_encryption_retrieving_keys">جارٍ جلب المفاتيح…</string>
@@ -263,7 +266,6 @@
     <string name="error_retrieving_file">خطأ في استيراد الملف</string>
     <string name="error_retrieving_templates">خطأ في استيراد القوالب</string>
     <string name="error_starting_direct_camera_upload">خطأ في تشغيل الكاميرا</string>
-    <string name="error_starting_scan_doc">خطأ في استخدام المسح الضوئي للمستند</string>
     <string name="etm_accounts">الحسابات</string>
     <string name="etm_background_job_name">إسم المهمة</string>
     <string name="etm_background_job_progress">التقدم</string>
@@ -505,7 +507,7 @@
     <string name="pdf_zoom_tip">اضغط على الصفحة لتكبيرها</string>
     <string name="permission_allow">سماح</string>
     <string name="permission_deny">رفض</string>
-    <string name="permission_storage_access">الأذونات الإضافية المطلوبة لتحميل وتنزيل الملفات.</string>
+    <string name="permission_storage_access">الصلاحيات الإضافية المطلوبة لتحميل وتنزيل الملفات.</string>
     <string name="picture_set_as_no_app">لم يتم العثور على تطبيق لتعيين صورة به</string>
     <string name="placeholder_fileSize">389 ك.ب</string>
     <string name="placeholder_filename">placeholder.txt</string>
@@ -526,7 +528,6 @@
     <string name="pref_instant_name_collision_policy_title">ماذا تفعل إذا كان الملف موجودًا مسبقاً؟</string>
     <string name="prefs_add_account">أضف حساباً</string>
     <string name="prefs_calendar_contacts">مزامنة التقويم &amp; جهات الاتصال</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">لم يتم العثور على عنوان الخادم الخاص بـ DAVx5 للحساب (المعروف مسبقاً بـDAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">كلا من تطبيقي أف-دويد و متجر غوغل عير منصبين</string>
     <string name="prefs_calendar_contacts_summary">قم بإعداد DAVx5 (المعروف سابقًا باسم DAVdroid) (v1.3.0 +) للحساب الجاري</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">التقويم &amp; إعداد مزامنة الأسماء</string>
@@ -536,8 +537,9 @@
     <string name="prefs_category_general">عام</string>
     <string name="prefs_category_more">المزيد</string>
     <string name="prefs_daily_backup_summary">نسخ احتياطي يومي للتقويم &amp;جهات الاتصال</string>
+    <string name="prefs_daily_contact_backup_summary">نسخ أحتياطي يومي لجهات الإتصال</string>
     <string name="prefs_e2e_mnemonic">تذكيري ل E2E</string>
-    <string name="prefs_e2e_no_device_credentials">لإظهار الذاكرة ، يرجى تمكين بيانات اعتماد الجهاز.</string>
+    <string name="prefs_e2e_no_device_credentials">لإظهار الذاكرة ، يرجى تمكين معلومات تسجيل الدخول إلى الجهاز.</string>
     <string name="prefs_enable_media_scan_notifications">إظهار إشعارات فحص الوسائط</string>
     <string name="prefs_enable_media_scan_notifications_summary">إعلام حول مجلدات الوسائط التي تم العثور عليها حديثًا</string>
     <string name="prefs_gpl_v2">رخصة جنو العمومية العامة ، الإصدار 2</string>
@@ -549,11 +551,11 @@
     <string name="prefs_instant_upload_path_use_subfolders_title">استخدم المجلدات الفرعية</string>
     <string name="prefs_license">الرخصة</string>
     <string name="prefs_lock">الرمز السري للتطبيق</string>
-    <string name="prefs_lock_device_credentials_enabled">تم تمكين بيانات اعتماد الجهاز</string>
-    <string name="prefs_lock_device_credentials_not_setup">لم يتم إعداد بيانات اعتماد الجهاز.</string>
+    <string name="prefs_lock_device_credentials_enabled">تم تمكين معلومات تسجيل الدخول إلى الجهاز</string>
+    <string name="prefs_lock_device_credentials_not_setup">لم يتم إعداد معلومات تسجيل الدخول إلى الجهاز.</string>
     <string name="prefs_lock_none">لا شيء</string>
     <string name="prefs_lock_title">احمِ التطبيق بواسطة</string>
-    <string name="prefs_lock_using_device_credentials">بيانات اعتماد الجهاز</string>
+    <string name="prefs_lock_using_device_credentials">معلومات تسجيل الدخول إلى الجهاز</string>
     <string name="prefs_lock_using_passcode">الرمز السري</string>
     <string name="prefs_manage_accounts">إدارة الحسابات</string>
     <string name="prefs_recommend">أوصي به لصديق</string>
@@ -766,7 +768,6 @@
     <string name="thumbnail">صورة مصغّرة</string>
     <string name="thumbnail_for_existing_file_description">صورة مصغرة للملف الموجود</string>
     <string name="thumbnail_for_new_file_desc">صورة مصغرة للملف الجديد</string>
-    <string name="timeout_richDocuments">التحميل يستغرق وقتًا طويلاً…</string>
     <string name="today">اليوم</string>
     <string name="trashbin_activity_title">الملفات المحذوفة</string>
     <string name="trashbin_empty_headline">لا يوجد ملفات محذوفة</string>
@@ -849,7 +850,7 @@
     <string name="uploads_view_upload_status_cancelled">ملغي</string>
     <string name="uploads_view_upload_status_conflict">تعارُض</string>
     <string name="uploads_view_upload_status_failed_connection_error">خطأ اتصال</string>
-    <string name="uploads_view_upload_status_failed_credentials_error">خطأ في بيانات الاعتماد</string>
+    <string name="uploads_view_upload_status_failed_credentials_error">خطأ في معلومات تسجيل الدخول</string>
     <string name="uploads_view_upload_status_failed_file_error">خطأ في الملف</string>
     <string name="uploads_view_upload_status_failed_folder_error">خطأ في المجلّد</string>
     <string name="uploads_view_upload_status_failed_localfile_error">لم يتم العثور على الملف المحلّي</string>
@@ -875,7 +876,7 @@
     <string name="username">اسم المستخدم</string>
     <string name="version_dev_download">تنزيل</string>
     <string name="wait_a_moment">انتظر لحظة…</string>
-    <string name="wait_checking_credentials">التحقق من أوراق الاعتماد المخزنة</string>
+    <string name="wait_checking_credentials">التحقق من معلومات تسجيل الدخول المخزنة</string>
     <string name="wait_for_tmp_copy_from_private_storage">نسخ الملف من التخزين الخاص</string>
     <string name="what_s_new_image">ما هي الصورة الجديدة</string>
     <string name="whats_new_skip">تخطى</string>

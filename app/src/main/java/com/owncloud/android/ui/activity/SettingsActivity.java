@@ -4,11 +4,13 @@
  *   @author Bartek Przybylski
  *   @author David A. Velasco
  *   @author Chris Narkiewicz
+ *   @author TSI-mc
  *
  *   Copyright (C) 2011  Bartek Przybylski
  *   Copyright (C) 2016 ownCloud Inc.
  *   Copyright (C) 2016 Nextcloud
  *   Copyright (C) 2019 Chris Narkiewicz <hello@ezaquarii.com>
+ *   Copyright (C) 2023 TSI-mc
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -280,7 +282,7 @@ public class SettingsActivity extends PreferenceActivity
                         String mimeType = MimeTypeUtil.getBestMimeTypeByFilename(privacyUrl.getLastPathSegment());
 
                         Intent intent;
-                        if ("application/pdf".equals(mimeType)) {
+                        if (MimeTypeUtil.isPDF(mimeType)) {
                             intent = new Intent(Intent.ACTION_VIEW, privacyUrl);
                             DisplayUtils.startIntentIfAppAvailable(intent, this, R.string.no_pdf_app_available);
                         } else {
@@ -428,7 +430,9 @@ public class SettingsActivity extends PreferenceActivity
 
         if (preference != null) {
             if (FileOperationsHelper.isEndToEndEncryptionSetup(this, user) ||
-                CapabilityUtils.getCapability(this).getEndToEndEncryptionKeysExist().isTrue()) {
+                CapabilityUtils.getCapability(this).getEndToEndEncryptionKeysExist().isTrue() ||
+                CapabilityUtils.getCapability(this).getEndToEndEncryptionKeysExist().isUnknown()
+            ) {
                 preferenceCategoryMore.removePreference(preference);
             } else {
                 preference.setOnPreferenceClickListener(p -> {
@@ -559,6 +563,13 @@ public class SettingsActivity extends PreferenceActivity
     private void setupBackupPreference() {
         Preference pContactsBackup = findPreference("backup");
         if (pContactsBackup != null) {
+            boolean showCalendarBackup = getResources().getBoolean(R.bool.show_calendar_backup);
+            pContactsBackup.setTitle(showCalendarBackup
+                                         ? getString(R.string.backup_title)
+                                         : getString(R.string.contact_backup_title));
+            pContactsBackup.setSummary(showCalendarBackup
+                                           ? getString(R.string.prefs_daily_backup_summary)
+                                           : getString(R.string.prefs_daily_contact_backup_summary));
             pContactsBackup.setOnPreferenceClickListener(preference -> {
                 ContactsPreferenceActivity.startActivityWithoutSidebar(this);
                 return true;
@@ -576,11 +587,10 @@ public class SettingsActivity extends PreferenceActivity
                     try {
                         launchDavDroidLogin();
                     } catch (Throwable t) {
-                        Log_OC.e(TAG, "Base Uri for account could not be resolved to call DAVdroid!", t);
+                        Log_OC.e(TAG, "Error while setting up DavX5", t);
                         DisplayUtils.showSnackMessage(
                             activity,
-                            R.string.prefs_calendar_contacts_address_resolve_error
-                                                     );
+                            R.string.prefs_davx5_setup_error);
                     }
                     return true;
                 });
@@ -863,7 +873,7 @@ public class SettingsActivity extends PreferenceActivity
         if (getPackageManager().resolveActivity(davDroidLoginIntent, 0) != null) {
             // arguments
             if (serverBaseUri != null) {
-                davDroidLoginIntent.putExtra("url", serverBaseUri.toString() + DAV_PATH);
+                davDroidLoginIntent.putExtra("url", serverBaseUri + DAV_PATH);
 
                 davDroidLoginIntent.putExtra("loginFlow", TRUE_VALUE);
                 davDroidLoginIntent.setData(Uri.parse(serverBaseUri.toString() + AuthenticatorActivity.WEB_LOGIN));

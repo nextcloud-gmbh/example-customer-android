@@ -145,8 +145,8 @@
     <string name="community_testing_bug_text">Löysitkö bugin tai jotain muuta outoa?</string>
     <string name="community_testing_headline">Auta testaamalla</string>
     <string name="community_testing_report_text">Ilmoita ongelmasta GitHubissa</string>
-    <string name="community_testing_version_text">Oletko kiinnostunut auttamaan testaamalla seuraavaa versiota?</string>
     <string name="configure_new_media_folder_detection_notifications">Asetukset</string>
+    <string name="confirm_removal">Poista paikallinen salaus</string>
     <string name="confirmation_remove_file_alert">Haluatko varmasti poistaa kohteen %1$s?</string>
     <string name="confirmation_remove_files_alert">Haluatko varmasti poistaa valitut kohteet?</string>
     <string name="confirmation_remove_folder_alert">Haluatko varmasti poistaa kohteen %1$s ja sen sisällön?</string>
@@ -188,7 +188,6 @@
     <string name="credentials_disabled">Kirjautumistiedot poistettu käytöstä</string>
     <string name="daily_backup">Päivittäinen varmuuskopio</string>
     <string name="data_to_back_up">Varmuuskopioitavat tiedot</string>
-    <string name="date_unknown">Tuntematon</string>
     <string name="default_credentials_wrong">Virheelliset kirjautumistiedot</string>
     <string name="delete_account">Poista tili</string>
     <string name="delete_account_warning">Poistetaanko tili %s ja kaikki sen paikalliset tiedostot?\n\nPoistamista ei voi perua.</string>
@@ -206,8 +205,16 @@
     <string name="disable_new_media_folder_detection_notifications">Poista käytöstä</string>
     <string name="dismiss">Hylkää</string>
     <string name="dismiss_notification_description">Hylkää ilmoitus</string>
+    <string name="displays_mnemonic">Näyttää 12-sanaisen tunnuslauseen</string>
     <string name="dnd">Älä häiritse</string>
+    <string name="document_scan_export_dialog_images">Useita kuvia</string>
+    <string name="document_scan_export_dialog_pdf">PDF-tiedosto</string>
+    <string name="document_scan_export_dialog_title">Valitse viennin tyyppi</string>
+    <string name="document_scan_pdf_generation_failed">PDF:n luominen epäonnistui</string>
+    <string name="document_scan_pdf_generation_in_progress">Luodaan PDF:ää…</string>
+    <string name="done">Valmis</string>
     <string name="dontClear">Älä tyhjennä</string>
+    <string name="download_cannot_create_file">Paikallista tiedostoa ei voi luoda</string>
     <string name="download_latest_dev_version">Lataa viimeisin kehitysversio</string>
     <string name="downloader_download_failed_content">Ei voitu ladata %1$s</string>
     <string name="downloader_download_failed_credentials_error">Lataus epäonnistui, kirjaudu sisään uudelleen</string>
@@ -261,13 +268,13 @@
     <string name="error_comment_file">Virhe tiedostoa kommentoidessa</string>
     <string name="error_crash_title">%1$s kaatunut</string>
     <string name="error_creating_file_from_template">Virhe tiedostoa mallipohjasta luodessa</string>
+    <string name="error_file_actions">Virhe näytettäessä tiedostotoimintoja</string>
     <string name="error_file_lock">Virhe tiedoston lukituksen muutoksessa</string>
     <string name="error_report_issue_action">Raportti</string>
     <string name="error_report_issue_text">Haluatko ilmoittaa ongelmasta? (tarvitset GitHub-tilin)</string>
     <string name="error_retrieving_file">Tiedoston noudossa tapahtui virhe</string>
     <string name="error_retrieving_templates">Tapahtui virhe mallien lataamisessa</string>
     <string name="error_starting_direct_camera_upload">Virhe kameraa käynnistäessä</string>
-    <string name="error_starting_scan_doc">Virhe dokumentin skannauksessa</string>
     <string name="etm_accounts">Tilit</string>
     <string name="etm_background_job_name">Työn nimi</string>
     <string name="etm_background_job_progress">Edistyminen</string>
@@ -392,6 +399,7 @@
     <string name="host_your_own_server">Ylläpidä oma palvelin</string>
     <string name="icon_for_empty_list">Kuvake tyhjälle listalle</string>
     <string name="icon_of_dashboard_widget">Pienoissovelluksen kuvake</string>
+    <string name="icon_of_widget_entry">Widgetin merkinnän kuvake</string>
     <string name="in_folder">kansiossa %1$s</string>
     <string name="instant_upload_existing">Siirrä myös olemassaolevat tiedostot palvelimelle</string>
     <string name="instant_upload_on_charging">Lähetä vain ladattaessa virtaa</string>
@@ -514,6 +522,8 @@
     <string name="permission_deny">Kiellä</string>
     <string name="permission_storage_access">Tiedostojen lähetys ja lataaminen vaatii lisäoikeuksia.</string>
     <string name="picture_set_as_no_app">Kuvan liittämiseksi ei löytynyt sovellusta</string>
+    <string name="pin_home">Kiinnitä kotinäyttöön</string>
+    <string name="pin_shortcut_label">Avaa %1$s</string>
     <string name="placeholder_fileSize">389 kt</string>
     <string name="placeholder_filename">paikkamerkki.txt</string>
     <string name="placeholder_media_time">12:23:45</string>
@@ -533,7 +543,6 @@
     <string name="pref_instant_name_collision_policy_title">Mitä tehdään, jos tiedosto on jo olemassa?</string>
     <string name="prefs_add_account">Lisää tili</string>
     <string name="prefs_calendar_contacts">Synkronoi kalenteri &amp; kontaktit</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Palvelimen osoitetta ei voitu selvittää DAVx5 sovellukselle (tunnettu nimellä DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">Sekä F-Droid että Google Play asentamatta</string>
     <string name="prefs_calendar_contacts_summary">Aseta DAVx5 (tunnettu nimellä DAVdroid) (v1.3.0+) nykyiselle tilille</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Kalenterin &amp; yhteystieto synkronointi asetettu</string>
@@ -543,6 +552,9 @@
     <string name="prefs_category_general">Yleiset</string>
     <string name="prefs_category_more">Enemmän</string>
     <string name="prefs_daily_backup_summary">Päivittäinen kalenterin &amp; yhteystietojen varmuuskopio</string>
+    <string name="prefs_daily_contact_backup_summary">Päivittäinen varmuuskopio yhteystiedoistasi</string>
+    <string name="prefs_davx5_setup_error">Odottamaton virhe määritettäessä DAVx5:tä (aiemmin DAVdroid)</string>
+    <string name="prefs_e2e_active">Päästä päähän -salaus on määritetty!</string>
     <string name="prefs_e2e_mnemonic">E2E-avainkoodi</string>
     <string name="prefs_e2e_no_device_credentials">Jos haluat näyttää avainkoodin, ota käyttöön laitteen valtuudet.</string>
     <string name="prefs_enable_media_scan_notifications">Näytä mediakartoituksen ilmoitukset</string>
@@ -555,6 +567,7 @@ GNU yleinen lisenssi, versio 2</string>
     <string name="prefs_instant_behaviour_title">Alkuperäinen tiedosto…</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">Tallenna alikansioihin vuoden ja kuukauden mukaisesti.</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Käytä alikansioita</string>
+    <string name="prefs_keys_exist">Lisää päästä päähän -salaus tähän asiakasohjelmaan</string>
     <string name="prefs_license">Lisenssi</string>
     <string name="prefs_lock">Sovelluksen pääsykoodi</string>
     <string name="prefs_lock_device_credentials_enabled">Laitteen kirjautumistiedot käytössä</string>
@@ -565,6 +578,8 @@ GNU yleinen lisenssi, versio 2</string>
     <string name="prefs_lock_using_passcode">Suojakoodi</string>
     <string name="prefs_manage_accounts">Tilien hallinta</string>
     <string name="prefs_recommend">Suosittele kaverille</string>
+    <string name="prefs_remove_e2e">Poista salaus paikallisesti</string>
+    <string name="prefs_setup_e2e">Määritä päästä päähän -salaus</string>
     <string name="prefs_show_hidden_files">Näytä piilotetut tiedostot</string>
     <string name="prefs_sourcecode">Hanki lähdekoodi</string>
     <string name="prefs_storage_path">Tiedostojen tallennuskansio</string>
@@ -592,6 +607,8 @@ GNU yleinen lisenssi, versio 2</string>
     <string name="reload">Lataa uudelleen</string>
     <string name="remote">(etä)</string>
     <string name="remote_file_fetch_failed">Tiedostoa ei löytynyt!</string>
+    <string name="remove_e2e">Voit poistaa päästä päähän -salauksen paikallisesti tästä asiakasohjelmasta</string>
+    <string name="remove_e2e_message">Voit poistaa päästä päähän -salauksen paikallisesti tästä asiakasohjelmasta. Salatut tiedostot säilyvät palvelimella, mutta niitä ei synkronoida enää tähän tietokoneeseen.</string>
     <string name="remove_fail_msg">Poistaminen epäonnistui</string>
     <string name="remove_notification_failed">Ilmoitusta ei voitu poistaa</string>
     <string name="remove_push_notification">Poista</string>
@@ -609,6 +626,7 @@ GNU yleinen lisenssi, versio 2</string>
     <string name="retrieving_file">Noudetaan tiedostoa…</string>
     <string name="richdocuments_failed_to_load_document">Asiakirjaa ei voitu lataa!</string>
     <string name="scanQR_description">Kirjaudu QR-koodilla</string>
+    <string name="scan_page">Skannaa sivu</string>
     <string name="screenshot_01_gridView_heading">Tietojasi suojaten</string>
     <string name="screenshot_01_gridView_subline">itse-ylläpidettävä tuottavuus</string>
     <string name="screenshot_02_listView_heading">Selaa ja jaa</string>
@@ -772,7 +790,6 @@ GNU yleinen lisenssi, versio 2</string>
     <string name="thumbnail">Esikatselukuva</string>
     <string name="thumbnail_for_existing_file_description">Esikatselu olemassa olevalle tiedostolle</string>
     <string name="thumbnail_for_new_file_desc">Esikatselu uudelle tiedostolle</string>
-    <string name="timeout_richDocuments">Lataaminen vie paljon aikaa...</string>
     <string name="today">Tänään</string>
     <string name="trashbin_activity_title">Poistetut tiedostot</string>
     <string name="trashbin_empty_headline">Ei poistettuja tiedostoja</string>
@@ -879,6 +896,7 @@ GNU yleinen lisenssi, versio 2</string>
     <string name="userinfo_no_info_text">Lisää nimi, kuva ja yhteystiedot profiilisivullasi.</string>
     <string name="username">Käyttäjätunnus</string>
     <string name="version_dev_download">Lataa</string>
+    <string name="video_overlay_icon">Videon peittokuva -kuvake</string>
     <string name="wait_a_moment">Odota hetki…</string>
     <string name="wait_checking_credentials">Tarkistetaan tallennettuja tilitietoja</string>
     <string name="wait_for_tmp_copy_from_private_storage">Kopioidaan tiedostoa yksityisestä tallennustilasta</string>

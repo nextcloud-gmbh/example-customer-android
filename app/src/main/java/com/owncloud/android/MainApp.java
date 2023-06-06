@@ -40,6 +40,7 @@ import android.os.StrictMode;
 import android.text.TextUtils;
 import android.view.WindowManager;
 
+import com.nextcloud.appReview.InAppReviewHelper;
 import com.nextcloud.client.account.User;
 import com.nextcloud.client.account.UserAccountManager;
 import com.nextcloud.client.appinfo.AppInfo;
@@ -127,7 +128,7 @@ import static com.owncloud.android.ui.activity.ContactsPreferenceActivity.PREFER
  */
 public class MainApp extends MultiDexApplication implements HasAndroidInjector {
 
-    public static final OwnCloudVersion OUTDATED_SERVER_VERSION = NextcloudVersion.nextcloud_22;
+    public static final OwnCloudVersion OUTDATED_SERVER_VERSION = NextcloudVersion.nextcloud_23;
     public static final OwnCloudVersion MINIMUM_SUPPORTED_SERVER_VERSION = OwnCloudVersion.nextcloud_16;
 
     private static final String TAG = MainApp.class.getSimpleName();
@@ -176,6 +177,9 @@ public class MainApp extends MultiDexApplication implements HasAndroidInjector {
 
     @Inject
     MigrationsManager migrationsManager;
+
+    @Inject
+    InAppReviewHelper inAppReviewHelper;
 
     @Inject
     PassCodeManager passCodeManager;
@@ -292,6 +296,9 @@ public class MainApp extends MultiDexApplication implements HasAndroidInjector {
         initSecurityKeyManager();
 
         registerActivityLifecycleCallbacks(new ActivityInjector());
+
+        //update the app restart count when app is launched by the user
+        inAppReviewHelper.resetAndIncrementAppRestartCounter();
 
         int startedMigrationsCount = migrationsManager.startMigration();
         logger.i(TAG, String.format(Locale.US, "Started %d migrations", startedMigrationsCount));

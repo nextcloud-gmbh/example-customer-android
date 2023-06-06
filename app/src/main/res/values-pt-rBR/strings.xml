@@ -32,6 +32,7 @@
     <string name="activity_icon">Atividade</string>
     <string name="add_another_public_share_link">Adicionar outro link</string>
     <string name="add_new_public_share">Adicionar novo link de compartilhamento público</string>
+    <string name="add_new_secure_file_drop">Adicionar novo derrubar de arquivo seguro</string>
     <string name="add_to_cloud">Adicionar em %1$s</string>
     <string name="advanced_settings">Configurações avançadas </string>
     <string name="allow_resharing">Permitir recompartilhamento</string>
@@ -145,8 +146,8 @@
     <string name="community_testing_bug_text">Encontrou um erro? Algo estranho?</string>
     <string name="community_testing_headline">Ajude testando</string>
     <string name="community_testing_report_text">Reporte um problema no GitHub</string>
-    <string name="community_testing_version_text">Interessado em ajudar testando a próxima versão?</string>
     <string name="configure_new_media_folder_detection_notifications">Configurar</string>
+    <string name="confirm_removal">Remover criptografia local</string>
     <string name="confirmation_remove_file_alert">Quer realmente excluir %1$s?</string>
     <string name="confirmation_remove_files_alert">Quer realmente excluir os itens selecionados?</string>
     <string name="confirmation_remove_folder_alert">Quer realmente excluir %1$s e seu conteúdo?</string>
@@ -157,6 +158,7 @@
     <string name="conflict_local_file">Arquivo local</string>
     <string name="conflict_message_description">Se você selecionar as duas versões, o arquivo local terá um número anexado ao seu nome.</string>
     <string name="conflict_server_file">Arquivo do servidor</string>
+    <string name="contact_backup_title">Backup de contatos</string>
     <string name="contactlist_item_icon">Ícone de usuário para a lista de contatos</string>
     <string name="contactlist_no_permission">Nenhuma permissão fornecida, nada foi importado.</string>
     <string name="contacts">Contatos</string>
@@ -188,7 +190,6 @@
     <string name="credentials_disabled">Credenciais desabilitadas</string>
     <string name="daily_backup">Backup diário </string>
     <string name="data_to_back_up">Dados para backup </string>
-    <string name="date_unknown">Desconhecido</string>
     <string name="default_credentials_wrong">Credenciais incorretas</string>
     <string name="delete_account">Remover conta</string>
     <string name="delete_account_warning">Excluir a conta %s e remover todos os arquivos locais?\n\nEsta exclusão não pode ser desfeita.</string>
@@ -206,8 +207,17 @@
     <string name="disable_new_media_folder_detection_notifications">Desativar</string>
     <string name="dismiss">Dispensar</string>
     <string name="dismiss_notification_description">Dispensar notificação</string>
+    <string name="displays_mnemonic">Exibe sua frase secreta de 12 palavras</string>
     <string name="dnd">Não perturbe</string>
+    <string name="document_scan_export_dialog_images">Imagens múltiplas</string>
+    <string name="document_scan_export_dialog_pdf">Arquivo PDF</string>
+    <string name="document_scan_export_dialog_title">Escolha o tipo de exportação</string>
+    <string name="document_scan_pdf_generation_failed">Falha na geração do PDF</string>
+    <string name="document_scan_pdf_generation_in_progress">Gerando PDF…</string>
+    <string name="done">Concluído</string>
     <string name="dontClear">Não limpar</string>
+    <string name="download_cannot_create_file">Não foi possível criar o arquivo local</string>
+    <string name="download_download_invalid_local_file_name">Invalid filename for local file</string>
     <string name="download_latest_dev_version">Baixar a última versão dev</string>
     <string name="downloader_download_failed_content">Não foi possível baixar %1$s</string>
     <string name="downloader_download_failed_credentials_error">Download falhou, logue-se novamente</string>
@@ -225,6 +235,7 @@
     <string name="drawer_item_all_files">Todos os arquivos</string>
     <string name="drawer_item_favorites">Favoritos</string>
     <string name="drawer_item_gallery">Mídia</string>
+    <string name="drawer_item_groupfolders">Pastas de grupo</string>
     <string name="drawer_item_home">Início</string>
     <string name="drawer_item_notifications">Notificações</string>
     <string name="drawer_item_on_device">No aparelho</string>
@@ -237,6 +248,7 @@
     <string name="drawer_quota">%1$s de %2$s usados</string>
     <string name="drawer_quota_unlimited">%1$s usados</string>
     <string name="drawer_synced_folders">Autoenvio</string>
+    <string name="e2e_not_yet_setup">E2E ainda não configurado</string>
     <string name="encrypted">Definir como criptografado</string>
     <string name="end_to_end_encryption_confirm_button">Definir criptografia</string>
     <string name="end_to_end_encryption_decrypting">Descriptografando…</string>
@@ -261,13 +273,15 @@
     <string name="error_comment_file">Erro ao comentar arquivo</string>
     <string name="error_crash_title">%1$s travou</string>
     <string name="error_creating_file_from_template">Erro ao criar o arquivo a partir do modelo</string>
+    <string name="error_file_actions">Erro ao mostrar as ações do arquivo</string>
     <string name="error_file_lock">Erro ao alterar o status de bloqueio do arquivo</string>
     <string name="error_report_issue_action">Reportar</string>
     <string name="error_report_issue_text">Reportar problema ao rastreador? (requer uma conta GitHub)</string>
     <string name="error_retrieving_file">Erro ao recuperar o arquivo</string>
     <string name="error_retrieving_templates">Erro recuperando modelos</string>
+    <string name="error_showing_encryption_dialog">Erro ao mostrar o diálogo de configuração de criptografia!</string>
     <string name="error_starting_direct_camera_upload">Erro ao inicializar a câmera</string>
-    <string name="error_starting_scan_doc">Erro ao usar a digitalização de documentos</string>
+    <string name="error_starting_doc_scan">Erro ao iniciar a digitalização do documento</string>
     <string name="etm_accounts">Contas</string>
     <string name="etm_background_job_name">Nome da tarefa</string>
     <string name="etm_background_job_progress">Progresso</string>
@@ -390,6 +404,7 @@
     <string name="hint_password">Senha</string>
     <string name="host_not_available">Servidor indisponível</string>
     <string name="host_your_own_server">Hospede seu próprio servidor</string>
+    <string name="icon_for_empty_list">ícone para lista vazia</string>
     <string name="icon_of_dashboard_widget">Ícone do widget do painel</string>
     <string name="icon_of_widget_entry">Ícone de entrada do widget</string>
     <string name="in_folder">na pasta %1$s</string>
@@ -404,7 +419,7 @@
     <string name="link_name">Nome do link </string>
     <string name="link_share_allow_upload_and_editing">Permitir envio e edição</string>
     <string name="link_share_editing">Editando </string>
-    <string name="link_share_file_drop">Soltar arquivo (apenas envio)</string>
+    <string name="link_share_file_drop">Depósito de arquivos (somente envios)</string>
     <string name="link_share_view_only">Somente visualização </string>
     <string name="list_layout">Layout listado</string>
     <string name="load_more_results">Carregar mais resultados </string>
@@ -514,6 +529,8 @@
     <string name="permission_deny">Negar</string>
     <string name="permission_storage_access">Permissões adicionais são necessárias para enviar ou baixar arquivos.</string>
     <string name="picture_set_as_no_app">Nenhum aplicativo encontrado para definir uma imagem</string>
+    <string name="pin_home">Fixar na tela inicial</string>
+    <string name="pin_shortcut_label">Abrir %1$s</string>
     <string name="placeholder_fileSize">389 KB</string>
     <string name="placeholder_filename">placeholder.txt</string>
     <string name="placeholder_media_time">12:23:45</string>
@@ -533,7 +550,6 @@
     <string name="pref_instant_name_collision_policy_title">O que fazer se o arquivo já existir?</string>
     <string name="prefs_add_account">Adicionar uma conta</string>
     <string name="prefs_calendar_contacts">Sincronizar calendário &amp; contatos</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">O endereço do servidor para a conta não pôde ser encontrado para DAVx5 (conhecido como DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">Nem o F-Droid nem o Google Play estão instalados</string>
     <string name="prefs_calendar_contacts_summary">Configurar DAVx5 (conhecido como DAVdroid) (v1.3.0+) para a conta atual</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Configuração da sincronização de calendário &amp; contatos</string>
@@ -543,6 +559,9 @@
     <string name="prefs_category_general">Geral</string>
     <string name="prefs_category_more">Mais</string>
     <string name="prefs_daily_backup_summary">Backup diário de seu calendário &amp; contatos</string>
+    <string name="prefs_daily_contact_backup_summary">Backup diário de seus contatos</string>
+    <string name="prefs_davx5_setup_error">Erro inesperado ao configurar o DAVx5 (anteriormente conhecido como DAVdroid)</string>
+    <string name="prefs_e2e_active">A criptografia de ponta a ponta está configurada!</string>
     <string name="prefs_e2e_mnemonic">Mnemônico E2E</string>
     <string name="prefs_e2e_no_device_credentials">Para exibir o mnemônico, ative as credenciais do dispositivo.</string>
     <string name="prefs_enable_media_scan_notifications">Exibir notificações de varredura de mídia</string>
@@ -554,6 +573,7 @@
     <string name="prefs_instant_behaviour_title">Arquivo original será…</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">Armazena em subpastas baseado no ano e mês</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Usar subpastas</string>
+    <string name="prefs_keys_exist">Adicionar criptografia de ponta a ponta a este cliente</string>
     <string name="prefs_license">Licença</string>
     <string name="prefs_lock">Senha do aplicativo</string>
     <string name="prefs_lock_device_credentials_enabled">Credenciais de dispositivo ativadas</string>
@@ -564,6 +584,8 @@
     <string name="prefs_lock_using_passcode">Senha</string>
     <string name="prefs_manage_accounts">Gerenciar contas</string>
     <string name="prefs_recommend">Recomendar a um amigo</string>
+    <string name="prefs_remove_e2e">Remova a criptografia localmente</string>
+    <string name="prefs_setup_e2e">Configurar criptografia de ponta a ponta</string>
     <string name="prefs_show_hidden_files">Mostrar arquivos ocultos</string>
     <string name="prefs_sourcecode">Obter código-fonte</string>
     <string name="prefs_storage_path">Pasta de armazenamento de dados</string>
@@ -591,6 +613,8 @@
     <string name="reload">Recarregar</string>
     <string name="remote">(remoto)</string>
     <string name="remote_file_fetch_failed">Erro ao encontrar arquivo!</string>
+    <string name="remove_e2e">Você pode remover a criptografia de ponta a ponta localmente neste cliente</string>
+    <string name="remove_e2e_message">Você pode remover a criptografia de ponta a ponta localmente neste cliente. Os arquivos criptografados permanecerão no servidor, mas não será mais sincronizado com este computador.</string>
     <string name="remove_fail_msg">Falha na exclusão</string>
     <string name="remove_notification_failed">Erro ao remover a notificação.</string>
     <string name="remove_push_notification">Remover</string>
@@ -608,6 +632,7 @@
     <string name="retrieving_file">Recuperando arquivo…</string>
     <string name="richdocuments_failed_to_load_document">Falhou ao carregar documento!</string>
     <string name="scanQR_description">Entrar via código QR</string>
+    <string name="scan_page">Digitalizar página</string>
     <string name="screenshot_01_gridView_heading">Protegendo seus dados</string>
     <string name="screenshot_01_gridView_subline">produtividade auto hospedada</string>
     <string name="screenshot_02_listView_heading">Navegar e compartilhar</string>
@@ -634,6 +659,7 @@
     <string name="set_picture_as">Usar imagem como</string>
     <string name="set_status">Definir status</string>
     <string name="set_status_message">Definir mensagem de status</string>
+    <string name="setup_e2e">Durante a configuração da criptografia de ponta a ponta, você receberá um mnemônico aleatório de 12 palavras, necessário para abrir seus arquivos em outros dispositivos. Isso será armazenado apenas neste dispositivo e poderá ser mostrado novamente nesta tela. Por favor, anote-o em um lugar seguro!</string>
     <string name="share">Compartilhar</string>
     <string name="share_copy_link">Compartilhar &amp; copiar link</string>
     <string name="share_dialog_title">Compartilhamento</string>
@@ -658,6 +684,7 @@
     <string name="share_password_title">Protegido por senha</string>
     <string name="share_permission_can_edit">Pode editar</string>
     <string name="share_permission_file_drop">Baixar Arquivo </string>
+    <string name="share_permission_secure_file_drop">Descarte de arquivo seguro</string>
     <string name="share_permission_view_only">Somente visualização </string>
     <string name="share_permissions">Permissões de compartilhamento </string>
     <string name="share_remote_clarification">%1$s (remoto)</string>
@@ -772,7 +799,7 @@
     <string name="thumbnail">Miniatura</string>
     <string name="thumbnail_for_existing_file_description">Miniatura para arquivo existente</string>
     <string name="thumbnail_for_new_file_desc">Miniatura para arquivo novo</string>
-    <string name="timeout_richDocuments">O carregamento demora muito…</string>
+    <string name="timeout_richDocuments">O carregamento está demorando mais do que o esperado</string>
     <string name="today">Hoje</string>
     <string name="trashbin_activity_title">Arquivos excluídos</string>
     <string name="trashbin_empty_headline">Nenhum arquivo excluído</string>
@@ -879,6 +906,7 @@
     <string name="userinfo_no_info_text">Adicionar nome, imagem e detalhes de contato na sua página de perfil.</string>
     <string name="username">Nome do usuário</string>
     <string name="version_dev_download">Baixar</string>
+    <string name="video_overlay_icon">ícone de sobreposição de vídeo</string>
     <string name="wait_a_moment">Aguarde um momento…</string>
     <string name="wait_checking_credentials">Verificando credenciais salvas</string>
     <string name="wait_for_tmp_copy_from_private_storage">Copiando o arquivo da armazenagem privada</string>

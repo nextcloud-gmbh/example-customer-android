@@ -37,19 +37,19 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResultBaseUtils.matchesCheckNames
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResultUtils.matchesViews
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.nextcloud.client.RetryTestRule
-import com.nextcloud.client.TestActivity
+import com.nextcloud.test.RetryTestRule
+import com.nextcloud.test.TestActivity
 import com.owncloud.android.AbstractIT
 import com.owncloud.android.R
 import com.owncloud.android.datamodel.OCFile
 import com.owncloud.android.lib.resources.shares.OCShare
-import com.owncloud.android.lib.resources.shares.OCShare.CREATE_PERMISSION_FLAG
-import com.owncloud.android.lib.resources.shares.OCShare.DELETE_PERMISSION_FLAG
-import com.owncloud.android.lib.resources.shares.OCShare.MAXIMUM_PERMISSIONS_FOR_FILE
-import com.owncloud.android.lib.resources.shares.OCShare.MAXIMUM_PERMISSIONS_FOR_FOLDER
-import com.owncloud.android.lib.resources.shares.OCShare.NO_PERMISSION
-import com.owncloud.android.lib.resources.shares.OCShare.READ_PERMISSION_FLAG
-import com.owncloud.android.lib.resources.shares.OCShare.SHARE_PERMISSION_FLAG
+import com.owncloud.android.lib.resources.shares.OCShare.Companion.CREATE_PERMISSION_FLAG
+import com.owncloud.android.lib.resources.shares.OCShare.Companion.DELETE_PERMISSION_FLAG
+import com.owncloud.android.lib.resources.shares.OCShare.Companion.MAXIMUM_PERMISSIONS_FOR_FILE
+import com.owncloud.android.lib.resources.shares.OCShare.Companion.MAXIMUM_PERMISSIONS_FOR_FOLDER
+import com.owncloud.android.lib.resources.shares.OCShare.Companion.NO_PERMISSION
+import com.owncloud.android.lib.resources.shares.OCShare.Companion.READ_PERMISSION_FLAG
+import com.owncloud.android.lib.resources.shares.OCShare.Companion.SHARE_PERMISSION_FLAG
 import com.owncloud.android.lib.resources.shares.ShareType
 import com.owncloud.android.ui.activity.FileDisplayActivity
 import com.owncloud.android.ui.fragment.util.SharingMenuHelper
@@ -352,7 +352,8 @@ class FileDetailSharingFragmentIT : AbstractIT() {
         val secondary = FileDetailFragment.newInstance(file, parentFolder, user)
         activity.addSecondaryFragment(secondary, FileDisplayActivity.TAG_LIST_OF_FILES)
         activity.addView(
-            FloatingActionButton(activity).apply { // needed for some reason
+            FloatingActionButton(activity).apply {
+                // needed for some reason
                 visibility = View.GONE
                 id = R.id.fab_main
             }

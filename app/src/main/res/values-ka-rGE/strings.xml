@@ -101,7 +101,6 @@
     <string name="community_testing_bug_text">იპოვეთ შეცდომა? უცნაურობა?</string>
     <string name="community_testing_headline">დაგვეხმარეთ შემოწმებით</string>
     <string name="community_testing_report_text">დაამატეთ მოხსენიება GitHub-ზე</string>
-    <string name="community_testing_version_text">დაინტერესებული ხართ დაგვეხმაროთ შემდეგი ვერსიის შემოწმებაში?</string>
     <string name="confirmation_remove_file_alert">ნამდვილად გსურთ %1$s-ის გაუქმება?</string>
     <string name="confirmation_remove_files_alert">დარწმუნებული ხართ, რომ გსურთ არჩეული ჩანაწერების გაუქმება?</string>
     <string name="confirmation_remove_folder_alert">ნამდვილად გსურთ %1$s-ის და შემცველობის გაუქმება?</string>
@@ -123,7 +122,6 @@
     <string name="copy_move_to_encrypted_folder_not_supported">ამჟამად კოპირება/გადატანა დაშიფრულ დირექტორიაში არაა მხარდაჭერილი.</string>
     <string name="create">შექმნა</string>
     <string name="create_dir_fail_msg">დირექტორია ვერ შეიქმნა</string>
-    <string name="date_unknown">ამოუცნობი</string>
     <string name="delete_account">ანგარიშის გაუქმება</string>
     <string name="delete_account_warning">გავაუქმოთ ანგარიში %s და ყველა ლოკალური ფაილი?\n\nგაუქმება ვერ იქნება უკუბრუნებული.</string>
     <string name="deselect_all">ყველას წაშლა</string>
@@ -133,6 +131,7 @@
     <string name="digest_algorithm_not_available">თქვენს ტელეფონს ამ ალგორითმის დაიჯესტის მხარდაჭერა არ აქვს. </string>
     <string name="disable_new_media_folder_detection_notifications">გამორთვა</string>
     <string name="dismiss">დათხოვნა</string>
+    <string name="done">დასრულებულია</string>
     <string name="downloader_download_failed_content">ვერ ჩამოიტვირთა %1$s</string>
     <string name="downloader_download_failed_credentials_error">ჩამოტვირთვა ვერ მოხერხდა, ახლიდან გაიარეთ ავტორიზაცია</string>
     <string name="downloader_download_failed_ticker">ჩამოტვირთვა ვერ განხორციელდა</string>
@@ -312,6 +311,7 @@
     <string name="prefs_category_dev">დევ.</string>
     <string name="prefs_category_general">ზოგადი</string>
     <string name="prefs_category_more">მეტი</string>
+    <string name="prefs_daily_contact_backup_summary">კონტაქტების ყოველდღიური ბექაფი</string>
     <string name="prefs_gpl_v2">GNU ზოგადი ღია ლიცენზია, ვერსია 2</string>
     <string name="prefs_help">დახმარება</string>
     <string name="prefs_imprint">ბეჭედი</string>

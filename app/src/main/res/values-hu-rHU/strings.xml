@@ -32,6 +32,7 @@
     <string name="activity_icon">Tevékenység</string>
     <string name="add_another_public_share_link">További hivatkozás hozzáadása</string>
     <string name="add_new_public_share">Új nyilvános megosztási hivatkozás hozzáadása</string>
+    <string name="add_new_secure_file_drop">Új biztonsági fájllerakat hozzáadása</string>
     <string name="add_to_cloud">Hozzáadás ehhez: %1$s</string>
     <string name="advanced_settings">Speciális beállítások</string>
     <string name="allow_resharing">Újra megosztás engedélyezése</string>
@@ -145,7 +146,6 @@
     <string name="community_testing_bug_text">Hibát talált? Vagy furcsaságot?</string>
     <string name="community_testing_headline">Segítsen a teszteléssel</string>
     <string name="community_testing_report_text">Jelentse az esetet a GitHubon</string>
-    <string name="community_testing_version_text">Segítene a következő verzió tesztelésében?</string>
     <string name="configure_new_media_folder_detection_notifications">Beállítás</string>
     <string name="confirm_removal">Helyi titkosítás eltávolítása</string>
     <string name="confirmation_remove_file_alert">Biztos, hogy törli ezt: %1$s?</string>
@@ -189,7 +189,6 @@
     <string name="credentials_disabled">Hitelesítő adatok letiltva</string>
     <string name="daily_backup">Napi biztonsági mentés</string>
     <string name="data_to_back_up">Mentendő adatok</string>
-    <string name="date_unknown">Ismeretlen</string>
     <string name="default_credentials_wrong">Hibás hitelesítési adatok</string>
     <string name="delete_account">Fiók eltávolítása</string>
     <string name="delete_account_warning">A(z) %s fiók törlése az összes helyi fájlal együtt?\n\nA törlés nem vonható vissza.</string>
@@ -209,7 +208,15 @@
     <string name="dismiss_notification_description">Értesítés mellőzése</string>
     <string name="displays_mnemonic">Megjeleníti a 12 szavas jelmondatát</string>
     <string name="dnd">Ne zavarjanak</string>
+    <string name="document_scan_export_dialog_images">Több kép</string>
+    <string name="document_scan_export_dialog_pdf">PDF-fájl</string>
+    <string name="document_scan_export_dialog_title">Válasszon exportálási típust</string>
+    <string name="document_scan_pdf_generation_failed">A PDF előállítása sikertelen</string>
+    <string name="document_scan_pdf_generation_in_progress">PDF előállítása…</string>
+    <string name="done">Kész</string>
     <string name="dontClear">Ne törölje</string>
+    <string name="download_cannot_create_file">A helyi fájlt nem lehet létrehozni</string>
+    <string name="download_download_invalid_local_file_name">Érvénytelen fájlnév a helyi fájlhoz</string>
     <string name="download_latest_dev_version">A legfrissebb fejlesztői verzió letöltése</string>
     <string name="downloader_download_failed_content">%1$s letöltése sikertelen</string>
     <string name="downloader_download_failed_credentials_error">Letöltés sikertelen, jelentkezzen be újra</string>
@@ -248,7 +255,7 @@
     <string name="end_to_end_encryption_folder_not_empty">Ez a mappa nem üres.</string>
     <string name="end_to_end_encryption_generating_keys">Új kulcsok előállítása…</string>
     <string name="end_to_end_encryption_keywords_description">A 12 szó együtt nagyon erős jelszót alkot, amivel megtekintheti és használhatja a titkosított fájljait. Kérjük írja le, és őrizze biztonságos helyen.</string>
-    <string name="end_to_end_encryption_not_enabled">A végpontok közötti titkosítás ki van kapcsolva a kiszolgálón.</string>
+    <string name="end_to_end_encryption_not_enabled">A végpontok közti titkosítás ki van kapcsolva a kiszolgálón.</string>
     <string name="end_to_end_encryption_passphrase_title">Jegyezze fel a 12 szavas titkosítási kulcsát</string>
     <string name="end_to_end_encryption_password">Jelszó…</string>
     <string name="end_to_end_encryption_retrieving_keys">Kulcsok begyűjtése…</string>
@@ -272,7 +279,7 @@
     <string name="error_retrieving_templates">Hiba történt a sablonok lékérésekor</string>
     <string name="error_showing_encryption_dialog">Hiba a titkosítás beállítóablakának megjelenítése során!</string>
     <string name="error_starting_direct_camera_upload">Hiba a kamera indításakor</string>
-    <string name="error_starting_scan_doc">Hiba a dokumentumbeolvasás használata sorá</string>
+    <string name="error_starting_doc_scan">Hiba a dokumentumbeolvasás elindítása során</string>
     <string name="etm_accounts">Fiókok</string>
     <string name="etm_background_job_name">Feladat neve</string>
     <string name="etm_background_job_progress">Folyamat</string>
@@ -410,7 +417,7 @@
     <string name="link_name">Hivatkozás neve</string>
     <string name="link_share_allow_upload_and_editing">Feltöltés és szerkesztés engedélyezése</string>
     <string name="link_share_editing">Szerkesztés</string>
-    <string name="link_share_file_drop">Fájl ledobás (csak feltöltés)</string>
+    <string name="link_share_file_drop">Fájllerakat (csak feltöltés)</string>
     <string name="link_share_view_only">Csak megtekintés</string>
     <string name="list_layout">Listás elrendezés</string>
     <string name="load_more_results">További találatok betöltése</string>
@@ -541,7 +548,6 @@
     <string name="pref_instant_name_collision_policy_title">Mit tegyen, ha a fájl már létezik?</string>
     <string name="prefs_add_account">Fiók hozzáadása</string>
     <string name="prefs_calendar_contacts">Naptár és névjegyek szinkronizálása</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">A fiók kiszolgálócíme nem oldható fel a DAVx5 (régi nevén DAVdroid) számára</string>
     <string name="prefs_calendar_contacts_no_store_error">Sem az F-Droid, sem a Google Play nincs telepítve</string>
     <string name="prefs_calendar_contacts_summary">DAVx5 (régi nevén DAVdroid) (v1.3.0+) beállítása a jelenlegi fiókhoz</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Szinkronizálás beállítva a naptárhoz és a névjegyekhez</string>
@@ -551,6 +557,9 @@
     <string name="prefs_category_general">Általános</string>
     <string name="prefs_category_more">Több</string>
     <string name="prefs_daily_backup_summary">Napi biztonsági mentés a naptáráról és a névjegyeiről</string>
+    <string name="prefs_daily_contact_backup_summary">Névjegyek napi biztonsági mentése</string>
+    <string name="prefs_davx5_setup_error">Váratlan hiba a DAVx5 (előző nevén DAVdroid) beállítása során</string>
+    <string name="prefs_e2e_active">A végpontok közti titkosítás beállítva!</string>
     <string name="prefs_e2e_mnemonic">E2E mnemonikus kód</string>
     <string name="prefs_e2e_no_device_credentials">A mnenomikus kód megjelenítéséhez engedélyezze az eszköz hitelesítését.</string>
     <string name="prefs_enable_media_scan_notifications">Média keresési értesítések megjelenítése</string>
@@ -562,6 +571,7 @@
     <string name="prefs_instant_behaviour_title">Az eredeti fájl…</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">Tárolás év és hónap szerinti almappákban</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Almappák használata</string>
+    <string name="prefs_keys_exist">Végpontok közti titkosítás hozzáadása ehhez a klienshez</string>
     <string name="prefs_license">Licenc</string>
     <string name="prefs_lock">Alkalmazás számkód</string>
     <string name="prefs_lock_device_credentials_enabled">Eszközhitelesítő-adatok engedélyezve</string>
@@ -573,6 +583,7 @@
     <string name="prefs_manage_accounts">Fiókok kezelése</string>
     <string name="prefs_recommend">Ajánlás egy barátnak</string>
     <string name="prefs_remove_e2e">Titkosítás eltávolítása helyileg</string>
+    <string name="prefs_setup_e2e">Végpontok közti titkosítás beállítása</string>
     <string name="prefs_show_hidden_files">Rejtett fájlok megjelenítése</string>
     <string name="prefs_sourcecode">Forráskód beszerzése</string>
     <string name="prefs_storage_path">Adattároló mappa</string>
@@ -600,6 +611,8 @@
     <string name="reload">Újratöltés</string>
     <string name="remote">(távoli)</string>
     <string name="remote_file_fetch_failed">A fájl nem található.</string>
+    <string name="remove_e2e">Helyileg eltávolíthatja a végpontok közti titkosítást ennél a kliensnél</string>
+    <string name="remove_e2e_message">Helyileg eltávolíthatja a végpontok közti titkosítást ennél a kliensnél. A titkosított fájlok továbbra is a kiszolgálón maradnak, de már nem lesznek szinkronizálva erre a számítógépre.</string>
     <string name="remove_fail_msg">Törlés sikertelen</string>
     <string name="remove_notification_failed">Az értesítés eltávolítása sikertelen.</string>
     <string name="remove_push_notification">Eltávolítás</string>
@@ -617,6 +630,7 @@
     <string name="retrieving_file">Fájl lekérése…</string>
     <string name="richdocuments_failed_to_load_document">A dokumentum betöltése sikertelen!</string>
     <string name="scanQR_description">Belépés QR-kóddal</string>
+    <string name="scan_page">Kép szkennelése</string>
     <string name="screenshot_01_gridView_heading">Az adatai védelme</string>
     <string name="screenshot_01_gridView_subline">saját üzemeltetésű irodai platform</string>
     <string name="screenshot_02_listView_heading">Tallózás és megosztás</string>
@@ -643,6 +657,7 @@
     <string name="set_picture_as">Kép használata mint</string>
     <string name="set_status">Állapot beállítása</string>
     <string name="set_status_message">Állapotüzenet beállítása</string>
+    <string name="setup_e2e">A végpontok közti titkosítás beállítása során kap egy 12 véletlenszerű szóból álló mnemonikus kódot, amelyre akkor lesz szüksége, ha más eszközökön akarja megnyitni a fájlokat. Ez csak ezen az eszközön lesz tárolva, és újra megjeleníthető ezen a képernyőn. Jegyezze le, és tárolja biztonságos helyen!</string>
     <string name="share">Megosztás</string>
     <string name="share_copy_link">Megosztás és hivatkozás másolása</string>
     <string name="share_dialog_title">Megosztás</string>
@@ -666,7 +681,8 @@
     <string name="share_no_password_title">Jelszó beállítása</string>
     <string name="share_password_title">Jelszóval védett</string>
     <string name="share_permission_can_edit">Szerkesztheti</string>
-    <string name="share_permission_file_drop">Fájl ejtése</string>
+    <string name="share_permission_file_drop">Fájllerakat</string>
+    <string name="share_permission_secure_file_drop">Biztonságos fájllerakat</string>
     <string name="share_permission_view_only">Csak megtekintés</string>
     <string name="share_permissions">Megosztási jogosultságok</string>
     <string name="share_remote_clarification">%1$s (távoli)</string>
@@ -799,7 +815,6 @@ A Nextcloud itt érhető el: https://nextcloud.com</string>
     <string name="thumbnail">Bélyegkép</string>
     <string name="thumbnail_for_existing_file_description">Létező fájl bélyegképe</string>
     <string name="thumbnail_for_new_file_desc">Új fájl bélyegképe</string>
-    <string name="timeout_richDocuments">A betöltés sokáig tart…</string>
     <string name="today">Ma</string>
     <string name="trashbin_activity_title">Törölt fájlok</string>
     <string name="trashbin_empty_headline">Nincs törölt fájl</string>

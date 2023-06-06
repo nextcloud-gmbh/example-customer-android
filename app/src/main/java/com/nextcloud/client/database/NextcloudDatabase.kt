@@ -30,6 +30,7 @@ import androidx.room.RoomDatabase
 import com.nextcloud.client.core.Clock
 import com.nextcloud.client.core.ClockImpl
 import com.nextcloud.client.database.dao.ArbitraryDataDao
+import com.nextcloud.client.database.dao.FileDao
 import com.nextcloud.client.database.entity.ArbitraryDataEntity
 import com.nextcloud.client.database.entity.CapabilityEntity
 import com.nextcloud.client.database.entity.ExternalLinkEntity
@@ -39,6 +40,8 @@ import com.nextcloud.client.database.entity.ShareEntity
 import com.nextcloud.client.database.entity.SyncedFolderEntity
 import com.nextcloud.client.database.entity.UploadEntity
 import com.nextcloud.client.database.entity.VirtualEntity
+import com.nextcloud.client.database.migrations.Migration67to68
+import com.nextcloud.client.database.migrations.Migration70to71
 import com.nextcloud.client.database.migrations.RoomMigration
 import com.nextcloud.client.database.migrations.addLegacyMigrations
 import com.owncloud.android.db.ProviderMeta
@@ -57,7 +60,10 @@ import com.owncloud.android.db.ProviderMeta
     ],
     version = ProviderMeta.DB_VERSION,
     autoMigrations = [
-        AutoMigration(from = 65, to = 66)
+        AutoMigration(from = 65, to = 66),
+        AutoMigration(from = 66, to = 67),
+        AutoMigration(from = 68, to = 69),
+        AutoMigration(from = 69, to = 70)
     ],
     exportSchema = true
 )
@@ -65,6 +71,7 @@ import com.owncloud.android.db.ProviderMeta
 abstract class NextcloudDatabase : RoomDatabase() {
 
     abstract fun arbitraryDataDao(): ArbitraryDataDao
+    abstract fun fileDao(): FileDao
 
     companion object {
         const val FIRST_ROOM_DB_VERSION = 65
@@ -85,6 +92,8 @@ abstract class NextcloudDatabase : RoomDatabase() {
                     .allowMainThreadQueries()
                     .addLegacyMigrations(clock)
                     .addMigrations(RoomMigration())
+                    .addMigrations(Migration67to68())
+                    .addMigrations(Migration70to71())
                     .fallbackToDestructiveMigration()
                     .build()
             }

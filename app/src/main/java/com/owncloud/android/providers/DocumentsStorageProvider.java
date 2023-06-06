@@ -211,8 +211,7 @@ public class DocumentsStorageProvider extends DocumentsProvider {
 
         int accessMode = ParcelFileDescriptor.parseMode(mode);
         boolean writeOnly = (accessMode & MODE_WRITE_ONLY) != 0;
-        boolean wasNotYetStored = ocFile.getStoragePath() == null;
-        boolean needsDownload = (!writeOnly || wasNotYetStored) && (!ocFile.isDown() || hasServerChange(document));
+        boolean needsDownload = !ocFile.existsOnDevice() || (!writeOnly && hasServerChange(document));
         if (needsDownload) {
             if (ocFile.getLocalModificationTimestamp() > ocFile.getLastSyncDateForData()) {
                 // TODO show a conflict notification with a pending intent that shows a ConflictResolveDialog
@@ -260,7 +259,8 @@ public class DocumentsStorageProvider extends DocumentsProvider {
             Handler handler = new Handler(context.getMainLooper());
             try {
                 return ParcelFileDescriptor.open(file, accessMode, handler, error -> {
-                    if (error == null) { // no error
+                    if (error == null) {
+                        // no error
                         // As we can't upload the file synchronously, let's at least update its metadata here already.
                         ocFile.setFileLength(file.length());
                         ocFile.setModificationTimestamp(System.currentTimeMillis());
@@ -275,7 +275,8 @@ public class DocumentsStorageProvider extends DocumentsProvider {
                             LOCAL_BEHAVIOUR_DELETE,
                             NameCollisionPolicy.OVERWRITE,
                             false);
-                    } else { // error, no upload needed
+                    } else {
+                        // error, no upload needed
                         Log_OC.e(TAG, "File was closed with an error: " + ocFile.getFileName(), error);
                     }
                 });
@@ -564,7 +565,7 @@ public class DocumentsStorageProvider extends DocumentsProvider {
                                                                      newFilePath,
                                                                      mimeType,
                                                                      "",
-                                                                     String.valueOf(System.currentTimeMillis() / 1000),
+                                                                     System.currentTimeMillis() / 1000,
                                                                      FileUtil.getCreationTimestamp(emptyFile),
                                                                      false)
             .execute(client);

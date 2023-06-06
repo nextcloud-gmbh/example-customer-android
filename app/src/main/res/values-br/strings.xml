@@ -130,7 +130,6 @@
     <string name="community_testing_bug_text">Kevet o peus ur vug ?  Un dra iskis ?</string>
     <string name="community_testing_headline">Sikour an amprouiñ</string>
     <string name="community_testing_report_text">Kemennit ur gudenn war GitHub</string>
-    <string name="community_testing_version_text">C\'hoant o peus sikour en ur amproui ar stumm da zont ?</string>
     <string name="configure_new_media_folder_detection_notifications">Stumañ</string>
     <string name="confirmation_remove_file_alert">Sur oc\'h o peus c\'hoant lemel %1$s ?</string>
     <string name="confirmation_remove_files_alert">Sur oc\'h o peus c\'hoant lemel ar pez a zo bet choazet ?</string>
@@ -167,7 +166,6 @@
     <string name="create_rich_workspace">Ouzhpennañ titouroù an teuliad</string>
     <string name="creates_rich_workspace">kroui titouroù an teuliad</string>
     <string name="credentials_disabled">Titouroù identitelez disaotreet</string>
-    <string name="date_unknown">Dianv</string>
     <string name="default_credentials_wrong">Titouroù identitelez fall</string>
     <string name="delete_account">Lemel ar c\'hont</string>
     <string name="delete_account_warning">Lemel ar c\'hont %s ha toud e restroù ?\n\nN\'eo ket posuple disober ur wech graet.</string>
@@ -182,6 +180,8 @@
     <string name="dismiss">Arrest</string>
     <string name="dismiss_notification_description">Arrest ar gemenadennoù</string>
     <string name="dnd">Na rannit ket</string>
+    <string name="done">Graet</string>
+    <string name="download_cannot_create_file">Dibosupl kroui ur restr diabarzh</string>
     <string name="download_latest_dev_version">Pellgargañ ar stumm arnodañ diwezhañ</string>
     <string name="downloader_download_failed_content">Ne oa ket posuple pellgargañ %1$s</string>
     <string name="downloader_download_failed_credentials_error">Pellgargañ c\'hwitet, kit-tre adarre</string>
@@ -219,6 +219,7 @@
     <string name="end_to_end_encryption_folder_not_empty">N\'eo ket goullo an teuliad.</string>
     <string name="end_to_end_encryption_generating_keys">O krouiñ un alc\'hwez nevez...</string>
     <string name="end_to_end_encryption_keywords_description">Assamblez e vez krouet ur ger-tremen krev gant an 12 ger, aotrea ac\'hanoc\'h nemet ken da gwelet ha implij ar rouadennoù ha restroù sifret. Mar-plij, skrivit ha gouarnit anezha en ul lec\'h sur.</string>
+    <string name="end_to_end_encryption_not_enabled">Ar sifradur penn-kil-ha-troad disaotret war ar servijour.</string>
     <string name="end_to_end_encryption_passphrase_title">Notennit ho frazenn-guzh sifrañ a 12 ger</string>
     <string name="end_to_end_encryption_password">Ger-tremen</string>
     <string name="end_to_end_encryption_retrieving_keys">O adtapout an alc\'hwaz...</string>
@@ -456,7 +457,6 @@
     <string name="pref_instant_name_collision_policy_title">Petra ober m\'az eus eus ar restr dija ?</string>
     <string name="prefs_add_account">Ouzhpenn ur c\'hont</string>
     <string name="prefs_calendar_contacts">Kemprenañ &amp; darempred deizataer</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Chom-lec\'h ar servijour evit ar c\'hont ne c\'hell ket bezhañ echuet evit DAVx5 (anavezet evel DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">N\'eo stalied na F-Droid na Google Play</string>
     <string name="prefs_calendar_contacts_summary">Lakaat DAVx5 (anavezhet DAVdroid) (v1.3.0+) evit ar c\'hont</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Deizataer &amp; darempred da kemprenn</string>
@@ -465,6 +465,7 @@
     <string name="prefs_category_dev">Diorenn</string>
     <string name="prefs_category_general">Hollek</string>
     <string name="prefs_category_more">Muioc\'h</string>
+    <string name="prefs_daily_contact_backup_summary">Enrolladur deizek eus o darempredoù</string>
     <string name="prefs_e2e_mnemonic">E2E mnemonic</string>
     <string name="prefs_e2e_no_device_credentials">Evit diskwell mnemonic, aotreit titouroù identitelez o ardivink mar-plij.</string>
     <string name="prefs_enable_media_scan_notifications">Diskouezit scan kemenadennoù ar media</string>
@@ -659,7 +660,6 @@
     <string name="thumbnail">Ivin</string>
     <string name="thumbnail_for_existing_file_description">Ivin ar restroù a vez kavet</string>
     <string name="thumbnail_for_new_file_desc">Ivin ar restroù nevez</string>
-    <string name="timeout_richDocuments">Kemer a ra ar c\'hargañ kalz a amzer...</string>
     <string name="today">Hiziv</string>
     <string name="trashbin_activity_title">Restroù diverket</string>
     <string name="trashbin_empty_headline">Restr lemet ebet</string>

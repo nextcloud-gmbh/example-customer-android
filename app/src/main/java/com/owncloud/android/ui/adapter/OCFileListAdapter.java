@@ -3,10 +3,11 @@
  *
  * @author Tobias Kaminsky
  * @author Chris Narkiewicz <hello@ezaquarii.com>
- *
+ * @author TSI-mc
  * Copyright (C) 2018 Tobias Kaminsky
  * Copyright (C) 2018 Nextcloud
  * Copyright (C) 2020 Chris Narkiewicz <hello@ezaquarii.com>
+ * Copyright (C) 2023 TSI-mc
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
@@ -53,6 +54,7 @@ import com.owncloud.android.databinding.ListItemBinding;
 import com.owncloud.android.datamodel.DecryptedFolderMetadata;
 import com.owncloud.android.datamodel.FileDataStorageManager;
 import com.owncloud.android.datamodel.OCFile;
+import com.owncloud.android.datamodel.SyncedFolderProvider;
 import com.owncloud.android.datamodel.ThumbnailsCacheManager;
 import com.owncloud.android.datamodel.VirtualFolderType;
 import com.owncloud.android.db.ProviderMeta;
@@ -135,6 +137,7 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         Activity activity,
         @NonNull User user,
         AppPreferences preferences,
+        SyncedFolderProvider syncedFolderProvider,
         ComponentsGetter transferServiceGetter,
         OCFileListFragmentInterface ocFileListFragmentInterface,
         boolean argHideItemOptions,
@@ -172,7 +175,8 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                                                         .getCapability(activity)
                                                         .getVersion()
                                                         .isShareesOnDavSupported(),
-                                                    viewThemeUtils);
+                                                    viewThemeUtils,
+                                                    syncedFolderProvider);
 
         // initialise thumbnails cache on background thread
         new ThumbnailsCacheManager.InitDiskCacheTask().execute();
@@ -206,9 +210,9 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return position;
     }
 
-    public void setFavoriteAttributeForItemID(String fileId, boolean favorite, boolean removeFromList) {
+    public void setFavoriteAttributeForItemID(String remotePath, boolean favorite, boolean removeFromList) {
         for (OCFile file : mFiles) {
-            if (file.getRemoteId().equals(fileId)) {
+            if (file.getRemotePath().equals(remotePath)) {
                 file.setFavorite(favorite);
 
                 if (removeFromList) {
@@ -220,7 +224,7 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         for (OCFile file : mFilesAll) {
-            if (file.getRemoteId().equals(fileId)) {
+            if (file.getRemotePath().equals(remotePath)) {
                 file.setFavorite(favorite);
 
                 mStorageManager.saveFile(file);
@@ -234,7 +238,13 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         FileSortOrder sortOrder = preferences.getSortOrderByFolder(currentDirectory);
-        mFiles = sortOrder.sortCloudFiles(mFiles);
+        if (searchType == SearchType.SHARED_FILTER) {
+            Collections.sort(mFiles,
+                             (o1, o2) -> Long.compare(o2.getFirstShareTimestamp(), o1.getFirstShareTimestamp())
+                            );
+        } else {
+            mFiles = sortOrder.sortCloudFiles(mFiles);
+        }
 
         new Handler(Looper.getMainLooper()).post(this::notifyDataSetChanged);
     }
@@ -406,6 +416,34 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         } else {
             holder.getSharedAvatars().setVisibility(View.GONE);
             holder.getSharedAvatars().removeAllViews();
+        }
+
+        // tags
+        if (file.getTags().isEmpty()) {
+            holder.getTagsGroup().setVisibility(View.GONE);
+            holder.getFileDetailGroup().setVisibility(View.VISIBLE);
+        } else {
+            holder.getTagsGroup().setVisibility(View.VISIBLE);
+            holder.getFileDetailGroup().setVisibility(View.GONE);
+            viewThemeUtils.material.themeChipSuggestion(holder.getFirstTag());
+            holder.getFirstTag().setVisibility(View.VISIBLE);
+            holder.getSecondTag().setVisibility(View.GONE);
+            holder.getTagMore().setVisibility(View.GONE);
+
+            holder.getFirstTag().setText(file.getTags().get(0));
+            
+            if (file.getTags().size() > 1) {
+                viewThemeUtils.material.themeChipSuggestion(holder.getSecondTag());
+                holder.getSecondTag().setVisibility(View.VISIBLE);
+                holder.getSecondTag().setText(file.getTags().get(1));
+            }
+
+            if (file.getTags().size() > 2) {
+                viewThemeUtils.material.themeChipSuggestion(holder.getTagMore());
+                holder.getTagMore().setVisibility(View.VISIBLE);
+                holder.getTagMore().setText(String.format(activity.getString(R.string.tags_more),
+                                                          (file.getTags().size() - 2)));
+            }
         }
 
         // npe fix: looks like file without local storage path somehow get here
@@ -788,7 +826,10 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 }
 
                 if (!onlyMedia || MimeTypeUtil.isImage(ocFile) || MimeTypeUtil.isVideo(ocFile)) {
-                    mFiles.add(ocFile);
+                    //handling duplicates for favorites section
+                    if (mFiles.isEmpty() || !mFiles.contains(ocFile)) {
+                        mFiles.add(ocFile);
+                    }
                 }
 
                 ContentValues cv = new ContentValues();
@@ -976,5 +1017,28 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void notifyItemChanged(@NonNull OCFile file) {
         notifyItemChanged(getItemPosition(file));
+    }
+
+    public void replaceFileByRemotePath(@NonNull OCFile newFile, boolean notify) {
+        final String remotePath = newFile.getRemotePath();
+        for (OCFile file : mFiles) {
+            if (file.getRemotePath().equals(remotePath)) {
+                final int index = mFiles.indexOf(file);
+                mFiles.set(index, newFile);
+                break;
+            }
+        }
+
+        for (OCFile file : mFilesAll) {
+            if (file.getRemotePath().equals(remotePath)) {
+                final int index = mFilesAll.indexOf(file);
+                mFilesAll.set(index, newFile);
+                break;
+            }
+        }
+
+        if (notify) {
+            notifyItemChanged(getItemPosition(newFile));
+        }
     }
 }

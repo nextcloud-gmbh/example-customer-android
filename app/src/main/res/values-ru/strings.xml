@@ -32,6 +32,7 @@
     <string name="activity_icon">События</string>
     <string name="add_another_public_share_link">Добавить другую ссылку</string>
     <string name="add_new_public_share">Добавить новую общедоступную ссылку</string>
+    <string name="add_new_secure_file_drop">Добавить новый защищенный очиститель файлов</string>
     <string name="add_to_cloud">Добавить в %1$s</string>
     <string name="advanced_settings">Дополнительные настройки</string>
     <string name="allow_resharing">Разрешить повторную публикацию</string>
@@ -68,7 +69,7 @@
     <string name="auth_unsupported_multiaccount">%1$s не поддерживает множественные аккаунты</string>
     <string name="auth_wrong_connection_title">Не удается установить соединение</string>
     <string name="auto_upload_file_behaviour_kept_in_folder">оставлен в исходном каталоге, т.к. файл только для чтения</string>
-    <string name="auto_upload_on_wifi">Необходимо безлимитное подключение Wi-Fi </string>
+    <string name="auto_upload_on_wifi">Только через безлимит или Wi-Fi</string>
     <string name="auto_upload_path">/Автозагрузка</string>
     <string name="autoupload_configure">Настроить</string>
     <string name="autoupload_create_new_custom_folder">Создать новую настройку пользовательского каталога</string>
@@ -145,8 +146,8 @@
     <string name="community_testing_bug_text">Нашли ошибку? Заметили необычное поведение программы?</string>
     <string name="community_testing_headline">Помогите нам в тестировании</string>
     <string name="community_testing_report_text">Сообщить о проблеме на GitHub</string>
-    <string name="community_testing_version_text">Хотите помочь проверкой новых функций,  разрабатываемых для следующей версии?</string>
     <string name="configure_new_media_folder_detection_notifications">Настроить</string>
+    <string name="confirm_removal">Отключить шифрование на устройстве</string>
     <string name="confirmation_remove_file_alert">Действительно удалить «%1$s»?</string>
     <string name="confirmation_remove_files_alert">Действительно удалить выбранные объекты?</string>
     <string name="confirmation_remove_folder_alert">Действительно удалить «%1$s» и его содержимое?</string>
@@ -157,6 +158,7 @@
     <string name="conflict_local_file">Локальный файл</string>
     <string name="conflict_message_description">Если вы выберете обе версии, локальный файл будет иметь номер, добавленный к его имени.</string>
     <string name="conflict_server_file">Файл с сервера</string>
+    <string name="contact_backup_title">Резервная копия контактов</string>
     <string name="contactlist_item_icon">Значок пользователя в списке контактов</string>
     <string name="contactlist_no_permission">Отсутствуют разрешения, ничего не импортировано.</string>
     <string name="contacts">Контакты</string>
@@ -188,7 +190,6 @@
     <string name="credentials_disabled">Учётная запись отключена</string>
     <string name="daily_backup">Ежедневное резервное копирование</string>
     <string name="data_to_back_up">Данные для резервного копирования</string>
-    <string name="date_unknown">Неизвестно</string>
     <string name="default_credentials_wrong">Неверные учётные данные</string>
     <string name="delete_account">Удалить аккаунт</string>
     <string name="delete_account_warning">Удалить аккаунт %s и все связанные с ним файлы?\n\nУдаление не может быть отменено.</string>
@@ -206,8 +207,17 @@
     <string name="disable_new_media_folder_detection_notifications">Отключить</string>
     <string name="dismiss">Отклонить</string>
     <string name="dismiss_notification_description">Скрыть уведомление</string>
+    <string name="displays_mnemonic">Отображение вашей парольной фразы из 12 слов</string>
     <string name="dnd">Не беспокоить</string>
+    <string name="document_scan_export_dialog_images">Несколько изображений</string>
+    <string name="document_scan_export_dialog_pdf">Файл в формате PDF</string>
+    <string name="document_scan_export_dialog_title">Выберите тип экспорта</string>
+    <string name="document_scan_pdf_generation_failed">Ошибка при создании файла PDF</string>
+    <string name="document_scan_pdf_generation_in_progress">Сохранение в PDF…</string>
+    <string name="done">Готово</string>
     <string name="dontClear">Не очищать</string>
+    <string name="download_cannot_create_file">Невозможно создать локальный файл</string>
+    <string name="download_download_invalid_local_file_name">Недопустимое имя для локального файла</string>
     <string name="download_latest_dev_version">Скачать последнюю версию для разработчиков</string>
     <string name="downloader_download_failed_content">Скачивание %1$s не может быть завершено</string>
     <string name="downloader_download_failed_credentials_error">Ошибка скачивания, необходимо авторизоваться</string>
@@ -225,6 +235,7 @@
     <string name="drawer_item_all_files">Все файлы</string>
     <string name="drawer_item_favorites">Избранное</string>
     <string name="drawer_item_gallery">Медиа</string>
+    <string name="drawer_item_groupfolders">Групповые папки</string>
     <string name="drawer_item_home">Главная</string>
     <string name="drawer_item_notifications">Уведомления</string>
     <string name="drawer_item_on_device">На устройстве</string>
@@ -268,8 +279,9 @@
     <string name="error_report_issue_text">Сообщить о проблеме? (требуется учётная запись на GitHub)</string>
     <string name="error_retrieving_file">Ошибка при получении файла</string>
     <string name="error_retrieving_templates">Ошибка получения шаблона</string>
+    <string name="error_showing_encryption_dialog">Ошибка при отображении диалога настройки шифрования!</string>
     <string name="error_starting_direct_camera_upload">Не удалось открыть камеру</string>
-    <string name="error_starting_scan_doc">Ошибка при сканировании документа</string>
+    <string name="error_starting_doc_scan">Ошибка во время запуска сканирования</string>
     <string name="etm_accounts">Аккаунты</string>
     <string name="etm_background_job_name">Имя задания</string>
     <string name="etm_background_job_progress">Прогресс</string>
@@ -398,7 +410,7 @@
     <string name="icon_of_widget_entry">Значок записи виджета</string>
     <string name="in_folder">в папку %1$s</string>
     <string name="instant_upload_existing">Также загрузить существующие файлы</string>
-    <string name="instant_upload_on_charging">Необходимо подключение внешнего питания</string>
+    <string name="instant_upload_on_charging">Только во время зарядки</string>
     <string name="instant_upload_path">/Автозагрузка</string>
     <string name="invalid_url">Неверный адрес</string>
     <string name="invisible">Невидимая</string>
@@ -518,6 +530,8 @@
     <string name="permission_deny">Запретить</string>
     <string name="permission_storage_access">Для отправки и скачивания файлов требуются дополнительные права доступа.</string>
     <string name="picture_set_as_no_app">Не найдено приложений для обработки изображений</string>
+    <string name="pin_home">Закрепить на начальном экране</string>
+    <string name="pin_shortcut_label">Открыть %1$s</string>
     <string name="placeholder_fileSize">389 Кбайт</string>
     <string name="placeholder_filename">placeholder.txt</string>
     <string name="placeholder_media_time">12:23:45</string>
@@ -537,7 +551,6 @@
     <string name="pref_instant_name_collision_policy_title">Действие в случае, если файл уже существует</string>
     <string name="prefs_add_account">Добавить аккаунт</string>
     <string name="prefs_calendar_contacts">Синхронизировать календарь и контакты</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Не удалось определить адрес сервера этой учётной записи для его передачи в приложение  DAVx5 (ранее называвшееся DAVdroid)</string>
     <string name="prefs_calendar_contacts_no_store_error">Ни F-Droid, ни Google Play не установлены</string>
     <string name="prefs_calendar_contacts_summary">Настроить DAVx5 (ранее называвшийся DAVdroid) (v1.3.0+) для текущей учётной записи</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Настройка синхронизации календаря &amp; контактов выполнена успешно.</string>
@@ -547,6 +560,9 @@
     <string name="prefs_category_general">Основные</string>
     <string name="prefs_category_more">Больше</string>
     <string name="prefs_daily_backup_summary">Ежедневное резервное копирование календаря</string>
+    <string name="prefs_daily_contact_backup_summary">Ежедневное сохранение контактов</string>
+    <string name="prefs_davx5_setup_error">Неожиданная ошибка при настройке DAVx5 (ранее известного как DAVdroid)</string>
+    <string name="prefs_e2e_active">Сквозное шифрование настроено.</string>
     <string name="prefs_e2e_mnemonic">Мнемофраза E2E</string>
     <string name="prefs_e2e_no_device_credentials">Для просмотра мнемофразы включите системную защитную блокировку.</string>
     <string name="prefs_enable_media_scan_notifications">Показывать уведомления о сканировании медиафайлов</string>
@@ -558,6 +574,7 @@
     <string name="prefs_instant_behaviour_title">Исходный файл будет…</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">Будут созданы папки года и вложенные в них папки номеров месяцев</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Создавать вложенные папки</string>
+    <string name="prefs_keys_exist">Добавьте сквозное шифрование для этого клиента</string>
     <string name="prefs_license">Лицензия</string>
     <string name="prefs_lock">Код доступа к приложению</string>
     <string name="prefs_lock_device_credentials_enabled">Системная защитная блокировка включена</string>
@@ -568,6 +585,8 @@
     <string name="prefs_lock_using_passcode">Блокировка кодом</string>
     <string name="prefs_manage_accounts">Управление аккаунтами</string>
     <string name="prefs_recommend">Рекомендовать другу</string>
+    <string name="prefs_remove_e2e">Удалить шифрование локально</string>
+    <string name="prefs_setup_e2e">Настройка сквозного шифрования</string>
     <string name="prefs_show_hidden_files">Показывать скрытые файлы</string>
     <string name="prefs_sourcecode">Получить исходный код</string>
     <string name="prefs_storage_path">Папка хранения данных</string>
@@ -595,6 +614,8 @@
     <string name="reload">Перезагрузить</string>
     <string name="remote">(удалённо)</string>
     <string name="remote_file_fetch_failed">Не удалось найти файл.</string>
+    <string name="remove_e2e">Вы можете удалить сквозное шифрование локально на этом клиенте</string>
+    <string name="remove_e2e_message">Вы можете удалить сквозное шифрование локально на этом клиенте. Зашифрованные файлы останутся на сервере, но больше не будут синхронизироваться с этим компьютером.</string>
     <string name="remove_fail_msg">Ошибка при удалении</string>
     <string name="remove_notification_failed">Не удалось скрыть уведомление.</string>
     <string name="remove_push_notification">Удалить</string>
@@ -612,6 +633,7 @@
     <string name="retrieving_file">Получение файла…</string>
     <string name="richdocuments_failed_to_load_document">Не удалось загрузить документ.</string>
     <string name="scanQR_description">Войти с использованием QR кода</string>
+    <string name="scan_page">Сканировать страницу</string>
     <string name="screenshot_01_gridView_heading">Защита данных</string>
     <string name="screenshot_01_gridView_subline">размещение на собственных ресурсах</string>
     <string name="screenshot_02_listView_heading">Простой поиск и обмен файлами</string>
@@ -638,6 +660,7 @@
     <string name="set_picture_as">Использовать изображение</string>
     <string name="set_status">Установить состояние</string>
     <string name="set_status_message">Установить сообщение о состоянии</string>
+    <string name="setup_e2e">Во время настройки сквозного шифрования вы получите случайную мнемонику из 12 слов, которая понадобится для открытия файлов на других устройствах. Оно будет храниться только на этом устройстве и может быть повторно показано на этом экране. Пожалуйста, запишите его в надежном месте!</string>
     <string name="share">Общий ресурс</string>
     <string name="share_copy_link">Опубликовать и скопировать ссылку </string>
     <string name="share_dialog_title">Общий доступ</string>
@@ -662,6 +685,7 @@
     <string name="share_password_title">Защищено паролем</string>
     <string name="share_permission_can_edit">Можно редактировать</string>
     <string name="share_permission_file_drop">Принимать файлы</string>
+    <string name="share_permission_secure_file_drop">Защищенный очиститель файлов</string>
     <string name="share_permission_view_only">Только просмотр</string>
     <string name="share_permissions">Права на публикацию</string>
     <string name="share_remote_clarification">%1$s (на сервере)</string>
@@ -776,7 +800,7 @@
     <string name="thumbnail">Миниатюра</string>
     <string name="thumbnail_for_existing_file_description">Миниатюра существующего файла</string>
     <string name="thumbnail_for_new_file_desc">Миниатюра нового файла</string>
-    <string name="timeout_richDocuments">Загрузка выполняется очень долго…</string>
+    <string name="timeout_richDocuments">Загрузка занимает больше времени, чем ожидалось</string>
     <string name="today">Сегодня</string>
     <string name="trashbin_activity_title">Удалённые файлы</string>
     <string name="trashbin_empty_headline">Нет удалённых файлов</string>

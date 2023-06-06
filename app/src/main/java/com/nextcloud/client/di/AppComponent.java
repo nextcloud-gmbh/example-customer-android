@@ -22,6 +22,7 @@ package com.nextcloud.client.di;
 
 import android.app.Application;
 
+import com.nextcloud.appReview.InAppReviewModule;
 import com.nextcloud.client.appinfo.AppInfoModule;
 import com.nextcloud.client.database.DatabaseModule;
 import com.nextcloud.client.device.DeviceModule;
@@ -33,6 +34,7 @@ import com.nextcloud.client.preferences.PreferencesModule;
 import com.owncloud.android.MainApp;
 import com.owncloud.android.media.MediaControlView;
 import com.owncloud.android.ui.ThemeableSwitchPreference;
+import com.owncloud.android.ui.whatsnew.ProgressIndicator;
 import com.owncloud.android.utils.FilesUploadHelper;
 
 import javax.inject.Singleton;
@@ -52,8 +54,11 @@ import dagger.android.support.AndroidSupportInjectionModule;
     ViewModelModule.class,
     JobsModule.class,
     IntegrationsModule.class,
+    InAppReviewModule.class,
     ThemeModule.class,
-    DatabaseModule.class
+    DatabaseModule.class,
+    DispatcherModule.class,
+    VariantModule.class
 })
 @Singleton
 public interface AppComponent {
@@ -65,6 +70,8 @@ public interface AppComponent {
     void inject(ThemeableSwitchPreference switchPreference);
 
     void inject(FilesUploadHelper filesUploadHelper);
+
+    void inject(ProgressIndicator progressIndicator);
 
     @Component.Builder
     interface Builder {

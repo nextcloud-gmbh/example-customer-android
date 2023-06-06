@@ -30,11 +30,13 @@ import com.nextcloud.client.account.UserAccountManager
 import com.nextcloud.client.core.Clock
 import com.nextcloud.client.device.DeviceInfo
 import com.nextcloud.client.device.PowerManagementService
+import com.nextcloud.client.documentscan.GeneratePDFUseCase
 import com.nextcloud.client.integrations.deck.DeckApi
 import com.nextcloud.client.logger.Logger
 import com.nextcloud.client.network.ConnectivityService
 import com.nextcloud.client.preferences.AppPreferences
 import com.owncloud.android.datamodel.ArbitraryDataProvider
+import com.owncloud.android.datamodel.SyncedFolderProvider
 import com.owncloud.android.datamodel.UploadsStorageManager
 import com.owncloud.android.utils.theme.ViewThemeUtils
 import org.greenrobot.eventbus.EventBus
@@ -105,6 +107,12 @@ class BackgroundJobFactoryTest {
     @Mock
     private lateinit var localBroadcastManager: LocalBroadcastManager
 
+    @Mock
+    private lateinit var generatePDFUseCase: GeneratePDFUseCase
+
+    @Mock
+    private lateinit var syncedFolderProvider: SyncedFolderProvider
+
     private lateinit var factory: BackgroundJobFactory
 
     @Before
@@ -127,7 +135,9 @@ class BackgroundJobFactoryTest {
             eventBus,
             deckApi,
             { viewThemeUtils },
-            { localBroadcastManager }
+            { localBroadcastManager },
+            generatePDFUseCase,
+            syncedFolderProvider
         )
     }
 

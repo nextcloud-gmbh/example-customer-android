@@ -34,6 +34,7 @@ import com.owncloud.android.datamodel.FileDataStorageManager;
 import com.owncloud.android.datamodel.OCFile;
 import com.owncloud.android.lib.common.utils.Log_OC;
 import com.owncloud.android.lib.resources.files.model.RemoteFile;
+import com.owncloud.android.lib.resources.shares.ShareeUser;
 import com.owncloud.android.ui.helpers.FileOperationsHelper;
 
 import java.io.File;
@@ -222,6 +223,7 @@ public final class FileStorageUtils {
         file.setEtag(remote.getEtag());
         file.setPermissions(remote.getPermissions());
         file.setRemoteId(remote.getRemoteId());
+        file.setLocalId(remote.getLocalId());
         file.setFavorite(remote.isFavorite());
         if (file.isFolder()) {
             file.setEncrypted(remote.isEncrypted());
@@ -232,7 +234,7 @@ public final class FileStorageUtils {
         file.setOwnerId(remote.getOwnerId());
         file.setOwnerDisplayName(remote.getOwnerDisplayName());
         file.setNote(remote.getNote());
-        file.setSharees(new ArrayList<>(Arrays.asList(remote.getSharees())));
+        file.setSharees(new ArrayList<ShareeUser>(Arrays.asList(remote.getSharees())));
         file.setRichWorkspace(remote.getRichWorkspace());
         file.setLocked(remote.isLocked());
         file.setLockType(remote.getLockType());
@@ -242,6 +244,7 @@ public final class FileStorageUtils {
         file.setLockTimestamp(remote.getLockTimestamp());
         file.setLockTimeout(remote.getLockTimeout());
         file.setLockToken(remote.getLockToken());
+        file.setTags(new ArrayList<>(Arrays.asList(remote.getTags())));
 
         return file;
     }
@@ -465,7 +468,7 @@ public final class FileStorageUtils {
             return true;
         }
 
-        while (!OCFile.ROOT_PATH.equals(file.getDecryptedRemotePath())) {
+        while (file != null && !OCFile.ROOT_PATH.equals(file.getDecryptedRemotePath())) {
             if (file.isEncrypted()) {
                 return true;
             }
@@ -580,7 +583,8 @@ public final class FileStorageUtils {
         }
 
         FileStorageUtils.StandardDirectory standardDirectory = FileStorageUtils.StandardDirectory.fromPath(storageFolder);
-        if (standardDirectory != null) { // Friendly name of standard directory
+        if (standardDirectory != null) {
+            // Friendly name of standard directory
             storageFolder = " " + resources.getString(standardDirectory.getDisplayName());
         }
 

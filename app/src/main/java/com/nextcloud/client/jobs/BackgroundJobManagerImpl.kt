@@ -23,7 +23,7 @@ import android.os.Build
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import androidx.work.Constraints
 import androidx.work.Data
 import androidx.work.ExistingPeriodicWorkPolicy
@@ -38,6 +38,7 @@ import androidx.work.WorkManager
 import androidx.work.workDataOf
 import com.nextcloud.client.account.User
 import com.nextcloud.client.core.Clock
+import com.nextcloud.client.documentscan.GeneratePdfFromImagesWork
 import com.owncloud.android.datamodel.OCFile
 import java.util.Date
 import java.util.UUID
@@ -80,6 +81,7 @@ internal class BackgroundJobManagerImpl(
         const val JOB_NOTIFICATION = "notification"
         const val JOB_ACCOUNT_REMOVAL = "account_removal"
         const val JOB_FILES_UPLOAD = "files_upload"
+        const val JOB_PDF_GENERATION = "pdf_generation"
         const val JOB_IMMEDIATE_CALENDAR_BACKUP = "immediate_calendar_backup"
         const val JOB_IMMEDIATE_FILES_EXPORT = "immediate_files_export"
 
@@ -103,6 +105,7 @@ internal class BackgroundJobManagerImpl(
                 "$TAG_PREFIX_NAME:$name ${user.accountName}"
             }
         }
+
         fun formatUserTag(user: User): String = "$TAG_PREFIX_USER:${user.accountName}"
         fun formatTimeTag(startTimestamp: Long): String = "$TAG_PREFIX_START_TIMESTAMP:$startTimestamp"
 
@@ -190,7 +193,7 @@ internal class BackgroundJobManagerImpl(
 
     private fun WorkManager.getJobInfo(id: UUID): LiveData<JobInfo?> {
         val workInfo = getWorkInfoByIdLiveData(id)
-        return Transformations.map(workInfo) { fromWorkInfo(it) }
+        return workInfo.map { fromWorkInfo(it) }
     }
 
     /**
@@ -205,9 +208,7 @@ internal class BackgroundJobManagerImpl(
     override val jobs: LiveData<List<JobInfo>>
         get() {
             val workInfo = workManager.getWorkInfosByTagLiveData("*")
-            return Transformations.map(workInfo) {
-                it.map { fromWorkInfo(it) ?: JobInfo() }.sortedBy { it.started }.reversed()
-            }
+            return workInfo.map { it -> it.map { fromWorkInfo(it) ?: JobInfo() }.sortedBy { it.started }.reversed() }
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -460,9 +461,25 @@ internal class BackgroundJobManagerImpl(
 
     override fun getFileUploads(user: User): LiveData<List<JobInfo>> {
         val workInfo = workManager.getWorkInfosByTagLiveData(formatNameTag(JOB_FILES_UPLOAD, user))
-        return Transformations.map(workInfo) {
-            it.map { fromWorkInfo(it) ?: JobInfo() }
-        }
+        return workInfo.map { it -> it.map { fromWorkInfo(it) ?: JobInfo() } }
+    }
+
+    override fun startPdfGenerateAndUploadWork(
+        user: User,
+        uploadFolder: String,
+        imagePaths: List<String>,
+        pdfPath: String
+    ) {
+        val data = workDataOf(
+            GeneratePdfFromImagesWork.INPUT_IMAGE_FILE_PATHS to imagePaths.toTypedArray(),
+            GeneratePdfFromImagesWork.INPUT_OUTPUT_FILE_PATH to pdfPath,
+            GeneratePdfFromImagesWork.INPUT_UPLOAD_ACCOUNT to user.accountName,
+            GeneratePdfFromImagesWork.INPUT_UPLOAD_FOLDER to uploadFolder
+        )
+        val request = oneTimeRequestBuilder(GeneratePdfFromImagesWork::class, JOB_PDF_GENERATION)
+            .setInputData(data)
+            .build()
+        workManager.enqueue(request)
     }
 
     override fun scheduleTestJob() {

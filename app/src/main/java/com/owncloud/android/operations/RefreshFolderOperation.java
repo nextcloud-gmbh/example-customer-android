@@ -252,7 +252,7 @@ public class RefreshFolderOperation extends RemoteOperation {
             mStorageManager.saveFile(mLocalFolder);
         }
 
-        if (!mSyncFullAccount) {
+        if (!mSyncFullAccount && mRemoteFolderChanged) {
             sendLocalBroadcast(
                 EVENT_SINGLE_FOLDER_CONTENTS_SYNCED, mLocalFolder.getRemotePath(), result
             );
@@ -420,15 +420,14 @@ public class RefreshFolderOperation extends RemoteOperation {
         return result;
     }
 
-
     private void removeLocalFolder() {
         if (mStorageManager.fileExists(mLocalFolder.getFileId())) {
             String currentSavePath = FileStorageUtils.getSavePath(user.getAccountName());
             mStorageManager.removeFolder(
-                    mLocalFolder,
-                    true,
-                    mLocalFolder.isDown() && mLocalFolder.getStoragePath().startsWith(currentSavePath)
-            );
+                mLocalFolder,
+                true,
+                mLocalFolder.isDown() && mLocalFolder.getStoragePath().startsWith(currentSavePath)
+                                        );
         }
     }
 

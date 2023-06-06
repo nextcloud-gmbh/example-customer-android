@@ -34,6 +34,8 @@ import com.nextcloud.client.account.UserAccountManager
 import com.nextcloud.client.core.Clock
 import com.nextcloud.client.device.DeviceInfo
 import com.nextcloud.client.device.PowerManagementService
+import com.nextcloud.client.documentscan.GeneratePDFUseCase
+import com.nextcloud.client.documentscan.GeneratePdfFromImagesWork
 import com.nextcloud.client.integrations.deck.DeckApi
 import com.nextcloud.client.logger.Logger
 import com.nextcloud.client.network.ConnectivityService
@@ -48,6 +50,8 @@ import javax.inject.Provider
 
 /**
  * This factory is responsible for creating all background jobs and for injecting worker dependencies.
+ *
+ * This class is doing too many things and should be split up into smaller factories.
  */
 @Suppress("LongParameterList") // satisfied by DI
 class BackgroundJobFactory @Inject constructor(
@@ -67,7 +71,9 @@ class BackgroundJobFactory @Inject constructor(
     private val eventBus: EventBus,
     private val deckApi: DeckApi,
     private val viewThemeUtils: Provider<ViewThemeUtils>,
-    private val localBroadcastManager: Provider<LocalBroadcastManager>
+    private val localBroadcastManager: Provider<LocalBroadcastManager>,
+    private val generatePdfUseCase: GeneratePDFUseCase,
+    private val syncedFolderProvider: SyncedFolderProvider
 ) : WorkerFactory() {
 
     @SuppressLint("NewApi")
@@ -85,7 +91,7 @@ class BackgroundJobFactory @Inject constructor(
 
         // ContentObserverWork requires N
         return if (deviceInfo.apiLevel >= Build.VERSION_CODES.N && workerClass == ContentObserverWork::class) {
-            createContentObserverJob(context, workerParameters, clock)
+            createContentObserverJob(context, workerParameters)
         } else {
             when (workerClass) {
                 ContactsBackupWork::class -> createContactsBackupWork(context, workerParameters)
@@ -99,6 +105,7 @@ class BackgroundJobFactory @Inject constructor(
                 CalendarImportWork::class -> createCalendarImportWork(context, workerParameters)
                 FilesExportWork::class -> createFilesExportWork(context, workerParameters)
                 FilesUploadWorker::class -> createFilesUploadWorker(context, workerParameters)
+                GeneratePdfFromImagesWork::class -> createPDFGenerateWork(context, workerParameters)
                 else -> null // caller falls back to default factory
             }
         }
@@ -119,16 +126,14 @@ class BackgroundJobFactory @Inject constructor(
 
     private fun createContentObserverJob(
         context: Context,
-        workerParameters: WorkerParameters,
-        clock: Clock
+        workerParameters: WorkerParameters
     ): ListenableWorker? {
-        val folderResolver = SyncedFolderProvider(contentResolver, preferences, clock)
         @RequiresApi(Build.VERSION_CODES.N)
         if (deviceInfo.apiLevel >= Build.VERSION_CODES.N) {
             return ContentObserverWork(
                 context,
                 workerParameters,
-                folderResolver,
+                syncedFolderProvider,
                 powerManagementService,
                 backgroundJobManager.get()
             )
@@ -180,14 +185,12 @@ class BackgroundJobFactory @Inject constructor(
         return FilesSyncWork(
             context = context,
             params = params,
-            resources = resources,
             contentResolver = contentResolver,
             userAccountManager = accountManager,
-            preferences = preferences,
             uploadsStorageManager = uploadsStorageManager,
             connectivityService = connectivityService,
             powerManagementService = powerManagementService,
-            clock = clock
+            syncedFolderProvider = syncedFolderProvider
         )
     }
 
@@ -211,7 +214,8 @@ class BackgroundJobFactory @Inject constructor(
             accountManager,
             preferences,
             clock,
-            viewThemeUtils.get()
+            viewThemeUtils.get(),
+            syncedFolderProvider
         )
     }
 
@@ -235,7 +239,8 @@ class BackgroundJobFactory @Inject constructor(
             backgroundJobManager.get(),
             clock,
             eventBus,
-            preferences
+            preferences,
+            syncedFolderProvider
         )
     }
 
@@ -249,6 +254,18 @@ class BackgroundJobFactory @Inject constructor(
             localBroadcastManager.get(),
             context,
             params
+        )
+    }
+
+    private fun createPDFGenerateWork(context: Context, params: WorkerParameters): GeneratePdfFromImagesWork {
+        return GeneratePdfFromImagesWork(
+            appContext = context,
+            generatePdfUseCase = generatePdfUseCase,
+            viewThemeUtils = viewThemeUtils.get(),
+            notificationManager = notificationManager,
+            userAccountManager = accountManager,
+            logger = logger,
+            params = params
         )
     }
 }

@@ -32,6 +32,7 @@
     <string name="activity_icon">活動</string>
     <string name="add_another_public_share_link">加入另一個連結</string>
     <string name="add_new_public_share">增加一個新的公開連結</string>
+    <string name="add_new_secure_file_drop">新增安全檔案投放</string>
     <string name="add_to_cloud">新增到 %1$s </string>
     <string name="advanced_settings">進階設定</string>
     <string name="allow_resharing">允許轉貼分享</string>
@@ -145,7 +146,6 @@
     <string name="community_testing_bug_text">發現問題或瑕疵？</string>
     <string name="community_testing_headline">協助測試</string>
     <string name="community_testing_report_text">在 GitHub 上回報問題</string>
-    <string name="community_testing_version_text">有興趣幫我們測試下一個版本嗎？</string>
     <string name="configure_new_media_folder_detection_notifications">設定</string>
     <string name="confirm_removal">移除本機加密</string>
     <string name="confirmation_remove_file_alert">您真的想要刪除 %1$s 嗎？</string>
@@ -158,6 +158,7 @@
     <string name="conflict_local_file">本機檔案</string>
     <string name="conflict_message_description">若您同時選擇兩個版本，本機的檔案會在檔名後附加編號。</string>
     <string name="conflict_server_file">伺服器檔案</string>
+    <string name="contact_backup_title">聯絡人備份</string>
     <string name="contactlist_item_icon">聯絡人列表的使用者圖示</string>
     <string name="contactlist_no_permission">匯入失敗，權限不足。</string>
     <string name="contacts">聯絡人</string>
@@ -189,7 +190,6 @@
     <string name="credentials_disabled">認證方式已取消</string>
     <string name="daily_backup">每日備份</string>
     <string name="data_to_back_up">要備份的資料</string>
-    <string name="date_unknown">未知</string>
     <string name="default_credentials_wrong">不正確的認證方式</string>
     <string name="delete_account">刪除帳號</string>
     <string name="delete_account_warning">移除帳號 %s 並刪除所有本機檔案？\n\n刪除後將無法復原。</string>
@@ -209,7 +209,15 @@
     <string name="dismiss_notification_description">清除通知</string>
     <string name="displays_mnemonic">顯示您的 12 字通關密語</string>
     <string name="dnd">請勿打擾</string>
+    <string name="document_scan_export_dialog_images">多重影像</string>
+    <string name="document_scan_export_dialog_pdf">PDF 檔案</string>
+    <string name="document_scan_export_dialog_title">選擇匯出類型</string>
+    <string name="document_scan_pdf_generation_failed">PDF 產生失敗</string>
+    <string name="document_scan_pdf_generation_in_progress">正在產生 PDF……</string>
+    <string name="done">完成</string>
     <string name="dontClear">不要清空</string>
+    <string name="download_cannot_create_file">無法建立本機檔案</string>
+    <string name="download_download_invalid_local_file_name">本機檔案有無效的檔案名稱</string>
     <string name="download_latest_dev_version">下載最新開發的版本</string>
     <string name="downloader_download_failed_content">下載 %1$s 無法完成 </string>
     <string name="downloader_download_failed_credentials_error">下載失敗，再重新登入</string>
@@ -227,6 +235,7 @@
     <string name="drawer_item_all_files">所有檔案</string>
     <string name="drawer_item_favorites">最愛</string>
     <string name="drawer_item_gallery">多媒體</string>
+    <string name="drawer_item_groupfolders">群組資料夾</string>
     <string name="drawer_item_home">家目錄</string>
     <string name="drawer_item_notifications">通知</string>
     <string name="drawer_item_on_device">在裝置上</string>
@@ -270,9 +279,9 @@
     <string name="error_report_issue_text">要回報議題至追蹤程式？（需要 GitHub 帳號）</string>
     <string name="error_retrieving_file">擷取檔案時發生錯誤</string>
     <string name="error_retrieving_templates">擷取範本時發生錯誤</string>
-    <string name="error_showing_encryption_dialog">顯示設定加密對話方塊時發生錯誤！</string>
+    <string name="error_showing_encryption_dialog">顯示加密設定對話方塊時發生錯誤！</string>
     <string name="error_starting_direct_camera_upload">無法啟動相機</string>
-    <string name="error_starting_scan_doc">使用文件掃描時發生錯誤</string>
+    <string name="error_starting_doc_scan">開始文件掃描時發生錯誤</string>
     <string name="etm_accounts">帳戶</string>
     <string name="etm_background_job_name">工作名稱</string>
     <string name="etm_background_job_progress">進度</string>
@@ -515,6 +524,7 @@
     <string name="pass_code_removed">通行碼已刪除</string>
     <string name="pass_code_stored">通行碼已儲存</string>
     <string name="pass_code_wrong">通行碼錯誤</string>
+    <string name="pdf_password_protected">無法開啟密碼保護的 PDF。請使用外部 PDF 檢視程式。</string>
     <string name="pdf_zoom_tip">點擊頁面以放大</string>
     <string name="permission_allow">允許</string>
     <string name="permission_deny">否</string>
@@ -541,7 +551,6 @@
     <string name="pref_instant_name_collision_policy_title">當檔案已經存在時我該怎麼做?</string>
     <string name="prefs_add_account">新增帳號</string>
     <string name="prefs_calendar_contacts">同步日曆與通訊錄</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">此帳號的伺服器地址無法被 DAVx5（以前稱為 DAVdroid）解析</string>
     <string name="prefs_calendar_contacts_no_store_error">尚未安裝 F-Droid 或 Google Play</string>
     <string name="prefs_calendar_contacts_summary">為目前使用者帳戶設定 DAVx5（以前稱為 DAVdroid）（版本 v1.3.0 以上）</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">日曆與通訊錄同步設定</string>
@@ -551,6 +560,9 @@
     <string name="prefs_category_general">一般</string>
     <string name="prefs_category_more">更多</string>
     <string name="prefs_daily_backup_summary">每日備份您的日曆與聯絡人</string>
+    <string name="prefs_daily_contact_backup_summary">每日備份您的通訊錄</string>
+    <string name="prefs_davx5_setup_error">設定 DAVx5（先前稱為 DAVdroid）時發生意外錯誤</string>
+    <string name="prefs_e2e_active">端到端加密已設定完成！</string>
     <string name="prefs_e2e_mnemonic">端到端加密助記碼</string>
     <string name="prefs_e2e_no_device_credentials">裝置若要顯示助記碼請啟用裝置憑證。</string>
     <string name="prefs_enable_media_scan_notifications">顯示媒體掃描通知</string>
@@ -562,6 +574,7 @@
     <string name="prefs_instant_behaviour_title">原始的檔案將會……</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">依據年月存在子資料夾內</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">使用子資料夾</string>
+    <string name="prefs_keys_exist">新增端到端加密到此客戶端</string>
     <string name="prefs_license">授權</string>
     <string name="prefs_lock">應用程式通行碼</string>
     <string name="prefs_lock_device_credentials_enabled">裝置憑證已啟用</string>
@@ -573,6 +586,7 @@
     <string name="prefs_manage_accounts">管理帳號</string>
     <string name="prefs_recommend">推薦給朋友</string>
     <string name="prefs_remove_e2e">移除本機加密</string>
+    <string name="prefs_setup_e2e">設定端到端加密</string>
     <string name="prefs_show_hidden_files">顯示隱藏檔案</string>
     <string name="prefs_sourcecode">取得原始碼</string>
     <string name="prefs_storage_path">資料儲存資料夾</string>
@@ -600,6 +614,8 @@
     <string name="reload">重新載入</string>
     <string name="remote">(remote)</string>
     <string name="remote_file_fetch_failed">找不到檔案！</string>
+    <string name="remove_e2e">您可以在此客戶端上本機移除端到端加密</string>
+    <string name="remove_e2e_message">您可以在此客戶端上移除本機端到端加密。已加密的檔案將會保留在伺服器上，但不會再同步到此電腦。</string>
     <string name="remove_fail_msg">刪除失敗</string>
     <string name="remove_notification_failed">移除通知失敗</string>
     <string name="remove_push_notification">移除</string>
@@ -617,6 +633,7 @@
     <string name="retrieving_file">正在擷取檔案……</string>
     <string name="richdocuments_failed_to_load_document">載入文件失敗！</string>
     <string name="scanQR_description">透過 QR Code 登入</string>
+    <string name="scan_page">掃描頁面</string>
     <string name="screenshot_01_gridView_heading">保護您的資料</string>
     <string name="screenshot_01_gridView_subline">自建且具生產力</string>
     <string name="screenshot_02_listView_heading">瀏覽與分享</string>
@@ -643,6 +660,7 @@
     <string name="set_picture_as">使用圖片作為</string>
     <string name="set_status">設定狀態</string>
     <string name="set_status_message">設定狀態訊息</string>
+    <string name="setup_e2e">在設定端到端加密期間，您將會收到一個隨機的 12 字助記字串，您需要這個字串才能在其他裝置上開啟檔案。這將只會儲存在此裝置上，並可以在此畫面中再次顯示。請記在安全的地方！</string>
     <string name="share">分享</string>
     <string name="share_copy_link">分享並複製連結</string>
     <string name="share_dialog_title">分享</string>
@@ -666,7 +684,8 @@
     <string name="share_no_password_title">設定密碼</string>
     <string name="share_password_title">受密碼保護</string>
     <string name="share_permission_can_edit">可以編輯</string>
-    <string name="share_permission_file_drop">檔案投遞</string>
+    <string name="share_permission_file_drop">檔案投放</string>
+    <string name="share_permission_secure_file_drop">安全檔案投放</string>
     <string name="share_permission_view_only">僅檢視</string>
     <string name="share_permissions">分享權限</string>
     <string name="share_remote_clarification">%1$s（遠端）</string>
@@ -781,7 +800,7 @@
     <string name="thumbnail">縮圖</string>
     <string name="thumbnail_for_existing_file_description">現有檔案的縮圖</string>
     <string name="thumbnail_for_new_file_desc">新增檔案的縮圖</string>
-    <string name="timeout_richDocuments">載入需要花一段時間……</string>
+    <string name="timeout_richDocuments">載入時間比預期久</string>
     <string name="today">今天</string>
     <string name="trashbin_activity_title">回收桶</string>
     <string name="trashbin_empty_headline">無已刪除檔案</string>

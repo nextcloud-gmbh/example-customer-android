@@ -131,7 +131,6 @@
     <string name="community_testing_bug_text">Näsazlyk tapdyňyzmy? Ýa-da täsinlikler?</string>
     <string name="community_testing_headline">Synag arkaly kömek ediň</string>
     <string name="community_testing_report_text">GitHub-da mesele barada habar beriň</string>
-    <string name="community_testing_version_text">Indiki wersiýasy näme boljakdygyny synap görmek bilen kömek etmek isleýärsiňizmi?</string>
     <string name="configure_new_media_folder_detection_notifications">Sazlamak</string>
     <string name="confirmation_remove_file_alert">Hakykatdanam pozmak isleýärsiňizmi%1$s?</string>
     <string name="confirmation_remove_files_alert">Saýlanan zatlary hakykatdanam pozmak isleýärsiňizmi?</string>
@@ -169,7 +168,6 @@
     <string name="create_rich_workspace">Bukja barada maglumat goşuň</string>
     <string name="creates_rich_workspace">bukja barada maglumatlar döredilýär</string>
     <string name="credentials_disabled">Şahsyýet maglumatlary ýapyldy</string>
-    <string name="date_unknown">Näbelli</string>
     <string name="default_credentials_wrong">Nädogry şahsyýet maglumatlary</string>
     <string name="delete_account">Hasaby aýyryň</string>
     <string name="delete_account_warning">%sHasaby aýyryň we ähli ýerli faýllary pozuň? \ N \ n Öçürip bolmaýar.</string>
@@ -186,6 +184,7 @@
     <string name="dismiss_notification_description">Duýduryşy ýapyň</string>
     <string name="dnd">Bimaza etmäň</string>
     <string name="dontClear">Arassalama</string>
+    <string name="download_cannot_create_file">Ýerli faýl döredip bolmaýar</string>
     <string name="download_latest_dev_version">Iň soňky wersiýasyny ýükläp alyň</string>
     <string name="downloader_download_failed_content">%1$sGöçürip alyp bolmaýar</string>
     <string name="downloader_download_failed_credentials_error">Ýüklemek şowsuz, gaýtadan giriň </string>
@@ -470,7 +469,6 @@
     <string name="pref_instant_name_collision_policy_title">Faýl eýýäm bar bolsa näme etmeli?</string>
     <string name="prefs_add_account">Hasap goşuň</string>
     <string name="prefs_calendar_contacts">Senenama aragatnaşyklaryny sinhronlaň&amp;</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">Hasap üçin serwer salgysy DAVx5 (öň DAVdroid ady bilen tanalýardy) üçin çözülip bilinmedi</string>
     <string name="prefs_calendar_contacts_no_store_error">Ne F-Droid, ne-de Google Play ýüklenmedik</string>
     <string name="prefs_calendar_contacts_summary">Häzirki hasap üçin DAVx5 (öň DAVdroid ady bilen tanalýardy) (v1.3.0 +) guruň</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Senenama &amp;kontaktlary sinhronlaşdyryldy</string>
@@ -479,6 +477,7 @@
     <string name="prefs_category_dev">Dev</string>
     <string name="prefs_category_general">Esasy</string>
     <string name="prefs_category_more">Has köp</string>
+    <string name="prefs_daily_contact_backup_summary">Kontaktlaryňyzyň gündelik ätiýaçlyk nusgasy</string>
     <string name="prefs_e2e_mnemonic">e2e ýatlatma</string>
     <string name="prefs_e2e_no_device_credentials">Mnemonik görkezmek üçin enjam şahsyýet maglumatlaryny açmagyňyzy haýyş edýäris.</string>
     <string name="prefs_enable_media_scan_notifications">Mediýa skaner habarnamalaryny görkeziň</string>
@@ -684,7 +683,6 @@ https://help.nextcloud.com/c/clients/android\n\n Täze Nextcloud? “Nextcloud�
     <string name="thumbnail">Kiçi surat</string>
     <string name="thumbnail_for_existing_file_description">Bar bolan faýl üçin kiçijik surat</string>
     <string name="thumbnail_for_new_file_desc">Täze faýl üçin kiçijik surat</string>
-    <string name="timeout_richDocuments">Ýüklemek gaty uzaga çekýär ...</string>
     <string name="today">Şu gün</string>
     <string name="trashbin_activity_title">Pozulan faýllar</string>
     <string name="trashbin_empty_headline">Pozulan faýllar ýok</string>

@@ -27,13 +27,15 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import androidx.test.espresso.intent.rule.IntentsTestRule
-import com.nextcloud.client.TestActivity
+import com.nextcloud.test.TestActivity
 import com.owncloud.android.AbstractIT
 import com.owncloud.android.datamodel.ImageDimension
 import com.owncloud.android.datamodel.OCFile
 import com.owncloud.android.datamodel.ThumbnailsCacheManager
+import com.owncloud.android.datamodel.ThumbnailsCacheManager.InitDiskCacheTask
 import com.owncloud.android.datamodel.ThumbnailsCacheManager.PREFIX_RESIZED_IMAGE
 import com.owncloud.android.lib.common.utils.Log_OC
+import com.owncloud.android.utils.ScreenshotTest
 import org.junit.After
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -46,16 +48,14 @@ class GalleryFragmentIT : AbstractIT() {
     val testActivityRule = IntentsTestRule(TestActivity::class.java, true, false)
 
     lateinit var activity: TestActivity
-    val random = Random()
+    val random = Random(1)
 
     @Before
     fun before() {
         activity = testActivityRule.launchActivity(null)
 
-        createImage(1, true, 700, 300)
-        createImage(2, true, 500, 300)
-
-        createImage(7, true, 300, 400)
+        // initialise thumbnails cache on background thread
+        InitDiskCacheTask().execute()
     }
 
     @After
@@ -65,33 +65,47 @@ class GalleryFragmentIT : AbstractIT() {
         super.after()
     }
 
+    @ScreenshotTest
     @Test
-    fun showGallery() {
+    fun showEmpty() {
         val sut = GalleryFragment()
         activity.addFragment(sut)
 
-        longSleep()
+        waitForIdleSync()
+
+        screenshot(activity)
     }
 
-    private fun createImage(int: Int, createPreview: Boolean = true, width: Int? = null, height: Int? = null) {
+    @Test
+    @ScreenshotTest
+    fun showGallery() {
+        createImage(10000001, 700, 300)
+        createImage(10000002, 500, 300)
+        createImage(10000007, 300, 400)
+
+        val sut = GalleryFragment()
+        activity.addFragment(sut)
+
+        waitForIdleSync()
+        shortSleep()
+        screenshot(activity)
+    }
+
+    private fun createImage(id: Int, width: Int? = null, height: Int? = null) {
         val defaultSize = ThumbnailsCacheManager.getThumbnailDimension().toFloat()
-        val file = OCFile("/$int.png").apply {
-            fileId = int.toLong()
-            remoteId = "$int"
+        val file = OCFile("/$id.png").apply {
+            fileId = id.toLong()
+            remoteId = "$id"
             mimeType = "image/png"
             isPreviewAvailable = true
-            modificationTimestamp = (1658475504 + int.toLong()) * 1000
+            modificationTimestamp = (1658475504 + id.toLong()) * 1000
             imageDimension = ImageDimension(width?.toFloat() ?: defaultSize, height?.toFloat() ?: defaultSize)
             storageManager.saveFile(this)
         }
 
-        if (!createPreview) {
-            return
-        }
-
         // create dummy thumbnail
-        var w: Int
-        var h: Int
+        val w: Int
+        val h: Int
         if (width == null || height == null) {
             if (random.nextBoolean()) {
                 // portrait
@@ -110,12 +124,12 @@ class GalleryFragmentIT : AbstractIT() {
         val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         Canvas(bitmap).apply {
             drawRGB(random.nextInt(256), random.nextInt(256), random.nextInt(256))
-            drawCircle(w / 2f, h / 2f, Math.min(w, h) / 2f, Paint().apply { color = Color.BLACK })
+            drawCircle(w / 2f, h / 2f, w.coerceAtMost(h) / 2f, Paint().apply { color = Color.BLACK })
         }
         ThumbnailsCacheManager.addBitmapToCache(PREFIX_RESIZED_IMAGE + file.remoteId, bitmap)
 
         assertNotNull(ThumbnailsCacheManager.getBitmapFromDiskCache(PREFIX_RESIZED_IMAGE + file.remoteId))
 
-        Log_OC.d("Gallery_thumbnail", "created $int with ${bitmap.width} x ${bitmap.height}")
+        Log_OC.d("Gallery_thumbnail", "created $id with ${bitmap.width} x ${bitmap.height}")
     }
 }

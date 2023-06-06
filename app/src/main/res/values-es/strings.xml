@@ -32,6 +32,7 @@
     <string name="activity_icon">Actividad</string>
     <string name="add_another_public_share_link">Añadir otro enlace</string>
     <string name="add_new_public_share">Añadir un nuevo enlace público</string>
+    <string name="add_new_secure_file_drop">Añadir una nueva entrega de archivos segura</string>
     <string name="add_to_cloud">Añadir a %1$s</string>
     <string name="advanced_settings">Configuración avanzada</string>
     <string name="allow_resharing">Permitir que se vuelva a compartir</string>
@@ -145,7 +146,6 @@
     <string name="community_testing_bug_text">¿Encontraste un error? ¿Algo va mal?</string>
     <string name="community_testing_headline">Ayúdanos a realizar pruebas</string>
     <string name="community_testing_report_text">Informar de un problema en GitHub</string>
-    <string name="community_testing_version_text">¿Interesado en ayudar probando cómo será la próxima versión?</string>
     <string name="configure_new_media_folder_detection_notifications">Configurar</string>
     <string name="confirm_removal">Eliminar cifrado local</string>
     <string name="confirmation_remove_file_alert">¿Estás seguro de que quieres eliminar %1$s?</string>
@@ -158,6 +158,7 @@
     <string name="conflict_local_file">Archivo local</string>
     <string name="conflict_message_description">Si seleccionas ambas versiones, el archivo local tendrá un número añadido a su nombre.</string>
     <string name="conflict_server_file">Archivo del servidor</string>
+    <string name="contact_backup_title">Respaldo de contactos</string>
     <string name="contactlist_item_icon">Icono de usuario para lista de contactos</string>
     <string name="contactlist_no_permission">No se han concedido permisos, por lo que no se ha importado nada</string>
     <string name="contacts">Contactos</string>
@@ -189,7 +190,6 @@
     <string name="credentials_disabled">Credenciales desactivadas</string>
     <string name="daily_backup">Copia de seguridad diaria</string>
     <string name="data_to_back_up">Datos a respaldar</string>
-    <string name="date_unknown">Desconocido</string>
     <string name="default_credentials_wrong">Credenciales incorrectas</string>
     <string name="delete_account">Eliminar cuenta</string>
     <string name="delete_account_warning">¿Eliminar cuenta %s y borrar todos los archivos locales?\n\nEl borrado no se puede deshacer.</string>
@@ -209,7 +209,15 @@
     <string name="dismiss_notification_description">Descartar notificación</string>
     <string name="displays_mnemonic">Muestra su contraseña de cifrado de 12 palabras</string>
     <string name="dnd">No molestar</string>
+    <string name="document_scan_export_dialog_images">Múltiples imágenes</string>
+    <string name="document_scan_export_dialog_pdf">Archivo PDF</string>
+    <string name="document_scan_export_dialog_title">Seleccione el tipo de exportación</string>
+    <string name="document_scan_pdf_generation_failed">La generación del PDF falló</string>
+    <string name="document_scan_pdf_generation_in_progress">Generando PDF...</string>
+    <string name="done">Hecho</string>
     <string name="dontClear">No eliminar</string>
+    <string name="download_cannot_create_file">No se puede crear el archivo local</string>
+    <string name="download_download_invalid_local_file_name">Nombre de archivo inválido para archivo local</string>
     <string name="download_latest_dev_version">Descargar la última versión de desarrollo</string>
     <string name="downloader_download_failed_content">No se ha podido descargar %1$s</string>
     <string name="downloader_download_failed_credentials_error">Descarga fallida, vuelve a iniciar sesión</string>
@@ -227,6 +235,7 @@
     <string name="drawer_item_all_files">Todos los archivos</string>
     <string name="drawer_item_favorites">Favoritos</string>
     <string name="drawer_item_gallery">Multimedia</string>
+    <string name="drawer_item_groupfolders">Carpetas de grupo</string>
     <string name="drawer_item_home">Inicio</string>
     <string name="drawer_item_notifications">Notificaciones</string>
     <string name="drawer_item_on_device">En el dispositivo</string>
@@ -272,7 +281,7 @@
     <string name="error_retrieving_templates">Error al recuperar plantillas</string>
     <string name="error_showing_encryption_dialog">¡Error al mostrar el diálogo de configuración del cifrado!</string>
     <string name="error_starting_direct_camera_upload">Error al iniciar la cámara</string>
-    <string name="error_starting_scan_doc">Error al usar el escaner de documentos</string>
+    <string name="error_starting_doc_scan">Error al iniciar el escaneo del documento</string>
     <string name="etm_accounts">Cuentas</string>
     <string name="etm_background_job_name">Nombre del trabajo</string>
     <string name="etm_background_job_progress">Progreso</string>
@@ -515,6 +524,7 @@
     <string name="pass_code_removed">Código de acceso borrado</string>
     <string name="pass_code_stored">Código de acceso almacenado</string>
     <string name="pass_code_wrong">Código de acceso incorrecto</string>
+    <string name="pdf_password_protected">No es posible abrir archivos PDF protegidos por contraseñas. Por favor, usa un visor PDF externo.</string>
     <string name="pdf_zoom_tip">Toca sobre una página para hacer zoom</string>
     <string name="permission_allow">Permitir</string>
     <string name="permission_deny">Denegar</string>
@@ -541,7 +551,6 @@
     <string name="pref_instant_name_collision_policy_title">¿Cómo proceder si ya existe el archivo?</string>
     <string name="prefs_add_account">Agregar cuenta</string>
     <string name="prefs_calendar_contacts">Sincronizar calendario y contactos</string>
-    <string name="prefs_calendar_contacts_address_resolve_error">DAVx5 (antes conocido como DAVdroid) no ha podido resolver la dirección del servidor para la cuenta.</string>
     <string name="prefs_calendar_contacts_no_store_error">Ni F-Droid ni Google Play están instalados</string>
     <string name="prefs_calendar_contacts_summary">Configurar DAVx5 (antes conocido como DAVdroid) (v1.3.0+) para la cuenta actual</string>
     <string name="prefs_calendar_contacts_sync_setup_successful">Sincronización de calendario y contactos configurada</string>
@@ -551,6 +560,9 @@
     <string name="prefs_category_general">General</string>
     <string name="prefs_category_more">Más</string>
     <string name="prefs_daily_backup_summary">Copia de seguridad diaria de tu calendario y contactos</string>
+    <string name="prefs_daily_contact_backup_summary">Copia de seguridad diaria de tus contactos</string>
+    <string name="prefs_davx5_setup_error">Error inesperado al configurar DAVx5 (anteriormente conocido como DAVdroid)</string>
+    <string name="prefs_e2e_active">¡Se ha configurado el cifrado de extremo a extremo!</string>
     <string name="prefs_e2e_mnemonic">Regla mnemotécnica del cifrado E2E</string>
     <string name="prefs_e2e_no_device_credentials">Para mostrar la regla mnemotécnica, habilite las credenciales del dispositivo</string>
     <string name="prefs_enable_media_scan_notifications">Mostrar notificaciones de escaneo de medios</string>
@@ -562,6 +574,7 @@
     <string name="prefs_instant_behaviour_title">El archivo original será…</string>
     <string name="prefs_instant_upload_path_use_subfolders_summary">Almacenar en subcarpetas basadas en año y mes.</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Usar subcarpetas</string>
+    <string name="prefs_keys_exist">Agregar cifrado de extremo a extremo a este cliente</string>
     <string name="prefs_license">Licencia</string>
     <string name="prefs_lock">Código de acceso de la app</string>
     <string name="prefs_lock_device_credentials_enabled">Credenciales del dispositivo activadas</string>
@@ -573,6 +586,7 @@
     <string name="prefs_manage_accounts">Gestionar cuentas</string>
     <string name="prefs_recommend">Recomendar a amigos</string>
     <string name="prefs_remove_e2e">Eliminar cifrado localmente</string>
+    <string name="prefs_setup_e2e">Configurar el cifrado de extremo a extremo</string>
     <string name="prefs_show_hidden_files">Mostrar archivos ocultos</string>
     <string name="prefs_sourcecode">Obtener el código fuente</string>
     <string name="prefs_storage_path">Carpeta de almacenamiento de datos</string>
@@ -600,6 +614,8 @@
     <string name="reload">Volver a cargar</string>
     <string name="remote">(remoto)</string>
     <string name="remote_file_fetch_failed">¡No se pudo encontrar el archivo!</string>
+    <string name="remove_e2e">Puede eliminar el cifrado de extremo a extremo localmente en este cliente</string>
+    <string name="remove_e2e_message">Puede quitar el cifrado de un extremo a otro localmente en este cliente. Los archivos cifrados permanecerán en el servidor, pero ya no se sincronizarán con esta computadora.</string>
     <string name="remove_fail_msg">Ha fallado el borrado</string>
     <string name="remove_notification_failed">Fallo al quitar notificación.</string>
     <string name="remove_push_notification">Quitar</string>
@@ -617,6 +633,7 @@
     <string name="retrieving_file">Recuperando archivo…</string>
     <string name="richdocuments_failed_to_load_document">Fallo al cargar el documento.</string>
     <string name="scanQR_description">Entrar vía código QR</string>
+    <string name="scan_page">Escanear página</string>
     <string name="screenshot_01_gridView_heading">Protegiendo sus datos</string>
     <string name="screenshot_01_gridView_subline">plataforma de productividad autoalojada</string>
     <string name="screenshot_02_listView_heading">Navegar y compartir</string>
@@ -643,6 +660,7 @@
     <string name="set_picture_as">Usar imagen como</string>
     <string name="set_status">Configurar estado</string>
     <string name="set_status_message">Ajustar el mensaje de estado</string>
+    <string name="setup_e2e">Durante la configuración del cifrado de extremo a extremo, recibirá un mnemónico aleatorio de 12 palabras, que necesitará para abrir sus archivos en otros dispositivos. Esto solo se almacenará en este dispositivo y se puede volver a mostrar en esta pantalla. Por favor anótelo en un lugar seguro!</string>
     <string name="share">Compartir</string>
     <string name="share_copy_link">Compartir y copiar enlace</string>
     <string name="share_dialog_title">Compartir</string>
@@ -667,6 +685,7 @@
     <string name="share_password_title">Protegido con contraseña</string>
     <string name="share_permission_can_edit">Puede editar</string>
     <string name="share_permission_file_drop">Entrega de archivos</string>
+    <string name="share_permission_secure_file_drop">entrega de archivos segura</string>
     <string name="share_permission_view_only">Solo lectura</string>
     <string name="share_permissions">Permisos al compartir</string>
     <string name="share_remote_clarification">%1$s (remoto)</string>
@@ -781,7 +800,7 @@
     <string name="thumbnail">Miniatura</string>
     <string name="thumbnail_for_existing_file_description">Miniatura para el archivo existente</string>
     <string name="thumbnail_for_new_file_desc">Miniatura para el archivo nuevo</string>
-    <string name="timeout_richDocuments">La carga está tardando mucho tiempo…</string>
+    <string name="timeout_richDocuments">La carga está tardando más de lo esperado</string>
     <string name="today">Hoy</string>
     <string name="trashbin_activity_title">Archivos eliminados</string>
     <string name="trashbin_empty_headline">No hay archivos eliminados</string>

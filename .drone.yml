@@ -5,7 +5,7 @@ name: tests-stable
 
 steps:
   - name: gplay
-    image: ghcr.io/nextcloud/continuous-integration-android8:2
+    image: ghcr.io/nextcloud/continuous-integration-android8:3
     privileged: true
     environment:
       LOG_USERNAME:
@@ -29,7 +29,7 @@ steps:
 
 services:
   - name: server
-    image: ghcr.io/nextcloud/continuous-integration-server:latest # also change in updateScreenshots.sh
+    image: ghcr.io/nextcloud/continuous-integration-shallow-server:latest # also change in updateScreenshots.sh
     environment:
       EVAL: true
       SERVER_VERSION: 'stable25'
@@ -65,7 +65,7 @@ name: tests-master
 
 steps:
   - name: gplay
-    image: ghcr.io/nextcloud/continuous-integration-android8:2
+    image: ghcr.io/nextcloud/continuous-integration-android8:3
     privileged: true
     environment:
       LOG_USERNAME:
@@ -84,7 +84,7 @@ steps:
 
 services:
   - name: server
-    image: ghcr.io/nextcloud/continuous-integration-server:latest # also change in updateScreenshots.sh
+    image: ghcr.io/nextcloud/continuous-integration-shallow-server:latest # also change in updateScreenshots.sh
     environment:
       EVAL: true
     commands:
@@ -99,7 +99,7 @@ services:
       - su www-data -c "php /var/www/html/occ group:adduser users user2"
       - su www-data -c "git clone -b master https://github.com/nextcloud/activity.git /var/www/html/apps/activity/"
       - su www-data -c "php /var/www/html/occ app:enable activity"
-      - su www-data -c "git clone -b master https://github.com/nextcloud/text.git /var/www/html/apps/text/"
+      - su www-data -c "git clone -b main https://github.com/nextcloud/text.git /var/www/html/apps/text/"
       - su www-data -c "php /var/www/html/occ app:enable text"
       - su www-data -c "git clone -b master https://github.com/nextcloud/end_to_end_encryption/  /var/www/html/apps/end_to_end_encryption/"
       - su www-data -c "php /var/www/html/occ app:enable end_to_end_encryption"
@@ -120,7 +120,7 @@ name: allScreenshots
 
 steps:
   - name: runAllScreenshots
-    image: ghcr.io/nextcloud/continuous-integration-android8:2
+    image: ghcr.io/nextcloud/continuous-integration-android8:3
     privileged: true
     environment:
       GIT_USERNAME:

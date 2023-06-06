@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class ProviderMeta {
     public static final String DB_NAME = "filelist";
-    public static final int DB_VERSION = 66;
+    public static final int DB_VERSION = 71;
 
     private ProviderMeta() {
         // No instance
@@ -101,6 +101,7 @@ public class ProviderMeta {
         public static final String FILE_SHARED_VIA_LINK = "share_by_link";
         public static final String FILE_SHARED_WITH_SHAREE = "shared_via_users";
         public static final String FILE_PERMISSIONS = "permissions";
+        public static final String FILE_LOCAL_ID = "local_id";
         public static final String FILE_REMOTE_ID = "remote_id";
         public static final String FILE_UPDATE_THUMBNAIL = "update_thumbnail";
         public static final String FILE_IS_DOWNLOADING = "is_downloading";
@@ -124,6 +125,7 @@ public class ProviderMeta {
         public static final String FILE_LOCK_TIMESTAMP = "lock_timestamp";
         public static final String FILE_LOCK_TIMEOUT = "lock_timeout";
         public static final String FILE_LOCK_TOKEN = "lock_token";
+        public static final String FILE_TAGS = "tags";
 
         public static final List<String> FILE_ALL_COLUMNS = Collections.unmodifiableList(Arrays.asList(
             _ID,
@@ -148,6 +150,7 @@ public class ProviderMeta {
             FILE_SHARED_WITH_SHAREE,
             FILE_PERMISSIONS,
             FILE_REMOTE_ID,
+            FILE_LOCAL_ID,
             FILE_UPDATE_THUMBNAIL,
             FILE_IS_DOWNLOADING,
             FILE_ETAG_IN_CONFLICT,
@@ -169,7 +172,8 @@ public class ProviderMeta {
             FILE_LOCK_TIMESTAMP,
             FILE_LOCK_TIMEOUT,
             FILE_LOCK_TOKEN,
-            FILE_METADATA_SIZE));
+            FILE_METADATA_SIZE,
+            FILE_TAGS));
         public static final String FILE_DEFAULT_SORT_ORDER = FILE_NAME + " collate nocase asc";
 
         // Columns of ocshares table
@@ -252,6 +256,7 @@ public class ProviderMeta {
         public static final String CAPABILITIES_ETAG = "etag";
         public static final String CAPABILITIES_USER_STATUS = "user_status";
         public static final String CAPABILITIES_USER_STATUS_SUPPORTS_EMOJI = "user_status_supports_emoji";
+        public static final String CAPABILITIES_GROUPFOLDERS = "groupfolders";
 
         //Columns of Uploads table
         public static final String UPLOADS_LOCAL_PATH = "local_path";
