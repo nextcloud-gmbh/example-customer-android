@@ -234,7 +234,7 @@ public class MainApp extends Application implements HasAndroidInjector, NetworkC
 
     private String getAppProcessName() {
         String processName = "";
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
             final int ownPid = android.os.Process.myPid();
             final List<ActivityManager.RunningAppProcessInfo> processes = manager.getRunningAppProcesses();
@@ -588,20 +588,17 @@ public class MainApp extends Application implements HasAndroidInjector, NetworkC
     }
 
     private void enableStrictMode() {
-        if (BuildConfig.DEBUG && BuildConfig.RUNTIME_PERF_ANALYSIS) {
-            Log_OC.d(TAG, "Enabling StrictMode");
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                                           .detectDiskReads()
-                                           .detectDiskWrites()
-                                           .detectAll()
-                                           .penaltyLog()
-                                           .build());
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                                       .detectLeakedSqlLiteObjects()
-                                       .detectLeakedClosableObjects()
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                                       .detectDiskReads()
+                                       .detectDiskWrites()
+                                       .detectAll()
                                        .penaltyLog()
                                        .build());
-        }
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                                   .detectLeakedSqlLiteObjects()
+                                   .detectLeakedClosableObjects()
+                                   .penaltyLog()
+                                   .build());
     }
 
     private void checkCancelDownloadJobs() {
