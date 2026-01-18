@@ -93,7 +93,7 @@ android {
     androidResources.generateLocaleConfig = true
 
     defaultConfig {
-        applicationId = "com.nextcloud.client"
+        applicationId = "com.nextcloud.cloud.android.client"
         minSdk = 28
         targetSdk = 36
         compileSdk = 36
@@ -142,29 +142,29 @@ android {
         productFlavors {
             // used for f-droid
             register("generic") {
-                applicationId = "com.nextcloud.client"
+                applicationId = "com.nextcloud.cloud.android.client"
                 dimension = "default"
             }
 
             register("gplay") {
-                applicationId = "com.nextcloud.client"
+                applicationId = "com.nextcloud.cloud.android.client"
                 dimension = "default"
             }
 
             register("huawei") {
-                applicationId = "com.nextcloud.client"
+                applicationId = "com.nextcloud.cloud.android.client"
                 dimension = "default"
             }
 
             register("versionDev") {
-                applicationId = "com.nextcloud.android.beta"
+                applicationId = "com.nextcloud.cloud.android.client"
                 dimension = "default"
                 versionCode = 20220322
                 versionName = "20220322"
             }
 
             register("qa") {
-                applicationId = "com.nextcloud.android.qa"
+                applicationId = "com.nextcloud.cloud.android.client"
                 dimension = "default"
                 versionCode = 1
                 versionName = "1"
