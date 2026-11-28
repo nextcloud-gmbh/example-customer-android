@@ -108,7 +108,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.nextcloud.client"
+        applicationId = "com.nextcloud.cloud.android.client"
         minSdk {
             version = release(28)
         }
@@ -162,22 +162,22 @@ android {
     productFlavors {
         // used for f-droid
         register("generic") {
-            applicationId = "com.nextcloud.client"
+            applicationId = "com.nextcloud.cloud.android.client"
             dimension = "default"
         }
 
         register("gplay") {
-            applicationId = "com.nextcloud.client"
+            applicationId = "com.nextcloud.cloud.android.client"
             dimension = "default"
         }
 
         register("huawei") {
-            applicationId = "com.nextcloud.client"
+            applicationId = "com.nextcloud.cloud.android.client"
             dimension = "default"
         }
 
         register("versionDev") {
-            applicationId = "com.nextcloud.android.beta"
+            applicationId = "com.nextcloud.cloud.android.client"
             dimension = "default"
             versionCode = 20220322
             versionName = "20220322"
@@ -187,7 +187,7 @@ android {
         }
 
         register("qa") {
-            applicationId = "com.nextcloud.android.qa"
+            applicationId = "com.nextcloud.cloud.android.client"
             dimension = "default"
             versionCode = 1
             versionName = "1"
